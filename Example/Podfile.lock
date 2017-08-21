@@ -14,12 +14,12 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - TableBarViewController (0.1.0)
+  - TableBarViewController (0.1.2)
   - YHJNetwork (0.1.1):
     - AFNetworking (~> 3.1.0)
 
 DEPENDENCIES:
-  - TableBarViewController
+  - TableBarViewController (~> 0.1.2)
   - YHJNetwork (from `../`)
 
 EXTERNAL SOURCES:
@@ -28,9 +28,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  TableBarViewController: f4e1b89350874421af0ee12b9b87fb7251fabe2d
+  TableBarViewController: 34aa74ede2650b4b09feeb72aa085d9f0fb68cbc
   YHJNetwork: bed80911068d82ccb364fc2030157bba6254d593
 
-PODFILE CHECKSUM: 1f2c067b514d5ce2e1af4b04b71929e64dc18562
+PODFILE CHECKSUM: 0d2f875ab0912cfaf3bed64562271b7be73bc6c8
 
 COCOAPODS: 1.2.1

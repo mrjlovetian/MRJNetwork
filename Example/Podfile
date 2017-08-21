@@ -1,0 +1,6 @@
+use_frameworks!
+target 'YHJNetwork_Tests' do
+  pod 'YHJNetwork', :path => '../'
+  
+  
+end

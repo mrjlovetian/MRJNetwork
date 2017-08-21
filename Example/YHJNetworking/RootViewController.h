@@ -6,8 +6,8 @@
 //  Copyright © 2017年 mrjlovetian@gmail.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <TableBarViewController/YHJTabBarController.H>
 
-@interface ViewController : UIViewController
+@interface RootViewController : YHJTabBarController
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51593BB2F98910E524BAEAC3 /* Pods_YHJNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCD09E617C1D5C805741DF6 /* Pods_YHJNetworking.framework */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -15,10 +16,11 @@
 		84C84682BF8AB18FFF77B5B1 /* Pods_YHJNetwork_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10E7F850525E030B5AC79AC /* Pods_YHJNetwork_Tests.framework */; };
 		C2279BE51F4A753700556D0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2279BE41F4A753700556D0E /* main.m */; };
 		C2279BE81F4A753700556D0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2279BE71F4A753700556D0E /* AppDelegate.m */; };
-		C2279BEB1F4A753700556D0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2279BEA1F4A753700556D0E /* ViewController.m */; };
 		C2279BEE1F4A753700556D0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2279BEC1F4A753700556D0E /* Main.storyboard */; };
 		C2279BF01F4A753700556D0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2279BEF1F4A753700556D0E /* Assets.xcassets */; };
 		C2279BF31F4A753700556D0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2279BF11F4A753700556D0E /* LaunchScreen.storyboard */; };
+		C2279C421F4AC13100556D0E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2279C411F4AC13100556D0E /* RootViewController.m */; };
+		C2279C451F4AC2A600556D0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2279C441F4AC2A600556D0E /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,19 +35,24 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		982CA52BA1243CB6E412E0A9 /* Pods-YHJNetwork_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetwork_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YHJNetwork_Tests/Pods-YHJNetwork_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9BCD09E617C1D5C805741DF6 /* Pods_YHJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB74507DA32A410D9DDB00 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A10E7F850525E030B5AC79AC /* Pods_YHJNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHJNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2279BE11F4A753700556D0E /* YHJNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHJNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2279BE41F4A753700556D0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2279BE61F4A753700556D0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C2279BE71F4A753700556D0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C2279BE91F4A753700556D0E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C2279BEA1F4A753700556D0E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C2279BED1F4A753700556D0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C2279BEF1F4A753700556D0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2279BF21F4A753700556D0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2279BF41F4A753700556D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2279C401F4AC13100556D0E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		C2279C411F4AC13100556D0E /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		C2279C431F4AC2A600556D0E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C2279C441F4AC2A600556D0E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E71F5CF4A513C9583FE40815 /* Pods-YHJNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 		ED9502421245249239A6B2BF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		EDF733994539749192D3C724 /* Pods-YHJNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking.release.xcconfig"; sourceTree = "<group>"; };
 		F42555307D9E9DFAD500E5D5 /* Pods-YHJNetwork_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetwork_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YHJNetwork_Tests/Pods-YHJNetwork_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51593BB2F98910E524BAEAC3 /* Pods_YHJNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +84,8 @@
 			children = (
 				982CA52BA1243CB6E412E0A9 /* Pods-YHJNetwork_Tests.debug.xcconfig */,
 				F42555307D9E9DFAD500E5D5 /* Pods-YHJNetwork_Tests.release.xcconfig */,
+				E71F5CF4A513C9583FE40815 /* Pods-YHJNetworking.debug.xcconfig */,
+				EDF733994539749192D3C724 /* Pods-YHJNetworking.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -109,6 +119,7 @@
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				A10E7F850525E030B5AC79AC /* Pods_YHJNetwork_Tests.framework */,
+				9BCD09E617C1D5C805741DF6 /* Pods_YHJNetworking.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,8 +158,10 @@
 			children = (
 				C2279BE61F4A753700556D0E /* AppDelegate.h */,
 				C2279BE71F4A753700556D0E /* AppDelegate.m */,
-				C2279BE91F4A753700556D0E /* ViewController.h */,
-				C2279BEA1F4A753700556D0E /* ViewController.m */,
+				C2279C401F4AC13100556D0E /* RootViewController.h */,
+				C2279C411F4AC13100556D0E /* RootViewController.m */,
+				C2279C431F4AC2A600556D0E /* ViewController.h */,
+				C2279C441F4AC2A600556D0E /* ViewController.m */,
 				C2279BEC1F4A753700556D0E /* Main.storyboard */,
 				C2279BEF1F4A753700556D0E /* Assets.xcassets */,
 				C2279BF11F4A753700556D0E /* LaunchScreen.storyboard */,
@@ -193,9 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2279BF71F4A753700556D0E /* Build configuration list for PBXNativeTarget "YHJNetworking" */;
 			buildPhases = (
+				C80A14231809E86C67E8CECD /* [CP] Check Pods Manifest.lock */,
 				C2279BDD1F4A753700556D0E /* Sources */,
 				C2279BDE1F4A753700556D0E /* Frameworks */,
 				C2279BDF1F4A753700556D0E /* Resources */,
+				307723093BE728A6D7D39DAB /* [CP] Embed Pods Frameworks */,
+				637E30F50D164971356F1D19 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,6 +297,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YHJNetwork_Tests/Pods-YHJNetwork_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		307723093BE728A6D7D39DAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		53460C2BB175331136726393 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -294,6 +325,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		637E30F50D164971356F1D19 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		80C8147366964909583E1738 /* [CP] Copy Pods Resources */ = {
@@ -311,6 +357,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YHJNetwork_Tests/Pods-YHJNetwork_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C80A14231809E86C67E8CECD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -326,8 +387,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2279BEB1F4A753700556D0E /* ViewController.m in Sources */,
+				C2279C421F4AC13100556D0E /* RootViewController.m in Sources */,
 				C2279BE81F4A753700556D0E /* AppDelegate.m in Sources */,
+				C2279C451F4AC2A600556D0E /* ViewController.m in Sources */,
 				C2279BE51F4A753700556D0E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +541,7 @@
 		};
 		C2279BF51F4A753700556D0E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E71F5CF4A513C9583FE40815 /* Pods-YHJNetworking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -501,6 +564,7 @@
 		};
 		C2279BF61F4A753700556D0E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDF733994539749192D3C724 /* Pods-YHJNetworking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -550,6 +614,7 @@
 				C2279BF61F4A753700556D0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

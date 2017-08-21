@@ -2,5 +2,9 @@ use_frameworks!
 target 'YHJNetwork_Tests' do
   pod 'YHJNetwork', :path => '../'
   
-  pod 'AFNetworking', '~> 3.1.0'
+  
+end
+
+target 'YHJNetworking' do
+    pod 'TableBarViewController'
 end

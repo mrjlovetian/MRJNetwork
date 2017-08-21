@@ -1,0 +1,22 @@
+{
+  "name": "YHJNetwork",
+  "version": "0.1.0",
+  "summary": "A short description of YHJNetwork.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/mrjlovetian/YHJNetwork",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "mrjlovetian@gmail.com": "mrjyuhongjiang@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/mrjlovetian/YHJNetwork.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "YHJNetwork/Classes/**/*"
+}

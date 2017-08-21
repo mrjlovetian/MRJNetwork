@@ -1,6 +1,6 @@
 //
-//  KKChainRequest.h
-//  TopsTechNetWorking
+//  YHJChainRequest.h
+//  MRJ
 //
 //  Created by YHJ on 2017/3/15.
 //  Copyright © 2017年 YHJ. All rights reserved.
@@ -10,43 +10,43 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class KKChainRequest;
+@class YHJChainRequest;
 @class YHJBaseRequest;
 @protocol YHJRequestAccessory;
 
-///  The KKChainRequestDelegate protocol defines several optional methods you can use
+///  The YHJChainRequestDelegate protocol defines several optional methods you can use
 ///  to receive network-related messages. All the delegate methods will be called
 ///  on the main queue. Note the delegate methods will be called when all the requests
 ///  of chain request finishes.
-@protocol KKChainRequestDelegate <NSObject>
+@protocol YHJChainRequestDelegate <NSObject>
 
 @optional
 ///  Tell the delegate that the chain request has finished successfully.
 ///
 ///  @param chainRequest The corresponding chain request.
-- (void)chainRequestFinished:(KKChainRequest *)chainRequest;
+- (void)chainRequestFinished:(YHJChainRequest *)chainRequest;
 
 ///  Tell the delegate that the chain request has failed.
 ///
 ///  @param chainRequest The corresponding chain request.
 ///  @param request      First failed request that causes the whole request to fail.
-- (void)chainRequestFailed:(KKChainRequest *)chainRequest failedBaseRequest:(YHJBaseRequest*)request;
+- (void)chainRequestFailed:(YHJChainRequest *)chainRequest failedBaseRequest:(YHJBaseRequest*)request;
 
 @end
 
-typedef void (^KKChainCallback)(KKChainRequest *chainRequest, YHJBaseRequest *baseRequest);
+typedef void (^YHJChainCallback)(YHJChainRequest *chainRequest, YHJBaseRequest *baseRequest);
 
 ///  YHJBatchRequest can be used to chain several YHJRequest so that one will only starts after another finishes.
-///  Note that when used inside KKChainRequest, a single YHJRequest will have its own callback and delegate
+///  Note that when used inside YHJChainRequest, a single YHJRequest will have its own callback and delegate
 ///  cleared, in favor of the batch request callback.
 
-@interface KKChainRequest : NSObject
+@interface YHJChainRequest : NSObject
 
 ///  All the requests are stored in this array.
 - (NSArray<YHJBaseRequest *> *)requestArray;
 
 ///  The delegate object of the chain request. Default is nil.
-@property (nonatomic, weak, nullable) id<KKChainRequestDelegate> delegate;
+@property (nonatomic, weak, nullable) id<YHJChainRequestDelegate> delegate;
 
 ///  This can be used to add several accossories object. Note if you use `addAccessory` to add acceesory
 ///  this array will be automatically created. Default is nil.
@@ -65,7 +65,7 @@ typedef void (^KKChainCallback)(KKChainRequest *chainRequest, YHJBaseRequest *ba
 ///
 ///  @param request  The request to be chained.
 ///  @param callback The finish callback
-- (void)addRequest:(YHJBaseRequest *)request callback:(nullable KKChainCallback)callback;
+- (void)addRequest:(YHJBaseRequest *)request callback:(nullable YHJChainCallback)callback;
 
 
 @end

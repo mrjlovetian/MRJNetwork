@@ -1,26 +1,26 @@
 //
-//  KKChainRequest.m
+//  YHJChainRequest.m
 //  TopsTechNetWorking
 //
 //  Created by YHJ on 2017/3/15.
 //  Copyright © 2017年 YHJ. All rights reserved.
 //
 
-#import "KKChainRequest.h"
-#import "KKChainRequestAgent.h"
-#import "YHJBetworkPrivate.h"
+#import "YHJChainRequest.h"
+#import "YHJChainRequestAgent.h"
+#import "YHJNetworkPrivate.h"
 #import "YHJBaseRequest.h"
 
-@interface KKChainRequest()<YHJRequestDelegate>
+@interface YHJChainRequest()<YHJRequestDelegate>
 
 @property (strong, nonatomic) NSMutableArray<YHJBaseRequest *> *requestArray;
-@property (strong, nonatomic) NSMutableArray<KKChainCallback> *requestCallbackArray;
+@property (strong, nonatomic) NSMutableArray<YHJChainCallback> *requestCallbackArray;
 @property (assign, nonatomic) NSUInteger nextRequestIndex;
-@property (strong, nonatomic) KKChainCallback emptyCallback;
+@property (strong, nonatomic) YHJChainCallback emptyCallback;
 
 @end
 
-@implementation KKChainRequest
+@implementation YHJChainRequest
 
 - (instancetype)init {
     self = [super init];
@@ -28,7 +28,7 @@
         _nextRequestIndex = 0;
         _requestArray = [NSMutableArray array];
         _requestCallbackArray = [NSMutableArray array];
-        _emptyCallback = ^(KKChainRequest *chainRequest, YHJBaseRequest *baseRequest) {
+        _emptyCallback = ^(YHJChainRequest *chainRequest, YHJBaseRequest *baseRequest) {
             // do nothing
         };
     }
@@ -37,27 +37,27 @@
 
 - (void)start {
     if (_nextRequestIndex > 0) {
-        KKLog(@"Error! Chain request has already started.");
+        YHJLog(@"Error! Chain request has already started.");
         return;
     }
     
     if ([_requestArray count] > 0) {
         [self toggleAccessoriesWillStartCallBack];
         [self startNextRequest];
-        [[KKChainRequestAgent sharedAgent] addChainRequest:self];
+        [[YHJChainRequestAgent sharedAgent] addChainRequest:self];
     } else {
-        KKLog(@"Error! Chain request array is empty.");
+        YHJLog(@"Error! Chain request array is empty.");
     }
 }
 
 - (void)stop {
     [self toggleAccessoriesWillStopCallBack];
     [self clearRequest];
-    [[KKChainRequestAgent sharedAgent] removeChainRequest:self];
+    [[YHJChainRequestAgent sharedAgent] removeChainRequest:self];
     [self toggleAccessoriesDidStopCallBack];
 }
 
-- (void)addRequest:(YHJBaseRequest *)request callback:(KKChainCallback)callback {
+- (void)addRequest:(YHJBaseRequest *)request callback:(YHJChainCallback)callback {
     [_requestArray addObject:request];
     if (callback != nil) {
         [_requestCallbackArray addObject:callback];
@@ -87,13 +87,13 @@
 
 - (void)requestFinished:(YHJBaseRequest *)request {
     NSUInteger currentRequestIndex = _nextRequestIndex - 1;
-    KKChainCallback callback = _requestCallbackArray[currentRequestIndex];
+    YHJChainCallback callback = _requestCallbackArray[currentRequestIndex];
     callback(self, request);
     if (![self startNextRequest]) {
         [self toggleAccessoriesWillStopCallBack];
         if ([_delegate respondsToSelector:@selector(chainRequestFinished:)]) {
             [_delegate chainRequestFinished:self];
-            [[KKChainRequestAgent sharedAgent] removeChainRequest:self];
+            [[YHJChainRequestAgent sharedAgent] removeChainRequest:self];
         }
         [self toggleAccessoriesDidStopCallBack];
     }
@@ -103,7 +103,7 @@
     [self toggleAccessoriesWillStopCallBack];
     if ([_delegate respondsToSelector:@selector(chainRequestFailed:failedBaseRequest:)]) {
         [_delegate chainRequestFailed:self failedBaseRequest:request];
-        [[KKChainRequestAgent sharedAgent] removeChainRequest:self];
+        [[YHJChainRequestAgent sharedAgent] removeChainRequest:self];
     }
     [self toggleAccessoriesDidStopCallBack];
 }

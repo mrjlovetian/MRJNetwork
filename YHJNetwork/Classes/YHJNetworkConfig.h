@@ -1,6 +1,6 @@
 //
 //  YHJBetworkConfig.h
-//  TopsTechNetWorking
+//  MRJ
 //
 //  Created by YHJ on 2017/2/20.
 //  Copyright © 2017年 YHJ. All rights reserved.
@@ -13,8 +13,8 @@
 @class YHJBetworkConfig;
 @class YHJBaseRequest;
 
-///  KKUrlFilterProtocol can be used to append common parameters to requests before sending them.
-@protocol KKUrlFilterProtocol <NSObject>
+///  YHJUrlFilterProtocol can be used to append common parameters to requests before sending them.
+@protocol YHJUrlFilterProtocol <NSObject>
 ///  Preprocess request URL before actually sending them.
 ///
 ///  @param originUrl request's origin URL, which is returned by `requestUrl`
@@ -24,8 +24,8 @@
 - (NSString *)filterUrl:(NSString *)originUrl withRequest:(YHJBaseRequest *)request;
 @end
 
-///  KKCacheDirPathFilterProtocol can be used to append common path components when caching response results
-@protocol KKCacheDirPathFilterProtocol <NSObject>
+///  YHJCacheDirPathFilterProtocol can be used to append common path components when caching response results
+@protocol YHJCacheDirPathFilterProtocol <NSObject>
 ///  Preprocess cache path before actually saving them.
 ///
 ///  @param originPath original base cache path, which is generated in `YHJRequest` class.
@@ -50,10 +50,10 @@
 @property (nonatomic, strong) NSString *cdnUrl;
 
 
-///  URL filters. See also `KKUrlFilterProtocol`.
-@property (nonatomic, strong, readonly) NSArray<id<KKUrlFilterProtocol>> *urlFilters;
-///  Cache path filters. See also `KKCacheDirPathFilterProtocol`.
-@property (nonatomic, strong, readonly) NSArray<id<KKCacheDirPathFilterProtocol>> *cacheDirPathFilters;
+///  URL filters. See also `YHJUrlFilterProtocol`.
+@property (nonatomic, strong, readonly) NSArray<id<YHJUrlFilterProtocol>> *urlFilters;
+///  Cache path filters. See also `YHJCacheDirPathFilterProtocol`.
+@property (nonatomic, strong, readonly) NSArray<id<YHJCacheDirPathFilterProtocol>> *cacheDirPathFilters;
 ///  Security policy will be used by AFNetworking. See also `AFSecurityPolicy`.
 @property (nonatomic, strong) AFSecurityPolicy *securityPolicy;
 ///  Whether to log debug info. Default is NO;
@@ -62,11 +62,11 @@
 @property (nonatomic, strong) NSURLSessionConfiguration* sessionConfiguration;
 
 ///  Add a new URL filter.
-- (void)addUrlFilter:(id<KKUrlFilterProtocol>)filter;
+- (void)addUrlFilter:(id<YHJUrlFilterProtocol>)filter;
 ///  Remove all URL filters.
 - (void)clearUrlFilter;
 ///  Add a new cache path filter
-- (void)addCacheDirPathFilter:(id<KKCacheDirPathFilterProtocol>)filter;
+- (void)addCacheDirPathFilter:(id<YHJCacheDirPathFilterProtocol>)filter;
 ///  Clear all cache path filters.
 - (void)clearCacheDirPathFilter;
 

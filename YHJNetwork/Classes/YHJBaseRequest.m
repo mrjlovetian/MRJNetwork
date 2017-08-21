@@ -7,8 +7,8 @@
 //
 
 #import "YHJBaseRequest.h"
-#import "YHJBetworkAgent.h"
-#import "YHJBetworkPrivate.h"
+#import "YHJNetworkAgent.h"
+#import "YHJNetworkPrivate.h"
 
 NSString *const YHJRequestValidationErrorDomain = @"com.mrj.request.validation";
 

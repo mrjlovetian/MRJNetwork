@@ -6,12 +6,12 @@
 //  Copyright © 2017年 YHJ. All rights reserved.
 //
 
-#import "YHJBetworkPrivate.h"
+#import "YHJNetworkPrivate.h"
 #import <CommonCrypto/CommonDigest.h>
 
-void KKLog(NSString *format, ...) {
+void YHJLog(NSString *format, ...) {
 #ifdef DEBUG
-    if (![YHJBetworkConfig sharedConfig].debugLogEnabled) {
+    if (![YHJNetworkConfig sharedConfig].debugLogEnabled) {
         return;
     }
     va_list argptr;
@@ -75,7 +75,7 @@ void KKLog(NSString *format, ...) {
     NSError *error = nil;
     [url setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:&error];
     if (error) {
-        KKLog(@"error to set do not backup attribute, error = %@", error);
+        YHJLog(@"error to set do not backup attribute, error = %@", error);
     }
 }
 
@@ -194,7 +194,7 @@ void KKLog(NSString *format, ...) {
 @end
 
 
-@implementation KKChainRequest (RequestAccessory)
+@implementation YHJChainRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack {
     for (id<YHJRequestAccessory> accessory in self.requestAccessories) {

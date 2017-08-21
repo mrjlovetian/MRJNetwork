@@ -1,13 +1,13 @@
 //
 //  YHJBatchRequest.m
-//  TopsTechNetWorking
+//  MRJ
 //
 //  Created by YHJ on 2017/2/27.
 //  Copyright © 2017年 YHJ. All rights reserved.
 //
 
 #import "YHJBatchRequest.h"
-#import "YHJBetworkPrivate.h"
+#import "YHJNetworkPrivate.h"
 #import "YHJBatchRequestAgent.h"
 #import "YHJRequest.h"
 
@@ -26,7 +26,7 @@
         _finishedCount = 0;
         for (YHJRequest * req in _requestArray) {
             if (![req isKindOfClass:[YHJRequest class]]) {
-                KKLog(@"Error, request item must be YHJRequest instance.");
+                YHJLog(@"Error, request item must be YHJRequest instance.");
                 return nil;
             }
         }
@@ -36,7 +36,7 @@
 
 - (void)start {
     if (_finishedCount > 0) {
-        KKLog(@"Error! Batch request has already started.");
+        YHJLog(@"Error! Batch request has already started.");
         return;
     }
     _failedRequest = nil;

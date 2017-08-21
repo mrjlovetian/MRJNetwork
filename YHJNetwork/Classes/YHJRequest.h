@@ -11,13 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 NS_ENUM(NSInteger) {
-    YTKRequestCacheErrorExpired = -1,
-    YTKRequestCacheErrorVersionMismatch = -2,
-    YTKRequestCacheErrorSensitiveDataMismatch = -3,
-    YTKRequestCacheErrorAppVersionMismatch = -4,
-    YTKRequestCacheErrorInvalidCacheTime = -5,
-    YTKRequestCacheErrorInvalidMetadata = -6,
-    YTKRequestCacheErrorInvalidCacheData = -7,
+    YHJRequestCacheErrorExpired = -1,
+    YHJRequestCacheErrorVersionMismatch = -2,
+    YHJRequestCacheErrorSensitiveDataMismatch = -3,
+    YHJRequestCacheErrorAppVersionMismatch = -4,
+    YHJRequestCacheErrorInvalidCacheTime = -5,
+    YHJRequestCacheErrorInvalidMetadata = -6,
+    YHJRequestCacheErrorInvalidCacheData = -7,
     };
 
 

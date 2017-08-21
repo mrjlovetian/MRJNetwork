@@ -1,6 +1,6 @@
 //
 //  YHJBetworkPrivate.h
-//  TopsTechNetWorking
+//  MRJ
 //
 //  Created by YHJ on 2017/2/20.
 //  Copyright © 2017年 YHJ. All rights reserved.
@@ -12,15 +12,15 @@
 #import "YHJBaseRequest.h"
 
 
-#import "YHJBetworkAgent.h"
-#import "YHJBetworkConfig.h"
+#import "YHJNetworkAgent.h"
+#import "YHJNetworkConfig.h"
 
 #import "YHJBatchRequest.h"
-#import "KKChainRequest.h"
+#import "YHJChainRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT void KKLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
+FOUNDATION_EXPORT void YHJLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @class AFHTTPSessionManager;
 
@@ -73,7 +73,7 @@ FOUNDATION_EXPORT void KKLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @end
 
-@interface KKChainRequest (RequestAccessory)
+@interface YHJChainRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack;
 - (void)toggleAccessoriesWillStopCallBack;

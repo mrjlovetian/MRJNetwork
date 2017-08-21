@@ -6,16 +6,16 @@
 //  Copyright © 2017年 YHJ. All rights reserved.
 //
 
-#import "YHJBetworkAgent.h"
+#import "YHJNetworkAgent.h"
 #import <AFNetworking/AFNetworking.h>
-#import "YHJBetworkConfig.h"
+#import "YHJNetworkConfig.h"
 #import <pthread/pthread.h>
-#import "YHJBetworkPrivate.h"
+#import "YHJNetworkPrivate.h"
 
 #define Lock() pthread_mutex_lock(&_lock)
 #define Unlock() pthread_mutex_unlock(&_lock)
 
-#define KKKNetworkIncompleteDownloadFolderName @"Incomplete"
+#define YHJKNetworkIncompleteDownloadFolderName @"Incomplete"
 
 @implementation YHJBetworkAgent{
     
@@ -84,7 +84,7 @@
 
     // Filter URL if needed
     NSArray *filters = [_config urlFilters];
-    for (id<KKUrlFilterProtocol> f in filters) {
+    for (id<YHJUrlFilterProtocol> f in filters) {
         detailUrl = [f filterUrl:detailUrl withRequest:request];
     }
     
@@ -232,7 +232,7 @@
     }
     
     // Retain request
-    KKLog(@"Add request: %@", NSStringFromClass([request class]));
+    YHJLog(@"Add request: %@", NSStringFromClass([request class]));
     [self addRequestToRecord:request];
     [request.requestTask resume];
 }
@@ -355,7 +355,7 @@
         return;
     }
     
-    KKLog(@"Finished Request: %@", NSStringFromClass([request class]));
+    YHJLog(@"Finished Request: %@", NSStringFromClass([request class]));
     
     NSError * __autoreleasing serializationError = nil;
     NSError * __autoreleasing validationError = nil;
@@ -425,7 +425,7 @@
 
 - (void)requestDidFailWithRequest:(YHJBaseRequest *)request error:(NSError *)error {
     request.error = error;
-    KKLog(@"Request %@ failed, status code = %ld, error = %@",
+    YHJLog(@"Request %@ failed, status code = %ld, error = %@",
            NSStringFromClass([request class]), (long)request.responseStatusCode, error.localizedDescription);
     
     // Save incomplete download data.
@@ -472,7 +472,7 @@
 - (void)removeRequestFromRecord:(YHJBaseRequest *)request {
     Lock();
     [_requestsRecord removeObjectForKey:@(request.requestTask.taskIdentifier)];
-    KKLog(@"Request queue size = %zd", [_requestsRecord count]);
+    YHJLog(@"Request queue size = %zd", [_requestsRecord count]);
     Unlock();
 }
 
@@ -528,7 +528,7 @@
                             }];
             resumeSucceeded = YES;
         } @catch (NSException *exception) {
-            KKLog(@"Resume download failed, reason = %@", exception.reason);
+            YHJLog(@"Resume download failed, reason = %@", exception.reason);
             resumeSucceeded = NO;
         }
     }
@@ -553,12 +553,12 @@
     
     if (!cacheFolder) {
         NSString *cacheDir = NSTemporaryDirectory();
-        cacheFolder = [cacheDir stringByAppendingPathComponent:KKKNetworkIncompleteDownloadFolderName];
+        cacheFolder = [cacheDir stringByAppendingPathComponent:YHJKNetworkIncompleteDownloadFolderName];
     }
     
     NSError *error = nil;
     if(![fileManager createDirectoryAtPath:cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
-        KKLog(@"Failed to create cache directory at %@", cacheFolder);
+        YHJLog(@"Failed to create cache directory at %@", cacheFolder);
         cacheFolder = nil;
     }
     return cacheFolder;

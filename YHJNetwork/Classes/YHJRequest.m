@@ -1,13 +1,13 @@
 //
 //  YHJRequest.m
-//  TopsTechNetWorking
+//  MRJ
 //
 //  Created by YHJ on 2017/2/20.
 //  Copyright © 2017年 YHJ. All rights reserved.
 //
 
 #import "YHJRequest.h"
-#import "YHJBetworkPrivate.h"
+#import "YHJNetworkPrivate.h"
 
 #ifndef NSFoundationVersionNumber_iOS_8_0
 #define NSFoundationVersionNumber_With_QoS_Available 1140.11
@@ -17,7 +17,7 @@
 
 NSString *const YHJRequestCacheErrorDomain = @"com.mrj.request.caching";
 
-static dispatch_queue_t ytkrequest_cache_writing_queue() {
+static dispatch_queue_t YHJRequest_cache_writing_queue() {
     static dispatch_queue_t queue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -25,13 +25,13 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_With_QoS_Available) {
             attr = dispatch_queue_attr_make_with_qos_class(attr, QOS_CLASS_BACKGROUND, 0);
         }
-        queue = dispatch_queue_create("com.mrj.kkkrequest.caching", attr);
+        queue = dispatch_queue_create("com.mrj.YHJkrequest.caching", attr);
     });
     
     return queue;
 }
 
-@interface KKCacheMetadata : NSObject<NSSecureCoding>
+@interface YHJCacheMetadata : NSObject<NSSecureCoding>
 
 @property (nonatomic, assign) long long version;
 @property (nonatomic, strong) NSString *sensitiveDataString;
@@ -41,7 +41,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
 
 @end
 
-@implementation KKCacheMetadata
+@implementation YHJCacheMetadata
 
 + (BOOL)supportsSecureCoding {
     return YES;
@@ -80,7 +80,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
 @property (nonatomic, strong) id cacheJSON;
 @property (nonatomic, strong) NSXMLParser *cacheXML;
 
-@property (nonatomic, strong) KKCacheMetadata *cacheMetadata;
+@property (nonatomic, strong) YHJCacheMetadata *cacheMetadata;
 @property (nonatomic, assign) BOOL dataFromCache;
 
 @end
@@ -135,7 +135,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     [super requestCompletePreprocessor];
     
     if (self.writeCacheAsynchronously) {
-        dispatch_async(ytkrequest_cache_writing_queue(), ^{
+        dispatch_async(YHJRequest_cache_writing_queue(), ^{
             [self saveResponseDataToCacheFile:[super responseData]];
         });
     } else {
@@ -209,7 +209,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     // 是否存在缓存时间
     if ([self cacheTimeInSeconds] < 0) {
         if (error) {
-            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YTKRequestCacheErrorInvalidCacheTime userInfo:@{ NSLocalizedDescriptionKey:@"Invalid cache time"}];
+            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YHJRequestCacheErrorInvalidCacheTime userInfo:@{ NSLocalizedDescriptionKey:@"Invalid cache time"}];
         }
         return NO;
     }
@@ -217,7 +217,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     // http请求 缓存文件是否存在
     if (![self loadCacheMetadata]) {
         if (error) {
-            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YTKRequestCacheErrorInvalidMetadata userInfo:@{ NSLocalizedDescriptionKey:@"Invalid metadata. Cache may not exist"}];
+            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YHJRequestCacheErrorInvalidMetadata userInfo:@{ NSLocalizedDescriptionKey:@"Invalid metadata. Cache may not exist"}];
         }
         return NO;
     }
@@ -230,7 +230,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     // Try load cache.
     if (![self loadCacheData]) {
         if (error) {
-            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YTKRequestCacheErrorInvalidCacheData userInfo:@{ NSLocalizedDescriptionKey:@"Invalid cache data"}];
+            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YHJRequestCacheErrorInvalidCacheData userInfo:@{ NSLocalizedDescriptionKey:@"Invalid cache data"}];
         }
         return NO;
     }
@@ -244,7 +244,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     NSTimeInterval duration = -[creationDate timeIntervalSinceNow];
     if (duration < 0 || duration > [self cacheTimeInSeconds]) {
         if (error) {
-            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YTKRequestCacheErrorExpired userInfo:@{ NSLocalizedDescriptionKey:@"Cache expired"}];
+            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YHJRequestCacheErrorExpired userInfo:@{ NSLocalizedDescriptionKey:@"Cache expired"}];
         }
         return NO;
     }
@@ -252,7 +252,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     long long cacheVersionFileContent = self.cacheMetadata.version;
     if (cacheVersionFileContent != [self cacheVersion]) {
         if (error) {
-            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YTKRequestCacheErrorVersionMismatch userInfo:@{ NSLocalizedDescriptionKey:@"Cache version mismatch"}];
+            *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YHJRequestCacheErrorVersionMismatch userInfo:@{ NSLocalizedDescriptionKey:@"Cache version mismatch"}];
         }
         return NO;
     }
@@ -263,7 +263,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
         // If one of the strings is nil, short-circuit evaluation will trigger
         if (sensitiveDataString.length != currentSensitiveDataString.length || ![sensitiveDataString isEqualToString:currentSensitiveDataString]) {
             if (error) {
-                *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YTKRequestCacheErrorSensitiveDataMismatch userInfo:@{ NSLocalizedDescriptionKey:@"Cache sensitive data mismatch"}];
+                *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YHJRequestCacheErrorSensitiveDataMismatch userInfo:@{ NSLocalizedDescriptionKey:@"Cache sensitive data mismatch"}];
             }
             return NO;
         }
@@ -274,7 +274,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     if (appVersionString || currentAppVersionString) {
         if (appVersionString.length != currentAppVersionString.length || ![appVersionString isEqualToString:currentAppVersionString]) {
             if (error) {
-                *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YTKRequestCacheErrorAppVersionMismatch userInfo:@{ NSLocalizedDescriptionKey:@"App version mismatch"}];
+                *error = [NSError errorWithDomain:YHJRequestCacheErrorDomain code:YHJRequestCacheErrorAppVersionMismatch userInfo:@{ NSLocalizedDescriptionKey:@"App version mismatch"}];
             }
             return NO;
         }
@@ -291,7 +291,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
             _cacheMetadata = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
             return YES;
         } @catch (NSException *exception) {
-            KKLog(@"Load cache metadata failed, reason = %@", exception.reason);
+            YHJLog(@"Load cache metadata failed, reason = %@", exception.reason);
             return NO;
         }
     }
@@ -330,7 +330,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
                 // New data will always overwrite old data.
                 [data writeToFile:[self cacheFilePath] atomically:YES];
                 
-                KKCacheMetadata *metadata = [[KKCacheMetadata alloc] init];
+                YHJCacheMetadata *metadata = [[YHJCacheMetadata alloc] init];
                 metadata.version = [self cacheVersion];
                 metadata.sensitiveDataString = ((NSObject *)[self cacheSensitiveData]).description;
                 metadata.stringEncoding = [YHJBetworkUtils stringEncodingWithRequest:self];
@@ -338,7 +338,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
                 metadata.appVersionString = [YHJBetworkUtils appVersionString];
                 [NSKeyedArchiver archiveRootObject:metadata toFile:[self cacheMetadataFilePath]];
             } @catch (NSException *exception) {
-                KKLog(@"Save cache failed, reason = %@", exception.reason);
+                YHJLog(@"Save cache failed, reason = %@", exception.reason);
             }
         }
     }
@@ -376,7 +376,7 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES
                                                attributes:nil error:&error];
     if (error) {
-        KKLog(@"create cache directory failed, error = %@", error);
+        YHJLog(@"create cache directory failed, error = %@", error);
     } else {
         [YHJBetworkUtils addDoNotBackupAttribute:path];
     }
@@ -389,9 +389,9 @@ static dispatch_queue_t ytkrequest_cache_writing_queue() {
     NSString *path = [pathOfLibrary stringByAppendingPathComponent:@"LazyRequestCache"];
     
     // Filter cache base path
-    NSArray<id<KKCacheDirPathFilterProtocol>> *filters = [[YHJBetworkConfig sharedConfig] cacheDirPathFilters];
+    NSArray<id<YHJCacheDirPathFilterProtocol>> *filters = [[YHJBetworkConfig sharedConfig] cacheDirPathFilters];
     if (filters.count > 0) {
-        for (id<KKCacheDirPathFilterProtocol> f in filters) {
+        for (id<YHJCacheDirPathFilterProtocol> f in filters) {
             path = [f filterCacheDirPath:path withRequest:self];
         }
     }

@@ -1,22 +1,22 @@
 //
-//  KKChainRequestAgent.m
-//  TopsTechNetWorking
+//  YHJChainRequestAgent.m
+//  MRJ
 //
 //  Created by YHJ on 2017/3/15.
 //  Copyright © 2017年 YHJ. All rights reserved.
 //
 
-#import "KKChainRequestAgent.h"
+#import "YHJChainRequestAgent.h"
 
-@interface KKChainRequestAgent()
+@interface YHJChainRequestAgent()
 
-@property(strong,nonatomic) NSMutableArray<KKChainRequest *> *requestArray;
+@property(strong,nonatomic) NSMutableArray<YHJChainRequest *> *requestArray;
 
 @end
 
-@implementation KKChainRequestAgent
+@implementation YHJChainRequestAgent
 
-+ (KKChainRequestAgent *)sharedAgent {
++ (YHJChainRequestAgent *)sharedAgent {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -33,13 +33,13 @@
     return self;
 }
 
-- (void)addChainRequest:(KKChainRequest *)request {
+- (void)addChainRequest:(YHJChainRequest *)request {
     @synchronized(self) {
         [_requestArray addObject:request];
     }
 }
 
-- (void)removeChainRequest:(KKChainRequest *)request {
+- (void)removeChainRequest:(YHJChainRequest *)request {
     @synchronized(self) {
         [_requestArray removeObject:request];
     }

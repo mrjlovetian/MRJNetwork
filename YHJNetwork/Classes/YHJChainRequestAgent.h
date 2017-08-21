@@ -1,6 +1,6 @@
 //
-//  KKChainRequestAgent.h
-//  TopsTechNetWorking
+//  YHJChainRequestAgent.h
+//  MRJ
 //
 //  Created by YHJ on 2017/3/15.
 //  Copyright © 2017年 YHJ. All rights reserved.
@@ -10,21 +10,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class KKChainRequest;
+@class YHJChainRequest;
 
-@interface KKChainRequestAgent : NSObject
+@interface YHJChainRequestAgent : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
 ///  Get the shared chain request agent.
-+ (KKChainRequestAgent *)sharedAgent;
++ (YHJChainRequestAgent *)sharedAgent;
 
 ///  Add a chain request.
-- (void)addChainRequest:(KKChainRequest *)request;
+- (void)addChainRequest:(YHJChainRequest *)request;
 
 ///  Remove a previously added chain request.
-- (void)removeChainRequest:(KKChainRequest *)request;
+- (void)removeChainRequest:(YHJChainRequest *)request;
 
 @end
 

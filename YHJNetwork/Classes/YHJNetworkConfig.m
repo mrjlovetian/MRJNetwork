@@ -1,16 +1,16 @@
 //
 //  YHJBetworkConfig.m
-//  TopsTechNetWorking
+//  MRJ
 //
 //  Created by YHJ on 2017/2/20.
 //  Copyright © 2017年 YHJ. All rights reserved.
 //
 
-#import "YHJBetworkConfig.h"
+#import "YHJNetworkConfig.h"
 
 @implementation YHJBetworkConfig{
-    NSMutableArray<id<KKUrlFilterProtocol>> *_urlFilters;
-    NSMutableArray<id<KKCacheDirPathFilterProtocol>> *_cacheDirPathFilters;
+    NSMutableArray<id<YHJUrlFilterProtocol>> *_urlFilters;
+    NSMutableArray<id<YHJCacheDirPathFilterProtocol>> *_cacheDirPathFilters;
 }
 
 
@@ -36,7 +36,7 @@
     return self;
 }
 
-- (void)addUrlFilter:(id<KKUrlFilterProtocol>)filter {
+- (void)addUrlFilter:(id<YHJUrlFilterProtocol>)filter {
     [_urlFilters addObject:filter];
 }
 
@@ -44,7 +44,7 @@
     [_urlFilters removeAllObjects];
 }
 
-- (void)addCacheDirPathFilter:(id<KKCacheDirPathFilterProtocol>)filter {
+- (void)addCacheDirPathFilter:(id<YHJCacheDirPathFilterProtocol>)filter {
     [_cacheDirPathFilters addObject:filter];
 }
 
@@ -52,11 +52,11 @@
     [_cacheDirPathFilters removeAllObjects];
 }
 
-- (NSArray<id<KKUrlFilterProtocol>> *)urlFilters {
+- (NSArray<id<YHJUrlFilterProtocol>> *)urlFilters {
     return [_urlFilters copy];
 }
 
-- (NSArray<id<KKCacheDirPathFilterProtocol>> *)cacheDirPathFilters {
+- (NSArray<id<YHJCacheDirPathFilterProtocol>> *)cacheDirPathFilters {
     return [_cacheDirPathFilters copy];
 }
 

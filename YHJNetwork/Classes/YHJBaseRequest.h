@@ -1,6 +1,6 @@
 //
 //  YHJBaseRequest.h
-//  TopsTechNetWorking
+//  MRJ
 //
 //  Created by YHJ on 2017/2/17.
 //  Copyright © 2017年 YHJ. All rights reserved.
@@ -64,7 +64,7 @@ typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *);
 typedef void(^YHJRequestCompletionBlock)(__kindof YHJBaseRequest *request);
 typedef void(^YHJRequestFinishBlock)();
     
-///  The YTKRequestDelegate protocol defines several optional methods you can use
+///  The YHJRequestDelegate protocol defines several optional methods you can use
 ///  to receive network-related messages. All the delegate methods will be called
 ///  on the main queue.
 @protocol YHJRequestDelegate <NSObject>
@@ -145,13 +145,13 @@ typedef void(^YHJRequestFinishBlock)();
 @property (nonatomic, strong, readonly, nullable) NSString *responseString;
 
 ///  This serialized response object. The actual type of this object is determined by
-///  `YTKResponseSerializerType`. Note this value can be nil if request failed.
+///  `YHJResponseSerializerType`. Note this value can be nil if request failed.
 ///
 ///  @discussion If `resumableDownloadPath` and DownloadTask is using, this value will
 ///              be the path to which file is successfully saved (NSURL), or nil if request failed.
 @property (nonatomic, strong, readonly, nullable) id responseObject;
 
-///  If you use `YTKResponseSerializerTypeJSON`, this is a convenience (and sematic) getter
+///  If you use `YHJResponseSerializerTypeJSON`, this is a convenience (and sematic) getter
 ///  for the response object. Otherwise this value is nil.
 @property (nonatomic, strong, readonly, nullable) id responseJSONObject;
 
@@ -222,7 +222,7 @@ typedef void(^YHJRequestFinishBlock)();
 /// 文件上传进度
 @property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock uploadProgressBlock;
 
-///  The priority of the request. Effective only on iOS 8+. Default is `YTKRequestPriorityDefault`.
+///  The priority of the request. Effective only on iOS 8+. Default is `YHJRequestPriorityDefault`.
 @property (nonatomic) YHJRequestPriority requestPriority;
 
 ///  Set completion callbacks

@@ -90,13 +90,13 @@ NSString *const YHJRequestValidationErrorDomain = @"com.mrj.request.validation";
     ///网络请求前回调
     [self toggleAccessoriesWillStartCallBack];
     ///网络请求开启
-    [[YHJBetworkAgent sharedAgent] addRequest:self];
+    [[YHJNetworkAgent sharedAgent] addRequest:self];
 }
 
 - (void)stop {
     [self toggleAccessoriesWillStopCallBack];
     self.delegate = nil;
-    [[YHJBetworkAgent sharedAgent] cancelRequest:self];
+    [[YHJNetworkAgent sharedAgent] cancelRequest:self];
     [self toggleAccessoriesDidStopCallBack];
 }
 

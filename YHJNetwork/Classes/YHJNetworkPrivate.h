@@ -1,5 +1,5 @@
 //
-//  YHJBetworkPrivate.h
+//  YHJNetworkPrivate.h
 //  MRJ
 //
 //  Created by YHJ on 2017/2/20.
@@ -24,7 +24,7 @@ FOUNDATION_EXPORT void YHJLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @class AFHTTPSessionManager;
 
-@interface YHJBetworkUtils : NSObject
+@interface YHJNetworkUtils : NSObject
 
 + (BOOL)validateJSON:(id)json withValidator:(id)jsonValidator;
 
@@ -81,7 +81,7 @@ FOUNDATION_EXPORT void YHJLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @end
 
-@interface YHJBetworkAgent (Private)
+@interface YHJNetworkAgent (Private)
 
 - (AFHTTPSessionManager *)manager;
 - (void)resetURLSessionManager;

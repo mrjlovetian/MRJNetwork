@@ -1,5 +1,5 @@
 //
-//  YHJBetworkConfig.m
+//  YHJNetworkConfig.m
 //  MRJ
 //
 //  Created by YHJ on 2017/2/20.
@@ -8,13 +8,13 @@
 
 #import "YHJNetworkConfig.h"
 
-@implementation YHJBetworkConfig{
+@implementation YHJNetworkConfig{
     NSMutableArray<id<YHJUrlFilterProtocol>> *_urlFilters;
     NSMutableArray<id<YHJCacheDirPathFilterProtocol>> *_cacheDirPathFilters;
 }
 
 
-+ (YHJBetworkConfig *)sharedConfig {
++ (YHJNetworkConfig *)sharedConfig {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

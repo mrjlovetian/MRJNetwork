@@ -1,5 +1,5 @@
 //
-//  YHJBetworkAgent.m
+//  YHJNetworkAgent.m
 //  TopsTechNetWorking
 //
 //  Created by YHJ on 2017/2/17.
@@ -17,10 +17,10 @@
 
 #define YHJKNetworkIncompleteDownloadFolderName @"Incomplete"
 
-@implementation YHJBetworkAgent{
+@implementation YHJNetworkAgent{
     
     AFHTTPSessionManager *_manager;
-    YHJBetworkConfig *_config;
+    YHJNetworkConfig *_config;
     AFJSONResponseSerializer *_jsonResponseSerializer;
     AFXMLParserResponseSerializer *_xmlParserResponseSerialzier;
     NSMutableDictionary<NSNumber *,YHJBaseRequest *> *_requestsRecord;
@@ -30,7 +30,7 @@
 //    NSIndexSet *_allStatusCodes;
 }
 
-+ (YHJBetworkAgent *)sharedAgent {
++ (YHJNetworkAgent *)sharedAgent {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -42,7 +42,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _config = [YHJBetworkConfig sharedConfig];
+        _config = [YHJNetworkConfig sharedConfig];
         _manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:_config.sessionConfiguration];
         _requestsRecord = [NSMutableDictionary dictionary];
        
@@ -274,7 +274,7 @@
     id json = [request responseJSONObject];
     id validator = [request jsonValidator];
     if (json && validator) {
-        result = [YHJBetworkUtils validateJSON:json withValidator:validator];
+        result = [YHJNetworkUtils validateJSON:json withValidator:validator];
         if (!result) {
             if (error) {
                 *error = [NSError errorWithDomain:YHJRequestValidationErrorDomain code:YHJRequestValidationErrorInvalidJSONFormat userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON format"}];
@@ -366,7 +366,7 @@
     request.responseObject = responseObject;
     if ([request.responseObject isKindOfClass:[NSData class]]) {
         request.responseData = responseObject;
-        request.responseString = [[NSString alloc] initWithData:responseObject encoding:[YHJBetworkUtils stringEncodingWithRequest:request]];
+        request.responseString = [[NSString alloc] initWithData:responseObject encoding:[YHJNetworkUtils stringEncodingWithRequest:request]];
         
         switch (request.responseSerializerType) {
             case YHJResponseSerializerTypeHTTP:
@@ -439,7 +439,7 @@
         NSURL *url = request.responseObject;
         if (url.isFileURL && [[NSFileManager defaultManager] fileExistsAtPath:url.path]) {
             request.responseData = [NSData dataWithContentsOfURL:url];
-            request.responseString = [[NSString alloc] initWithData:request.responseData encoding:[YHJBetworkUtils stringEncodingWithRequest:request]];
+            request.responseString = [[NSString alloc] initWithData:request.responseData encoding:[YHJNetworkUtils stringEncodingWithRequest:request]];
             
             [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
         }
@@ -511,7 +511,7 @@
     
     BOOL resumeDataFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self incompleteDownloadTempPathForDownloadPath:downloadPath].path];
     NSData *data = [NSData dataWithContentsOfURL:[self incompleteDownloadTempPathForDownloadPath:downloadPath]];
-    BOOL resumeDataIsValid = [YHJBetworkUtils validateResumeData:data];
+    BOOL resumeDataIsValid = [YHJNetworkUtils validateResumeData:data];
     
     BOOL canBeResumed = resumeDataFileExists && resumeDataIsValid;
     BOOL resumeSucceeded = NO;
@@ -566,7 +566,7 @@
 
 - (NSURL *)incompleteDownloadTempPathForDownloadPath:(NSString *)downloadPath {
     NSString *tempPath = nil;
-    NSString *md5URLString = [YHJBetworkUtils md5StringFromString:downloadPath];
+    NSString *md5URLString = [YHJNetworkUtils md5StringFromString:downloadPath];
     tempPath = [[self incompleteDownloadTempCacheFolder] stringByAppendingPathComponent:md5URLString];
     return [NSURL fileURLWithPath:tempPath];
 }

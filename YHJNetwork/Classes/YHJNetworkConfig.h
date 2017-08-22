@@ -1,5 +1,5 @@
 //
-//  YHJBetworkConfig.h
+//  YHJNetworkConfig.h
 //  MRJ
 //
 //  Created by YHJ on 2017/2/20.
@@ -10,7 +10,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-@class YHJBetworkConfig;
+@class YHJNetworkConfig;
 @class YHJBaseRequest;
 
 ///  YHJUrlFilterProtocol can be used to append common parameters to requests before sending them.
@@ -36,13 +36,13 @@
 @end
 
 
-@interface YHJBetworkConfig : NSObject
+@interface YHJNetworkConfig : NSObject
 
 - (instancetype)init NS_UNAVAILABLE ;
 + (instancetype)new NS_UNAVAILABLE;
 
 ///  Return a shared config object.
-+ (YHJBetworkConfig *)sharedConfig;
++ (YHJNetworkConfig *)sharedConfig;
 
 ///  Request base URL, such as "http://www.mrj.com". Default is empty string.
 @property (nonatomic, strong) NSString *baseUrl;

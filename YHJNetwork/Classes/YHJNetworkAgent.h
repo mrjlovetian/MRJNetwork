@@ -12,11 +12,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YHJBetworkAgent : NSObject
+@interface YHJNetworkAgent : NSObject
 
 -(instancetype)init;
 
-+(YHJBetworkAgent *)sharedAgent;
++(YHJNetworkAgent *)sharedAgent;
 
 -(void)addRequest:(YHJBaseRequest *)request;
 

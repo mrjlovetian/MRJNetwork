@@ -1,5 +1,5 @@
 //
-//  YHJBetworkPrivate.m
+//  YHJNetworkPrivate.m
 //  TopsTechNetWorking
 //
 //  Created by YHJ on 2017/2/20.
@@ -21,7 +21,7 @@ void YHJLog(NSString *format, ...) {
 #endif
 }
 
-@implementation YHJBetworkUtils
+@implementation YHJNetworkUtils
 
 + (BOOL)validateJSON:(id)json withValidator:(id)jsonValidator {
     if ([json isKindOfClass:[NSDictionary class]] &&

@@ -270,7 +270,7 @@ static dispatch_queue_t YHJRequest_cache_writing_queue() {
     }
     // App version  判断缓存版本号是否一致
     NSString *appVersionString = self.cacheMetadata.appVersionString;
-    NSString *currentAppVersionString = [YHJBetworkUtils appVersionString];
+    NSString *currentAppVersionString = [YHJNetworkUtils appVersionString];
     if (appVersionString || currentAppVersionString) {
         if (appVersionString.length != currentAppVersionString.length || ![appVersionString isEqualToString:currentAppVersionString]) {
             if (error) {
@@ -333,9 +333,9 @@ static dispatch_queue_t YHJRequest_cache_writing_queue() {
                 YHJCacheMetadata *metadata = [[YHJCacheMetadata alloc] init];
                 metadata.version = [self cacheVersion];
                 metadata.sensitiveDataString = ((NSObject *)[self cacheSensitiveData]).description;
-                metadata.stringEncoding = [YHJBetworkUtils stringEncodingWithRequest:self];
+                metadata.stringEncoding = [YHJNetworkUtils stringEncodingWithRequest:self];
                 metadata.creationDate = [NSDate date];
-                metadata.appVersionString = [YHJBetworkUtils appVersionString];
+                metadata.appVersionString = [YHJNetworkUtils appVersionString];
                 [NSKeyedArchiver archiveRootObject:metadata toFile:[self cacheMetadataFilePath]];
             } @catch (NSException *exception) {
                 YHJLog(@"Save cache failed, reason = %@", exception.reason);
@@ -378,7 +378,7 @@ static dispatch_queue_t YHJRequest_cache_writing_queue() {
     if (error) {
         YHJLog(@"create cache directory failed, error = %@", error);
     } else {
-        [YHJBetworkUtils addDoNotBackupAttribute:path];
+        [YHJNetworkUtils addDoNotBackupAttribute:path];
     }
 }
 
@@ -389,7 +389,7 @@ static dispatch_queue_t YHJRequest_cache_writing_queue() {
     NSString *path = [pathOfLibrary stringByAppendingPathComponent:@"LazyRequestCache"];
     
     // Filter cache base path
-    NSArray<id<YHJCacheDirPathFilterProtocol>> *filters = [[YHJBetworkConfig sharedConfig] cacheDirPathFilters];
+    NSArray<id<YHJCacheDirPathFilterProtocol>> *filters = [[YHJNetworkConfig sharedConfig] cacheDirPathFilters];
     if (filters.count > 0) {
         for (id<YHJCacheDirPathFilterProtocol> f in filters) {
             path = [f filterCacheDirPath:path withRequest:self];
@@ -404,11 +404,11 @@ static dispatch_queue_t YHJRequest_cache_writing_queue() {
 ///http 缓存文件名称
 - (NSString *)cacheFileName {
     NSString *requestUrl = [self requestUrl];
-    NSString *baseUrl = [YHJBetworkConfig sharedConfig].baseUrl;
+    NSString *baseUrl = [YHJNetworkConfig sharedConfig].baseUrl;
     id argument = [self cacheFileNameFilterForRequestArgument:[self requestArgument]];
     NSString *requestInfo = [NSString stringWithFormat:@"Method:%ld Host:%@ Url:%@ Argument:%@",
                              (long)[self requestMethod], baseUrl, requestUrl, argument];
-    NSString *cacheFileName = [YHJBetworkUtils md5StringFromString:requestInfo];
+    NSString *cacheFileName = [YHJNetworkUtils md5StringFromString:requestInfo];
     return cacheFileName;
 }
 

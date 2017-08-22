@@ -128,11 +128,11 @@
 		0FE2F5CC105D3426886DAB77467D872D /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		10C4EDD46A121AC16A78B02C815CE74E /* Pods-YHJNetwork_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YHJNetwork_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		132C052FBFD0DE1581B4F917C6EFC65C /* YHJNetworkConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YHJNetworkConfig.m; sourceTree = "<group>"; };
-		229885DCA0D13AC4F66F7056B5188507 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		229885DCA0D13AC4F66F7056B5188507 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		233D86E7B4F2FD68282C2CBB2A233734 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		239283E6009D2B45A84ECE1B0FBBFCF8 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		276682B21D81732600E5D49F0CC68EE2 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
-		2D643193B07C5556577E8551BB37E68B /* Pods-YHJNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-YHJNetworking.modulemap"; sourceTree = "<group>"; };
+		2D643193B07C5556577E8551BB37E68B /* Pods-YHJNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-YHJNetworking.modulemap"; sourceTree = "<group>"; };
 		311CB60C06B5DDAAF37438A915BA7F4A /* TableBarViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TableBarViewController-dummy.m"; sourceTree = "<group>"; };
 		32D4C576771DD26E1591DC845815CD15 /* YHJNetworkPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YHJNetworkPrivate.h; sourceTree = "<group>"; };
 		37D5433201383ABB83A263EE059FBD8C /* YHJRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YHJRequest.m; sourceTree = "<group>"; };
@@ -146,9 +146,9 @@
 		4BE32473780680D234D3AD1721DD2A27 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		4BF93604470757820521DA7E6C15AA77 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		4D1406B50A1DB298995CB5C685DF5AC4 /* YHJTabBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YHJTabBar.h; path = TableBarViewController/Classes/YHJTabBar.h; sourceTree = "<group>"; };
-		4EA5E8182577A51DF71A3228998C15AB /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = AFNetworking.modulemap; sourceTree = "<group>"; };
+		4EA5E8182577A51DF71A3228998C15AB /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AFNetworking.modulemap; sourceTree = "<group>"; };
 		4F2BAB809AA54E3F2428B90E74512D39 /* Pods-YHJNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YHJNetworking.release.xcconfig"; sourceTree = "<group>"; };
-		50F519185AF87B6056F0A9D390A16044 /* Pods_YHJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YHJNetworking.framework; path = "Pods-YHJNetworking.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F519185AF87B6056F0A9D390A16044 /* Pods_YHJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		544C5CBEBA8C8BCA91E495AD7EF4E637 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
 		5461D992F0D803F0F05DF72B2849301D /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E5FA07096346EE707EC9E7A51B92EB /* YHJNetwork-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YHJNetwork-prefix.pch"; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		746EA6CD5D095FB25E4DE28B40F5F251 /* YHJTabBarController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YHJTabBarController.h; path = TableBarViewController/Classes/YHJTabBarController.h; sourceTree = "<group>"; };
 		74D061DD40021F18527BEEE69391B72E /* YHJTabItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YHJTabItem.h; path = TableBarViewController/Classes/YHJTabItem.h; sourceTree = "<group>"; };
 		7A8967CF63D066E3A9E8B59DE2866EC9 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
-		7CF34B294B34DDA2D0DF265DACD8F7C5 /* YHJNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = YHJNetwork.framework; path = YHJNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CF34B294B34DDA2D0DF265DACD8F7C5 /* YHJNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YHJNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D27457A78721B4430B33B4EDFF65F0F /* Pods-YHJNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YHJNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 		86367513C0F96E67ED136732B7843CC3 /* YHJNetworkAgent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YHJNetworkAgent.m; sourceTree = "<group>"; };
 		86601C9F2EE488530FE10C2905E7FC9B /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
@@ -176,16 +176,16 @@
 		88B46AEC03511CE5C8928675A914583A /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
 		896C6D66CBAF40D41D9FCA33B361BF27 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		8C71EA17A17E464C63FE57B62E0C559B /* YHJNetwork-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YHJNetwork-umbrella.h"; sourceTree = "<group>"; };
-		8F40EB9D5AF6C5E0DF0656219CF905D0 /* Pods_YHJNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YHJNetwork_Tests.framework; path = "Pods-YHJNetwork_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F40EB9D5AF6C5E0DF0656219CF905D0 /* Pods_YHJNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHJNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92848CCDAB3352775BBE3AD7BD361797 /* YHJNetworkAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YHJNetworkAgent.h; sourceTree = "<group>"; };
 		934BA26B251A91BC7AA4EA15CD90CCD9 /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		95BD7A27894BE3927BAB8ACCBB1164C5 /* Pods-YHJNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YHJNetworking-umbrella.h"; sourceTree = "<group>"; };
 		96E0E03BD6AADEA3BC51B38B4AD646AA /* YHJBatchRequestAgent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YHJBatchRequestAgent.m; sourceTree = "<group>"; };
-		9D4C21E68C16BA4ACBC6AE3FA2B6E4EB /* TableBarViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TableBarViewController.modulemap; sourceTree = "<group>"; };
+		9D4C21E68C16BA4ACBC6AE3FA2B6E4EB /* TableBarViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TableBarViewController.modulemap; sourceTree = "<group>"; };
 		9DEF0CCE737A90A7344E27E1F223BBFD /* YHJChainRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YHJChainRequest.m; sourceTree = "<group>"; };
 		A05140EAD566AF5806BE78B6CBF90977 /* Pods-YHJNetwork_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YHJNetwork_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A0534603669A510E78B41E7D9A8D8AE8 /* TableBarViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TableBarViewController.framework; path = TableBarViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0534603669A510E78B41E7D9A8D8AE8 /* TableBarViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TableBarViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9E360F3E121C849637C8DBD812DE617 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAB7FF3305C3F3E726189CE6DC03B4A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		AC22E3E50B3F3DD6D91F0AA752D68B0B /* Pods-YHJNetworking-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YHJNetworking-resources.sh"; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		B69F9DDF0590509E3E6E713AD151633A /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
 		B7C0DF41EB0E7CC150C9C6B1AF0523C4 /* YHJBatchRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = YHJBatchRequest.h; sourceTree = "<group>"; };
 		BEAA2896C0F3DE743E13BA30642E91F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		BEEA1EAE8AB58A5563D5A3C4708DC0F0 /* YHJNetwork.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = YHJNetwork.modulemap; sourceTree = "<group>"; };
+		BEEA1EAE8AB58A5563D5A3C4708DC0F0 /* YHJNetwork.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = YHJNetwork.modulemap; sourceTree = "<group>"; };
 		C29192B1F683D403AFFD632D65221D49 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		C314CD4E15CC5E1FC1B7CBE4DC807B80 /* TableBarViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TableBarViewController.xcconfig; sourceTree = "<group>"; };
 		C46E8EA2FF76269738EFF4628E964FD2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		E82A40D0A76E1E22725920022DF99168 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		E888C0AC5E679FFC91FB466AFC8460B6 /* YHJBatchRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YHJBatchRequest.m; sourceTree = "<group>"; };
 		F076DB6D49BF352C44F6191AE5BF7A86 /* YHJTabBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YHJTabBar.m; path = TableBarViewController/Classes/YHJTabBar.m; sourceTree = "<group>"; };
-		F49A3EA9B9BBF43FE0C159C1289F0A97 /* Pods-YHJNetwork_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-YHJNetwork_Tests.modulemap"; sourceTree = "<group>"; };
+		F49A3EA9B9BBF43FE0C159C1289F0A97 /* Pods-YHJNetwork_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-YHJNetwork_Tests.modulemap"; sourceTree = "<group>"; };
 		F589545A1A107CE7CC8D92117D5D1924 /* YHJBaseRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = YHJBaseRequest.m; sourceTree = "<group>"; };
 		F6B31826C9C86C043431D78889162DB4 /* YHJTabItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YHJTabItem.m; path = TableBarViewController/Classes/YHJTabItem.m; sourceTree = "<group>"; };
 		F71875194E5109485E1CD6A800C87450 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -281,7 +281,6 @@
 			children = (
 				600BB27AEF1644FECE31ADA1B9C21965 /* Classes */,
 			);
-			name = YHJNetwork;
 			path = YHJNetwork;
 			sourceTree = "<group>";
 		};
@@ -437,7 +436,6 @@
 				CA4CD5061DEB59625E30F3301B01DE2B /* YHJRequest.h */,
 				37D5433201383ABB83A263EE059FBD8C /* YHJRequest.m */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -461,7 +459,6 @@
 				F6B31826C9C86C043431D78889162DB4 /* YHJTabItem.m */,
 				C347E15265C5FB62619590DA8DED4932 /* Support Files */,
 			);
-			name = TableBarViewController;
 			path = TableBarViewController;
 			sourceTree = "<group>";
 		};
@@ -514,7 +511,6 @@
 				43367981DAB1A0AB5AC1A5B5903AD298 /* Support Files */,
 				200053BC43AA2C66B21BFD88560D9BE9 /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};

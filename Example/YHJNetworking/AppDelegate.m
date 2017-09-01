@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  YHJNetworking
+//  MRJ_Networking
 //
 //  Created by Mr on 2017/8/21.
 //  Copyright © 2017年 mrjlovetian@gmail.com. All rights reserved.

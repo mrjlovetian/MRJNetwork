@@ -14,23 +14,23 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - MRJ_Network (0.1.3):
+    - AFNetworking (~> 3.1)
   - TableBarViewController (0.1.2)
-  - YHJNetwork (0.1.1):
-    - AFNetworking (~> 3.1.0)
 
 DEPENDENCIES:
+  - MRJ_Network (from `../`)
   - TableBarViewController (~> 0.1.2)
-  - YHJNetwork (from `../`)
 
 EXTERNAL SOURCES:
-  YHJNetwork:
-    :path: "../"
+  MRJ_Network:
+    :path: ../
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  MRJ_Network: 4854f87f7e07a666534b083b661dc52be42b696b
   TableBarViewController: 34aa74ede2650b4b09feeb72aa085d9f0fb68cbc
-  YHJNetwork: bed80911068d82ccb364fc2030157bba6254d593
 
-PODFILE CHECKSUM: 0d2f875ab0912cfaf3bed64562271b7be73bc6c8
+PODFILE CHECKSUM: 276bb3f573169625d1128e02961b0c22d34f5ff1
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

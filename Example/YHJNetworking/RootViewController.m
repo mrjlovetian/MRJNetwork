@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  YHJNetwork
+//  MRJ_Network
 //
 //  Created by Mr on 2017/8/21.
 //  Copyright © 2017年 mrjlovetian@gmail.com. All rights reserved.
@@ -43,25 +43,25 @@
 - (void)initViewControllers
 {
     ViewController *controller1 = [[ViewController alloc] init];
-    controller1.yhj_tabItemTitle = @"推荐";
+    controller1.MRJ__tabItemTitle = @"推荐";
     
     ViewController *controller2 = [[ViewController alloc] init];
-    controller2.yhj_tabItemTitle = @"化妆品";
+    controller2.MRJ__tabItemTitle = @"化妆品";
     
     ViewController *controller3 = [[ViewController alloc] init];
-    controller3.yhj_tabItemTitle = @"海外淘";
+    controller3.MRJ__tabItemTitle = @"海外淘";
     
     ViewController *controller4 = [[ViewController alloc] init];
-    controller4.yhj_tabItemTitle = @"第四";
+    controller4.MRJ__tabItemTitle = @"第四";
     
     ViewController *controller5 = [[ViewController alloc] init];
-    controller5.yhj_tabItemTitle = @"电子产品";
+    controller5.MRJ__tabItemTitle = @"电子产品";
     
     ViewController *controller6 = [[ViewController alloc] init];
-    controller6.yhj_tabItemTitle = @"第六";
+    controller6.MRJ__tabItemTitle = @"第六";
     
     ViewController *controller7 = [[ViewController alloc] init];
-    controller7.yhj_tabItemTitle = @"第七个";
+    controller7.MRJ__tabItemTitle = @"第七个";
     
     self.viewControllers = [NSMutableArray arrayWithObjects:controller1, controller2, controller3, controller4, controller5, controller6, controller7, nil];
 }

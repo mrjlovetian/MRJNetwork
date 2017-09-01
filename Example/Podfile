@@ -1,10 +1,7 @@
 use_frameworks!
-target 'MRJ_Network_Tests' do
-  pod 'MRJ_Network', :path => '../'
-  
-  
-end
 
-target 'MRJ_Networking' do
+
+target 'YHJNetworking' do
     pod 'TableBarViewController', '~> 0.1.2'
+    pod 'MRJ_Network', :path => '../'
 end

@@ -1,0 +1,6 @@
+framework module Pods_YHJNetworking {
+  umbrella header "Pods-YHJNetworking-umbrella.h"
+
+  export *
+  module * { export * }
+}

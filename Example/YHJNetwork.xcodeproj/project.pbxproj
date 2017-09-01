@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51593BB2F98910E524BAEAC3 /* Pods_MRJ_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCD09E617C1D5C805741DF6 /* Pods_MRJ_Networking.framework */; };
+		24C61CCE1992C3E38D2AAA6B /* Pods_YHJNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C39C72048E9C45DE112C86C /* Pods_YHJNetworking.framework */; };
+		51593BB2F98910E524BAEAC3 /* Pods_YHJNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCD09E617C1D5C805741DF6 /* Pods_YHJNetworking.framework */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		84C84682BF8AB18FFF77B5B1 /* Pods_MRJ_Network_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10E7F850525E030B5AC79AC /* Pods_MRJ_Network_Tests.framework */; };
 		C28CD3E61F5966270004F30A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3DA1F5966270004F30A /* AppDelegate.m */; };
 		C28CD3E71F5966270004F30A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C28CD3DB1F5966270004F30A /* Assets.xcassets */; };
 		C28CD3E81F5966270004F30A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C28CD3DC1F5966270004F30A /* LaunchScreen.storyboard */; };
@@ -22,21 +22,27 @@
 		C28CD3EB1F5966270004F30A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3E11F5966270004F30A /* main.m */; };
 		C28CD3EC1F5966270004F30A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3E31F5966270004F30A /* RootViewController.m */; };
 		C28CD3ED1F5966270004F30A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3E51F5966270004F30A /* ViewController.m */; };
+		C28CD3EE1F596C1C0004F30A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3DA1F5966270004F30A /* AppDelegate.m */; };
+		C28CD3EF1F596C1C0004F30A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3E11F5966270004F30A /* main.m */; };
+		C28CD3F01F596C1C0004F30A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3E31F5966270004F30A /* RootViewController.m */; };
+		C28CD3F11F596C1C0004F30A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3E51F5966270004F30A /* ViewController.m */; };
+		C28CD3F41F596EC30004F30A /* MRJSubRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3F31F596EC30004F30A /* MRJSubRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C39C72048E9C45DE112C86C /* Pods_YHJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52696CF09BB15E7F890703AD /* MRJ_Network.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MRJ_Network.podspec; path = ../MRJ_Network.podspec; sourceTree = "<group>"; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6003F5AE195388D20070C39A /* MRJ_Network_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MRJ_Network_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* YHJNetwork_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YHJNetwork_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		982CA52BA1243CB6E412E0A9 /* Pods-MRJ_Network_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRJ_Network_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MRJ_Network_Tests/Pods-MRJ_Network_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9BCD09E617C1D5C805741DF6 /* Pods_MRJ_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MRJ_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73A1FEDDD864EA5F08D91F92 /* Pods-YHJNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking.release.xcconfig"; sourceTree = "<group>"; };
+		9BCD09E617C1D5C805741DF6 /* Pods_YHJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DCB74507DA32A410D9DDB00 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A10E7F850525E030B5AC79AC /* Pods_MRJ_Network_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MRJ_Network_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2279BE11F4A753700556D0E /* YHJNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHJNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,10 +57,12 @@
 		C28CD3E31F5966270004F30A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C28CD3E41F5966270004F30A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C28CD3E51F5966270004F30A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E71F5CF4A513C9583FE40815 /* Pods-MRJ_Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRJ_Networking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MRJ_Networking/Pods-MRJ_Networking.debug.xcconfig"; sourceTree = "<group>"; };
+		C28CD3F21F596EC30004F30A /* MRJSubRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRJSubRequest.h; sourceTree = "<group>"; };
+		C28CD3F31F596EC30004F30A /* MRJSubRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRJSubRequest.m; sourceTree = "<group>"; };
+		E71F5CF4A513C9583FE40815 /* Pods-YHJNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MRJ_Networking/Pods-YHJNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 		ED9502421245249239A6B2BF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		EDF733994539749192D3C724 /* Pods-MRJ_Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRJ_Networking.release.xcconfig"; path = "Pods/Target Support Files/Pods-MRJ_Networking/Pods-MRJ_Networking.release.xcconfig"; sourceTree = "<group>"; };
-		F42555307D9E9DFAD500E5D5 /* Pods-MRJ_Network_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MRJ_Network_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MRJ_Network_Tests/Pods-MRJ_Network_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		EDF733994539749192D3C724 /* Pods-YHJNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-MRJ_Networking/Pods-YHJNetworking.release.xcconfig"; sourceTree = "<group>"; };
+		F9A77FA8DD6CDE2C37DD73D0 /* Pods-YHJNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +73,6 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				84C84682BF8AB18FFF77B5B1 /* Pods_MRJ_Network_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51593BB2F98910E524BAEAC3 /* Pods_MRJ_Networking.framework in Frameworks */,
+				51593BB2F98910E524BAEAC3 /* Pods_YHJNetworking.framework in Frameworks */,
+				24C61CCE1992C3E38D2AAA6B /* Pods_YHJNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,10 +91,10 @@
 		21FF8E051CE5D9331137E766 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				982CA52BA1243CB6E412E0A9 /* Pods-MRJ_Network_Tests.debug.xcconfig */,
-				F42555307D9E9DFAD500E5D5 /* Pods-MRJ_Network_Tests.release.xcconfig */,
-				E71F5CF4A513C9583FE40815 /* Pods-MRJ_Networking.debug.xcconfig */,
-				EDF733994539749192D3C724 /* Pods-MRJ_Networking.release.xcconfig */,
+				E71F5CF4A513C9583FE40815 /* Pods-YHJNetworking.debug.xcconfig */,
+				EDF733994539749192D3C724 /* Pods-YHJNetworking.release.xcconfig */,
+				F9A77FA8DD6CDE2C37DD73D0 /* Pods-YHJNetworking.debug.xcconfig */,
+				73A1FEDDD864EA5F08D91F92 /* Pods-YHJNetworking.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -106,7 +114,7 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F5AE195388D20070C39A /* MRJ_Network_Tests.xctest */,
+				6003F5AE195388D20070C39A /* YHJNetwork_Tests.xctest */,
 				C2279BE11F4A753700556D0E /* YHJNetworking.app */,
 			);
 			name = Products;
@@ -120,7 +128,8 @@
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				A10E7F850525E030B5AC79AC /* Pods_MRJ_Network_Tests.framework */,
-				9BCD09E617C1D5C805741DF6 /* Pods_MRJ_Networking.framework */,
+				9BCD09E617C1D5C805741DF6 /* Pods_YHJNetworking.framework */,
+				4C39C72048E9C45DE112C86C /* Pods_YHJNetworking.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,6 +175,8 @@
 				C28CD3E11F5966270004F30A /* main.m */,
 				C28CD3E21F5966270004F30A /* RootViewController.h */,
 				C28CD3E31F5966270004F30A /* RootViewController.m */,
+				C28CD3F21F596EC30004F30A /* MRJSubRequest.h */,
+				C28CD3F31F596EC30004F30A /* MRJSubRequest.m */,
 				C28CD3E41F5966270004F30A /* ViewController.h */,
 				C28CD3E51F5966270004F30A /* ViewController.m */,
 			);
@@ -175,24 +186,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6003F5AD195388D20070C39A /* MRJ_Network_Tests */ = {
+		6003F5AD195388D20070C39A /* YHJNetwork_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "MRJ_Network_Tests" */;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "YHJNetwork_Tests" */;
 			buildPhases = (
-				53460C2BB175331136726393 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				03B3020276B002CF3CEE07A0 /* [CP] Embed Pods Frameworks */,
-				80C8147366964909583E1738 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MRJ_Network_Tests;
+			name = YHJNetwork_Tests;
 			productName = MRJ_NetworkTests;
-			productReference = 6003F5AE195388D20070C39A /* MRJ_Network_Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* YHJNetwork_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		C2279BE01F4A753700556D0E /* YHJNetworking */ = {
@@ -247,7 +255,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F5AD195388D20070C39A /* MRJ_Network_Tests */,
+				6003F5AD195388D20070C39A /* YHJNetwork_Tests */,
 				C2279BE01F4A753700556D0E /* YHJNetworking */,
 			);
 		};
@@ -276,60 +284,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03B3020276B002CF3CEE07A0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MRJ_Network_Tests/Pods-MRJ_Network_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/MRJ_Network/MRJ_Network.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRJ_Network.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MRJ_Network_Tests/Pods-MRJ_Network_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		307723093BE728A6D7D39DAB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MRJ_Networking/Pods-MRJ_Networking-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/MRJ_Network/MRJ_Network.framework",
 				"${BUILT_PRODUCTS_DIR}/TableBarViewController/TableBarViewController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRJ_Network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TableBarViewController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MRJ_Networking/Pods-MRJ_Networking-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		53460C2BB175331136726393 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MRJ_Network_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		637E30F50D164971356F1D19 /* [CP] Copy Pods Resources */ = {
@@ -344,22 +318,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MRJ_Networking/Pods-MRJ_Networking-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		80C8147366964909583E1738 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MRJ_Network_Tests/Pods-MRJ_Network_Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C80A14231809E86C67E8CECD /* [CP] Check Pods Manifest.lock */ = {
@@ -373,7 +332,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MRJ_Networking-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-YHJNetworking-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -399,6 +358,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C28CD3EE1F596C1C0004F30A /* AppDelegate.m in Sources */,
+				C28CD3EF1F596C1C0004F30A /* main.m in Sources */,
+				C28CD3F01F596C1C0004F30A /* RootViewController.m in Sources */,
+				C28CD3F11F596C1C0004F30A /* ViewController.m in Sources */,
+				C28CD3F41F596EC30004F30A /* MRJSubRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +471,6 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 982CA52BA1243CB6E412E0A9 /* Pods-MRJ_Network_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -530,7 +493,6 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F42555307D9E9DFAD500E5D5 /* Pods-MRJ_Network_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -549,8 +511,9 @@
 		};
 		C2279BF51F4A753700556D0E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E71F5CF4A513C9583FE40815 /* Pods-MRJ_Networking.debug.xcconfig */;
+			baseConfigurationReference = F9A77FA8DD6CDE2C37DD73D0 /* Pods-YHJNetworking.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -566,7 +529,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = MRJ.MRJ_Networking;
+				PRODUCT_BUNDLE_IDENTIFIER = MRJ.YHJNetworking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -574,8 +537,9 @@
 		};
 		C2279BF61F4A753700556D0E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDF733994539749192D3C724 /* Pods-MRJ_Networking.release.xcconfig */;
+			baseConfigurationReference = 73A1FEDDD864EA5F08D91F92 /* Pods-YHJNetworking.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -592,7 +556,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = MRJ.MRJ_Networking;
+				PRODUCT_BUNDLE_IDENTIFIER = MRJ.YHJNetworking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -610,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "MRJ_Network_Tests" */ = {
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "YHJNetwork_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C3195388D20070C39A /* Debug */,

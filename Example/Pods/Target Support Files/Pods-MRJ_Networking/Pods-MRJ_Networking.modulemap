@@ -1,6 +1,0 @@
-framework module Pods_MRJ_Networking {
-  umbrella header "Pods-MRJ_Networking-umbrella.h"
-
-  export *
-  module * { export * }
-}

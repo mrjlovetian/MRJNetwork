@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AFB08C21F5ABF6E0072A8E0 /* NetArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFB08C11F5ABF6E0072A8E0 /* NetArgumentFilter.m */; };
 		24C61CCE1992C3E38D2AAA6B /* Pods_YHJNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C39C72048E9C45DE112C86C /* Pods_YHJNetworking.framework */; };
 		51593BB2F98910E524BAEAC3 /* Pods_YHJNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCD09E617C1D5C805741DF6 /* Pods_YHJNetworking.framework */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AFB08C01F5ABF6E0072A8E0 /* NetArgumentFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetArgumentFilter.h; sourceTree = "<group>"; };
+		0AFB08C11F5ABF6E0072A8E0 /* NetArgumentFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetArgumentFilter.m; sourceTree = "<group>"; };
 		4C39C72048E9C45DE112C86C /* Pods_YHJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52696CF09BB15E7F890703AD /* MRJ_Network.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MRJ_Network.podspec; path = ../MRJ_Network.podspec; sourceTree = "<group>"; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -179,6 +182,8 @@
 				C28CD3F31F596EC30004F30A /* MRJSubRequest.m */,
 				C28CD3E41F5966270004F30A /* ViewController.h */,
 				C28CD3E51F5966270004F30A /* ViewController.m */,
+				0AFB08C01F5ABF6E0072A8E0 /* NetArgumentFilter.h */,
+				0AFB08C11F5ABF6E0072A8E0 /* NetArgumentFilter.m */,
 			);
 			path = YHJNetworking;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AFB08C21F5ABF6E0072A8E0 /* NetArgumentFilter.m in Sources */,
 				C28CD3EE1F596C1C0004F30A /* AppDelegate.m in Sources */,
 				C28CD3EF1F596C1C0004F30A /* main.m in Sources */,
 				C28CD3F01F596C1C0004F30A /* RootViewController.m in Sources */,

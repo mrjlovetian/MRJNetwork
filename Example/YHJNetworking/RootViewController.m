@@ -9,6 +9,8 @@
 #import "RootViewController.h"
 #import "ViewController.h"
 #import "MRJSubRequest.h"
+#import <MRJ_Network/MRJ_NetworkConfig.h>
+#import "NetArgumentFilter.h"
 
 @implementation RootViewController
 - (void)viewDidLoad
@@ -40,18 +42,36 @@
     
     [self initViewControllers];
     
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(100, 100, 100, 100);
+    btn.backgroundColor = [UIColor whiteColor];
+    [btn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    
+
+}
+
+#pragma mark click
+- (void)click
+{
+    MRJ_NetworkConfig *config = [MRJ_NetworkConfig sharedConfig];
+    NetArgumentFilter *fileter = [NetArgumentFilter filterWithArguments:nil];
+    [config addUrlFilter:fileter];
+    
     MRJSubRequest *request = [[MRJSubRequest alloc] init];
-    request.method = MRJ_RequestMethodGET;
-    request.defaultUrl = @"https://gateway.beta.apitops.com/broker-service-api/v1/building/buildingList";
+    request.method = MRJ_RequestMethodPOST;
+    request.defaultUrl = @"http://client.vgabc.com/clientapi";
     request.requestAccessories = [NSMutableArray arrayWithObjects:self, nil];
-    request.requestArgument = @{@"isPre":@3,
-                                @"regionId":@0,
-                                @"propertyId":@0,
-                                @"sortId":@0,
-                                @"sellPointId":@0,
-                                @"cityId":@112,
-                                @"pageIndex":@1,
-                                @"pageSize":@30};
+    request.requestArgument = @{@"action":@"gamelist",
+                                @"regionId":@"gamelist",
+                                @"clientparams":@"beta%7C10.1.1%7Czh%7CiPad5%2C3%7C768%2A1024%7Cios1.1%7Chandleshenzhen",
+                                @"model":@"appstore",
+                                @"orderby":@"hot",
+                                @"page":@1,
+                                @"pagesize":@10
+                                };
     [request startWithCompletionBlockWithSuccess:^(__kindof MRJ_BaseRequest * _Nonnull request) {
         
         NSLog(@"接受到的消息%@", request);
@@ -60,7 +80,6 @@
     } failure:^(__kindof MRJ_BaseRequest * _Nonnull request) {
         
     }];
-
 }
 
 - (void)initViewControllers

@@ -1,6 +1,5 @@
 //
 //  MRJ_BatchRequest.h
-//  TopsTechNetWorking
 //
 //  Created by MRJ_ on 2017/2/27.
 //  Copyright © 2017年 MRJ_. All rights reserved.

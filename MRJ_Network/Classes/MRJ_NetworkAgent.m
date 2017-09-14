@@ -309,8 +309,6 @@
     } else {
         request = [requestSerializer requestWithMethod:method URLString:URLString parameters:parameters error:error];
     }
-
-    
     
     __block NSURLSessionDataTask *dataTask = nil;
    
@@ -328,13 +326,6 @@
                                    [self handleRequestResult:dataTask responseObject:responseObject error:_error];
                                }];
     }
-
-    
-    
-    
-    
-    
-    
     
     return dataTask;
 }
@@ -475,7 +466,6 @@
     Unlock();
 }
 
-
 #pragma 文件下载
 - (NSURLSessionDownloadTask *)downloadTaskWithDownloadPath:(NSString *)downloadPath
                                          requestSerializer:(AFHTTPRequestSerializer *)requestSerializer
@@ -542,8 +532,6 @@
     return downloadTask;
 }
 
-
-
 #pragma mark - Resumable Download
 
 - (NSString *)incompleteDownloadTempCacheFolder {
@@ -583,6 +571,5 @@
 - (void)resetURLSessionManagerWithConfiguration:(NSURLSessionConfiguration *)configuration {
     _manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
 }
-
 
 @end

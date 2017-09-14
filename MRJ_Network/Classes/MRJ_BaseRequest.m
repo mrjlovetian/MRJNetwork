@@ -191,5 +191,4 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
     return [NSString stringWithFormat:@"<%@: %p>{ URL: %@ } { method: %@ } { arguments: %@ }", NSStringFromClass([self class]), self, self.currentRequest.URL, self.currentRequest.HTTPMethod, self.requestArgument];
 }
 
-
 @end

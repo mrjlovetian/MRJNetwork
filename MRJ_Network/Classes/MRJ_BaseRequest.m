@@ -135,10 +135,10 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
     return 60;
 }
 
-//- (id)requestArgument {
-//    
-//    return nil;
-//}
+- (id)requestArgument {
+    
+    return nil;
+}
 
 - (id)cacheFileNameFilterForRequestArgument:(id)argument {
     return argument;
@@ -160,9 +160,9 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
     return nil;
 }
 
-//- (NSDictionary *)requestHeaderFieldValueDictionary {
-//    return nil;
-//}
+- (NSDictionary *)requestHeaderFieldValueDictionary {
+    return nil;
+}
 
 - (NSURLRequest *)buildCustomUrlRequest {
     return nil;

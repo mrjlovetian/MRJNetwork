@@ -113,7 +113,7 @@
         url = [url URLByAppendingPathComponent:@""];
     }
     
-    NSMutableString *finalDetailUrl = [NSMutableString stringWithString:detailUrl];
+    NSString *finalDetailUrl = [NSMutableString stringWithString:detailUrl];
     if([detailUrl rangeOfString:@"？"].location ==NSNotFound){
         if(request.resetfulArguments){
             if(request.resetfulArguments != NULL){

@@ -14,9 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MRJ_ChainRequestAgent : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
-
 ///  Get the shared chain request agent.
 + (MRJ_ChainRequestAgent *)sharedAgent;
 

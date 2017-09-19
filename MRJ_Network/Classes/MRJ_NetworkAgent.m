@@ -252,7 +252,6 @@
     }
 }
 
-
 - (BOOL)validateResult:(MRJ_BaseRequest *)request error:(NSError * _Nullable __autoreleasing *)error {
     BOOL result = [request statusCodeValidator];
     if (!result) {
@@ -384,7 +383,6 @@
         [request clearCompletionBlock];
     });
 }
-
 
 - (void)requestDidSucceedWithRequest:(MRJ_BaseRequest *)request {
     @autoreleasepool {

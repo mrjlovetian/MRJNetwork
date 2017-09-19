@@ -11,9 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MRJ_BatchRequestAgent : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
-
 ///  Get the shared batch request agent.
 + (MRJ_BatchRequestAgent *)sharedAgent;
 

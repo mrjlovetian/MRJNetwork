@@ -13,7 +13,6 @@
     NSMutableArray<id<MRJ_CacheDirPathFilterProtocol>> *_cacheDirPathFilters;
 }
 
-
 + (MRJ_NetworkConfig *)sharedConfig {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;

@@ -17,7 +17,6 @@
 #define MRJ_KNetworkIncompleteDownloadFolderName @"Incomplete"
 
 @implementation MRJ_NetworkAgent{
-    
     AFHTTPSessionManager *_manager;
     MRJ_NetworkConfig *_config;
     AFJSONResponseSerializer *_jsonResponseSerializer;
@@ -25,8 +24,6 @@
     NSMutableDictionary<NSNumber *,MRJ_BaseRequest *> *_requestsRecord;
     
     pthread_mutex_t _lock;
-     //接收返回状态码
-//    NSIndexSet *_allStatusCodes;
 }
 
 + (MRJ_NetworkAgent *)sharedAgent {
@@ -46,12 +43,8 @@
         _requestsRecord = [NSMutableDictionary dictionary];
        
         //接收返回状态码
-        //_allStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 500)];
-        
         _manager.securityPolicy = _config.securityPolicy;
         _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        // Take over the status code validation
-        //_manager.responseSerializer.acceptableStatusCodes = _allStatusCodes;
     }
     return self;
 }
@@ -59,8 +52,6 @@
 - (AFJSONResponseSerializer *)jsonResponseSerializer {
     if (!_jsonResponseSerializer) {
         _jsonResponseSerializer = [AFJSONResponseSerializer serializer];
-        //_jsonResponseSerializer.acceptableStatusCodes = _allStatusCodes;
-        
     }
     return _jsonResponseSerializer;
 }
@@ -68,7 +59,6 @@
 - (AFXMLParserResponseSerializer *)xmlParserResponseSerialzier {
     if (!_xmlParserResponseSerialzier) {
         _xmlParserResponseSerialzier = [AFXMLParserResponseSerializer serializer];
-        //_xmlParserResponseSerialzier.acceptableStatusCodes = _allStatusCodes;
     }
     return _xmlParserResponseSerialzier;
 }
@@ -106,6 +96,7 @@
             baseUrl = [_config baseUrl];
         }
     }
+    
     // URL slash compability
     NSURL *url = [NSURL URLWithString:baseUrl];
     

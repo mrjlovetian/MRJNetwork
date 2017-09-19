@@ -17,7 +17,7 @@ NS_ENUM(NSInteger) {
     MRJ_RequestCacheErrorInvalidCacheTime = -5,
     MRJ_RequestCacheErrorInvalidMetadata = -6,
     MRJ_RequestCacheErrorInvalidCacheData = -7,
-    };
+};
 
 
 @interface MRJ_Request : MRJ_BaseRequest

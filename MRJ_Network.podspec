@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MRJ_Network'
-  s.version          = '0.1.9'
+  s.version          = '0.1.9.1'
   s.summary          = '一个全新的网络请求框架，用来网络请求的'
 
 # This description is used to generate tags and improve search results.

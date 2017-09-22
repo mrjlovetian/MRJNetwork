@@ -116,7 +116,6 @@
     }
     
     return [NSURL URLWithString:finalDetailUrl relativeToURL:url].absoluteString;
-//    return [NSURL URLWithString:detailUrl relativeToURL:url].absoluteString;
 }
 
 - (AFHTTPRequestSerializer *)requestSerializerForRequest:(MRJ_BaseRequest *)request {
@@ -176,7 +175,6 @@
             return [self dataTaskWithHTTPMethod:@"PATCH" requestSerializer:requestSerializer URLString:url parameters:param error:error];
     }
 }
-
 
 ///请求准备开始
 - (void)addRequest:(MRJ_BaseRequest *)request {

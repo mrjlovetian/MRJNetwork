@@ -60,8 +60,6 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
     return self.requestTask.state == NSURLSessionTaskStateRunning;
 }
 
-
-
 #pragma mark - Request Configuration
 
 - (void)setCompletionBlockWithSuccess:(MRJ_RequestCompletionBlock)success

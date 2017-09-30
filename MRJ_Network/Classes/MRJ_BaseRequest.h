@@ -11,14 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 FOUNDATION_EXPORT NSString *const MRJ_RequestValidationErrorDomain ;
 
 NS_ENUM(NSInteger) {
     MRJ_RequestValidationErrorInvalidStatusCode = -8,
     MRJ_RequestValidationErrorInvalidJSONFormat = -9,
 };
-
     
 ///  HTTP Request method. 请求方式
 typedef NS_ENUM(NSInteger, MRJ_RequestMethod) {
@@ -47,7 +45,6 @@ typedef NS_ENUM(NSInteger, MRJ_ResponseSerializerType) {
     MRJ_ResponseSerializerTypeXMLParser,
 };
 
-    
 ///  Request priority 请求优先级
 typedef NS_ENUM(NSInteger, MRJ_RequestPriority) {
     MRJ_RequestPriorityLow = -4L,
@@ -232,7 +229,6 @@ typedef void(^MRJ_RequestFinishBlock)();
 ///  Nil out both success and failure callback blocks.
 - (void)clearCompletionBlock;
 
-
 #pragma mark - Request Action
 ///=============================================================================
 /// @name Request Action
@@ -329,8 +325,6 @@ typedef void(^MRJ_RequestFinishBlock)();
 
 ///  This validator will be used to test if `responseStatusCode` is valid.
 - (BOOL)statusCodeValidator;
-
-
 
 @end
 

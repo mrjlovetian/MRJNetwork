@@ -70,5 +70,4 @@
 ///  Clear all cache path filters.
 - (void)clearCacheDirPathFilter;
 
-
 @end

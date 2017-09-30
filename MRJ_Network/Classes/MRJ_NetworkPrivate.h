@@ -10,11 +10,8 @@
 
 #import "MRJ_Request.h"
 #import "MRJ_BaseRequest.h"
-
-
 #import "MRJ_NetworkAgent.h"
 #import "MRJ_NetworkConfig.h"
-
 #import "MRJ_BatchRequest.h"
 #import "MRJ_ChainRequest.h"
 

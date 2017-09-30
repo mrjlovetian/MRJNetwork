@@ -202,7 +202,6 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     return [super responseObject];
 }
 
-
 #pragma mark -
 
 - (BOOL)loadCacheWithError:(NSError * _Nullable __autoreleasing *)error {
@@ -382,7 +381,6 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     }
 }
 
-
 ///缓存路径
 - (NSString *)cacheBasePath {
     NSString *pathOfLibrary = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -399,7 +397,6 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     [self createDirectoryIfNeeded:path];
     return path;
 }
-
 
 ///http 缓存文件名称
 - (NSString *)cacheFileName {
@@ -419,7 +416,6 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     path = [path stringByAppendingPathComponent:cacheFileName];
     return path;
 }
-
 
 ///http请求缓存文件的版本信息路径
 - (NSString *)cacheMetadataFilePath {

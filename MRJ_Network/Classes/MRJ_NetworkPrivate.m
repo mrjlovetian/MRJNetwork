@@ -163,7 +163,6 @@ void MRJ_Log(NSString *format, ...) {
 @end
 
 
-
 @implementation MRJ_BatchRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack {
@@ -191,7 +190,6 @@ void MRJ_Log(NSString *format, ...) {
 }
 
 @end
-
 
 @implementation MRJ_ChainRequest (RequestAccessory)
 

@@ -22,7 +22,6 @@
     AFJSONResponseSerializer *_jsonResponseSerializer;
     AFXMLParserResponseSerializer *_xmlParserResponseSerialzier;
     NSMutableDictionary<NSNumber *,MRJ_BaseRequest *> *_requestsRecord;
-    
     pthread_mutex_t _lock;
 }
 
@@ -41,7 +40,6 @@
         _config = [MRJ_NetworkConfig sharedConfig];
         _manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:_config.sessionConfiguration];
         _requestsRecord = [NSMutableDictionary dictionary];
-       
         //接收返回状态码
         _manager.securityPolicy = _config.securityPolicy;
         _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -67,10 +65,8 @@
 ///构建网络请求路径
 - (NSString *)buildRequestUrl:(MRJ_BaseRequest *)request {
     NSParameterAssert(request != nil);
-    
     NSString *detailUrl = [request requestUrl];
     NSURL *temp = [NSURL URLWithString:detailUrl];
-
     // Filter URL if needed
     NSArray *filters = [_config urlFilters];
     for (id<MRJ_UrlFilterProtocol> f in filters) {
@@ -114,7 +110,6 @@
             }
         }
     }
-    
     return [NSURL URLWithString:finalDetailUrl relativeToURL:url].absoluteString;
 }
 
@@ -127,8 +122,6 @@
     }
     
     requestSerializer.timeoutInterval = [request requestTimeoutInterval];
-
-    
     // If api needs server username and password
     NSArray<NSString *> *authorizationHeaderFieldArray = [request requestAuthorizationHeaderFieldArray];
     if (authorizationHeaderFieldArray != nil) {
@@ -147,15 +140,12 @@
     return requestSerializer;
 }
 
-
 - (NSURLSessionTask *)sessionTaskForRequest:(MRJ_BaseRequest *)request error:(NSError **)error {
     MRJ_RequestMethod method = [request requestMethod];
     NSString *url = [self buildRequestUrl:request];
     id param = request.requestArgument;
     AFConstructingBlock constructingBlock = [request constructingBodyBlock];
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
-
-    
     switch (method) {
         case MRJ_RequestMethodGET:
             if (request.resumableDownloadPath) {
@@ -179,7 +169,6 @@
 ///请求准备开始
 - (void)addRequest:(MRJ_BaseRequest *)request {
     NSParameterAssert(request != nil);
-    
     NSError * __autoreleasing requestSerializationError = nil;
     ///取自定义路径
     NSURLRequest *customUrlRequest= [request buildCustomUrlRequest];
@@ -192,14 +181,11 @@
     } else {
         request.requestTask = [self sessionTaskForRequest:request error:&requestSerializationError];
     }
-    
     if (requestSerializationError) {
         [self requestDidFailWithRequest:request error:requestSerializationError];
         return;
     }
-    
     NSAssert(request.requestTask != nil, @"requestTask should not be nil");
-    
     // Set request task priority
     // !!Available on iOS 8 +
     if ([request.requestTask respondsToSelector:@selector(priority)]) {
@@ -218,7 +204,6 @@
                 break;
         }
     }
-    
     // Retain request
     MRJ_Log(@"Add request: %@", NSStringFromClass([request class]));
     [self addRequestToRecord:request];
@@ -227,7 +212,6 @@
 
 - (void)cancelRequest:(MRJ_BaseRequest *)request {
     NSParameterAssert(request != nil);
-    
     [request.requestTask cancel];
     [self removeRequestFromRecord:request];
     [request clearCompletionBlock];
@@ -291,15 +275,12 @@
                        constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
                                            error:(NSError * _Nullable __autoreleasing *)error {
     NSMutableURLRequest *request = nil;
-    
     if (block) {
         request = [requestSerializer multipartFormRequestWithMethod:method URLString:URLString parameters:parameters constructingBodyWithBlock:block error:error];
     } else {
         request = [requestSerializer requestWithMethod:method URLString:URLString parameters:parameters error:error];
     }
-    
     __block NSURLSessionDataTask *dataTask = nil;
-   
     ///是否有上传回调
     if(uploadProgressBlock){
         dataTask = [_manager uploadTaskWithStreamedRequest:request progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -308,13 +289,12 @@
         } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
             [self handleRequestResult:dataTask responseObject:responseObject error:error];
         }];
-    }else{
+    } else {
         dataTask = [_manager dataTaskWithRequest:request
                                completionHandler:^(NSURLResponse * __unused response, id responseObject, NSError *_error) {
                                    [self handleRequestResult:dataTask responseObject:responseObject error:_error];
                                }];
     }
-    
     return dataTask;
 }
 
@@ -323,7 +303,6 @@
     Lock();
     MRJ_BaseRequest *request = _requestsRecord[@(task.taskIdentifier)];
     Unlock();
-    
     // When the request is cancelled and removed from records, the underlying
     // AFNetworking failure callback will still kicks in, resulting in a nil `request`.
     //
@@ -332,15 +311,11 @@
     if (!request) {
         return;
     }
-    
     MRJ_Log(@"Finished Request: %@", NSStringFromClass([request class]));
-    
     NSError * __autoreleasing serializationError = nil;
     NSError * __autoreleasing validationError = nil;
-    
     NSError *requestError = nil;
     BOOL succeed = NO;
-    
     request.responseObject = responseObject;
     if ([request.responseObject isKindOfClass:[NSData class]]) {
         request.responseData = responseObject;
@@ -389,7 +364,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [request toggleAccessoriesWillStopCallBack];
         [request requestCompleteFilter];
-        
         if (request.delegate != nil) {
             [request.delegate requestFinished:request];
         }
@@ -410,7 +384,6 @@
     if (incompleteDownloadData) {
         [incompleteDownloadData writeToURL:[self incompleteDownloadTempPathForDownloadPath:request.resumableDownloadPath] atomically:YES];
     }
-    
     // Load response from file and clean up if download task failed.
     if ([request.responseObject isKindOfClass:[NSURL class]]) {
         NSURL *url = request.responseObject;
@@ -422,7 +395,6 @@
         }
         request.responseObject = nil;
     }
-    
     @autoreleasepool {
         [request requestFailedPreprocessor];
     }
@@ -484,11 +456,9 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:downloadTargetPath]) {
         [[NSFileManager defaultManager] removeItemAtPath:downloadTargetPath error:nil];
     }
-    
     BOOL resumeDataFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self incompleteDownloadTempPathForDownloadPath:downloadPath].path];
     NSData *data = [NSData dataWithContentsOfURL:[self incompleteDownloadTempPathForDownloadPath:downloadPath]];
     BOOL resumeDataIsValid = [MRJ_NetworkUtils validateResumeData:data];
-    
     BOOL canBeResumed = resumeDataFileExists && resumeDataIsValid;
     BOOL resumeSucceeded = NO;
     __block NSURLSessionDownloadTask *downloadTask = nil;
@@ -524,12 +494,10 @@
 - (NSString *)incompleteDownloadTempCacheFolder {
     NSFileManager *fileManager = [NSFileManager new];
     static NSString *cacheFolder;
-    
     if (!cacheFolder) {
         NSString *cacheDir = NSTemporaryDirectory();
         cacheFolder = [cacheDir stringByAppendingPathComponent:MRJ_KNetworkIncompleteDownloadFolderName];
     }
-    
     NSError *error = nil;
     if(![fileManager createDirectoryAtPath:cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
         MRJ_Log(@"Failed to create cache directory at %@", cacheFolder);

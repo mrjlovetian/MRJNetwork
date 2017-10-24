@@ -17,6 +17,7 @@
 
 @end
 
+
 @implementation MRJ_BatchRequest
 
 - (instancetype)initWithRequestArray:(NSArray<MRJ_Request *> *)requestArray {

@@ -128,7 +128,6 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
 
 - (void)requestCompletePreprocessor {
     [super requestCompletePreprocessor];
-    
     if (self.writeCacheAsynchronously) {
         dispatch_async(MRJ_Request_cache_writing_queue(), ^{
             [self saveResponseDataToCacheFile:[super responseData]];

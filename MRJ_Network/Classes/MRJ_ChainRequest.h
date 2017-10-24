@@ -67,7 +67,6 @@ typedef void (^MRJ_ChainCallback)(MRJ_ChainRequest *chainRequest, MRJ_BaseReques
 ///  @param callback The finish callback
 - (void)addRequest:(MRJ_BaseRequest *)request callback:(nullable MRJ_ChainCallback)callback;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <AFNetworking/AFNetworking.h>
 
 @class MRJ_NetworkConfig;
@@ -15,6 +14,7 @@
 
 ///  MRJ_UrlFilterProtocol can be used to append common parameters to requests before sending them.
 @protocol MRJ_UrlFilterProtocol <NSObject>
+
 ///  Preprocess request URL before actually sending them.
 ///
 ///  @param originUrl request's origin URL, which is returned by `requestUrl`
@@ -22,10 +22,12 @@
 ///
 ///  @return A new url which will be used as a new `requestUrl`
 - (NSString *)filterUrl:(NSString *)originUrl withRequest:(MRJ_BaseRequest *)request;
+
 @end
 
 ///  MRJ_CacheDirPathFilterProtocol can be used to append common path components when caching response results
 @protocol MRJ_CacheDirPathFilterProtocol <NSObject>
+
 ///  Preprocess cache path before actually saving them.
 ///
 ///  @param originPath original base cache path, which is generated in `MRJ_Request` class.
@@ -33,6 +35,7 @@
 ///
 ///  @return A new path which will be used as base path when caching.
 - (NSString *)filterCacheDirPath:(NSString *)originPath withRequest:(MRJ_BaseRequest *)request;
+
 @end
 
 
@@ -48,8 +51,6 @@
 @property (nonatomic, strong) NSString *baseUrl;
 ///  Request CDN URL. Default is empty string.
 @property (nonatomic, strong) NSString *cdnUrl;
-
-
 ///  URL filters. See also `MRJ_UrlFilterProtocol`.
 @property (nonatomic, strong, readonly) NSArray<id<MRJ_UrlFilterProtocol>> *urlFilters;
 ///  Cache path filters. See also `MRJ_CacheDirPathFilterProtocol`.

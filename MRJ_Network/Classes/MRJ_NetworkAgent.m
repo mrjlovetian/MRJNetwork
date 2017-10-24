@@ -284,7 +284,6 @@
     ///是否有上传回调
     if(uploadProgressBlock){
         dataTask = [_manager uploadTaskWithStreamedRequest:request progress:^(NSProgress * _Nonnull uploadProgress) {
-            //
             uploadProgressBlock(uploadProgress);
         } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
             [self handleRequestResult:dataTask responseObject:responseObject error:error];

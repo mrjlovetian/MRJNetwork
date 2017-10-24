@@ -111,7 +111,6 @@ void MRJ_Log(NSString *format, ...) {
     NSError *error;
     NSDictionary *resumeDictionary = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:&error];
     if (!resumeDictionary || error) return NO;
-    
     // Before iOS 9 & Mac OS X 10.11
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED < 90000)\
 || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED < 101100)

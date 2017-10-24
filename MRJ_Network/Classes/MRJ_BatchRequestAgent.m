@@ -7,7 +7,6 @@
 //
 
 #import "MRJ_BatchRequestAgent.h"
-
 #import "MRJ_BatchRequest.h"
 
 @interface MRJ_BatchRequestAgent()

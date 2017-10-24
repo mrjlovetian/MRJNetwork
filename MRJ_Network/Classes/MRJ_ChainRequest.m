@@ -39,7 +39,6 @@
         MRJ_Log(@"Error! Chain request has already started.");
         return;
     }
-    
     if ([_requestArray count] > 0) {
         [self toggleAccessoriesWillStartCallBack];
         [self startNextRequest];

@@ -60,13 +60,11 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     if (!self) {
         return nil;
     }
-    
     self.version = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(version))] integerValue];
     self.sensitiveDataString = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(sensitiveDataString))];
     self.stringEncoding = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(stringEncoding))] integerValue];
     self.creationDate = [aDecoder decodeObjectOfClass:[NSDate class] forKey:NSStringFromSelector(@selector(creationDate))];
     self.appVersionString = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(appVersionString))];
-    
     return self;
 }
 
@@ -320,7 +318,6 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
             @try {
                 // New data will always overwrite old data.
                 [data writeToFile:[self cacheFilePath] atomically:YES];
-                
                 MRJ_CacheMetadata *metadata = [[MRJ_CacheMetadata alloc] init];
                 metadata.version = [self cacheVersion];
                 metadata.sensitiveDataString = ((NSObject *)[self cacheSensitiveData]).description;

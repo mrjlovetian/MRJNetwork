@@ -83,7 +83,6 @@ FOUNDATION_EXPORT void MRJ_Log(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 - (AFHTTPSessionManager *)manager;
 - (void)resetURLSessionManager;
 - (void)resetURLSessionManagerWithConfiguration:(NSURLSessionConfiguration *)configuration;
-
 - (NSString *)incompleteDownloadTempCacheFolder;
 
 @end

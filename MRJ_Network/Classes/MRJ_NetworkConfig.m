@@ -8,7 +8,7 @@
 
 #import "MRJ_NetworkConfig.h"
 
-@implementation MRJ_NetworkConfig{
+@implementation MRJ_NetworkConfig {
     NSMutableArray<id<MRJ_UrlFilterProtocol>> *_urlFilters;
     NSMutableArray<id<MRJ_CacheDirPathFilterProtocol>> *_cacheDirPathFilters;
 }

@@ -171,7 +171,7 @@
     NSParameterAssert(request != nil);
     NSError * __autoreleasing requestSerializationError = nil;
     ///取自定义路径
-    NSURLRequest *customUrlRequest= [request buildCustomUrlRequest];
+    NSURLRequest *customUrlRequest = [request buildCustomUrlRequest];
     if (customUrlRequest) {
         __block NSURLSessionDataTask *dataTask = nil;
         dataTask = [_manager dataTaskWithRequest:customUrlRequest completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {

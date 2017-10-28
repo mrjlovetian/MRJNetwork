@@ -66,7 +66,6 @@ NS_ENUM(NSInteger) {
 ///  Whether cache is asynchronously written to storage. Default is YES.
 - (BOOL)writeCacheAsynchronously;
 
-
 @end
     
 NS_ASSUME_NONNULL_END

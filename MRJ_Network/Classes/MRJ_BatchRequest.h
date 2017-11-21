@@ -39,7 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MRJ_BatchRequest : NSObject
 
-
 ///  All the requests are stored in this array.
 @property (nonatomic, strong, readonly) NSArray<MRJ_Request *> *requestArray;
 

@@ -101,11 +101,11 @@
     }
     
     NSString *finalDetailUrl = [NSMutableString stringWithString:detailUrl];
-    if([detailUrl rangeOfString:@"？"].location ==NSNotFound){
-        if(request.resetfulArguments){
-            if(request.resetfulArguments != NULL){
-                for(NSString *arg in request.resetfulArguments){
-                    finalDetailUrl = [finalDetailUrl  stringByAppendingFormat:@"/%@",arg ];
+    if([detailUrl rangeOfString:@"？"].location ==NSNotFound) {
+        if(request.resetfulArguments) {
+            if(request.resetfulArguments != NULL ){
+                for(NSString *arg in request.resetfulArguments) {
+                    finalDetailUrl = [finalDetailUrl  stringByAppendingFormat:@"/%@",arg];
                 }
             }
         }

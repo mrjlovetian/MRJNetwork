@@ -86,24 +86,24 @@ typedef void(^MRJ_RequestFinishBlock)();
 ///  accessory methods will be called on the main queue.
 @protocol MRJ_RequestAccessory <NSObject>
     
-    @optional
+@optional
     
-    ///  Inform the accessory that the request is about to start.
-    ///
-    ///  @param request The corresponding request.
-    - (void)requestWillStart:(id)request;
+///  Inform the accessory that the request is about to start.
+///
+///  @param request The corresponding request.
+- (void)requestWillStart:(id)request;
     
-    ///  Inform the accessory that the request is about to stop. This method is called
-    ///  before executing `requestFinished` and `successCompletionBlock`.
-    ///
-    ///  @param request The corresponding request.
-    - (void)requestWillStop:(id)request;
+///  Inform the accessory that the request is about to stop. This method is called
+///  before executing `requestFinished` and `successCompletionBlock`.
+///
+///  @param request The corresponding request.
+- (void)requestWillStop:(id)request;
     
-    ///  Inform the accessory that the request has already stoped. This method is called
-    ///  after executing `requestFinished` and `successCompletionBlock`.
-    ///
-    ///  @param request The corresponding request.
-    - (void)requestDidStop:(id)request;
+///  Inform the accessory that the request has already stoped. This method is called
+///  after executing `requestFinished` and `successCompletionBlock`.
+///
+///  @param request The corresponding request.
+- (void)requestDidStop:(id)request;
     
 @end
 

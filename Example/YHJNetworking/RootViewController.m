@@ -48,9 +48,6 @@
     btn.backgroundColor = [UIColor whiteColor];
     [btn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
-    
-    
-
 }
 
 #pragma mark click

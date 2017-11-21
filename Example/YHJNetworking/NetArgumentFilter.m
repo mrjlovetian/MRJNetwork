@@ -96,7 +96,7 @@
     return _consumerKey;
 }
 
--(NSString*)returnInfo
+- (NSString*)returnInfo
 {
     if (!_returnInfo) {
         _returnInfo = @"Timing ServerName ServerIP";
@@ -104,7 +104,7 @@
     return _returnInfo;
 }
 
--(NSString *)dateString
+- (NSString *)dateString
 {
     NSDate* now = [NSDate date];
     if (self.timeIntervalFromNet) {
@@ -115,8 +115,7 @@
     return dateStr;
 }
 
--(NSString *)authorization
-{
+- (NSString *)authorization {
     if (!_authorization) {
         _authorization = @"ak";
     }

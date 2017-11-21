@@ -29,7 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 ///  Tell the delegate that the batch request had percent.
 - (void)batchRequestPercentFinished:(float)percent;
 
-
 ///  Tell the delegate that the batch request has failed.
 ///
 ///  @param batchRequest The corresponding batch request.

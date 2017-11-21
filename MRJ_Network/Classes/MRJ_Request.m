@@ -153,7 +153,6 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     return YES;
 }
 
-
 #pragma mark -
 
 - (BOOL)isDataFromCache {

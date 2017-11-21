@@ -17,7 +17,6 @@
 
 @end
 
-
 @implementation MRJ_BatchRequest
 
 - (instancetype)initWithRequestArray:(NSArray<MRJ_Request *> *)requestArray {
@@ -61,7 +60,7 @@
 - (void)startWithCompletionBlockWithSuccess:(nullable void (^)(MRJ_BatchRequest *batchRequest))success
                                    progress:(void(^)(float percent))progress
                                     failure:(nullable void (^)(MRJ_BatchRequest *batchRequest))failure{
-    [self  setCompletionBlockWithSuccess:success progress:progress failure:failure];
+    [self setCompletionBlockWithSuccess:success progress:progress failure:failure];
     [self start];
 }
 
@@ -97,7 +96,7 @@
 #pragma mark - Network Request Delegate
 
 - (void)requestFinished:(MRJ_Request *)request {
-    _finishedCount++;
+    _finishedCount ++;
     if (_finishedCount == _requestArray.count) {
         //回调完成
         if ([_delegate respondsToSelector:@selector(batchRequestPercentFinished:)]) {
@@ -125,7 +124,7 @@
         if ([_delegate respondsToSelector:@selector(batchRequestPercentFinished:)]) {
             [_delegate batchRequestPercentFinished:percent];
         }
-        if(_percentCompletionBlock) {
+        if (_percentCompletionBlock) {
             _percentCompletionBlock(percent);
         }
     }

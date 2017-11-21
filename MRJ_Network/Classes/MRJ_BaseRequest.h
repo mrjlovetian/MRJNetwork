@@ -162,11 +162,12 @@ typedef void(^MRJ_RequestFinishBlock)();
 ///  Executing state of request task.
 @property (nonatomic, readonly, getter=isExecuting) BOOL executing;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////请求参数
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// 请求参数
 @property(nonatomic,strong) id requestArgument;
 
-///用于封装restful地址的参数集合
+/// 用于封装restful地址的参数集合
 @property(nonatomic,copy) NSArray<NSString *> *resetfulArguments;
 
 ///  Additional HTTP request header field.
@@ -295,8 +296,6 @@ typedef void(^MRJ_RequestFinishBlock)();
 ///  Override this method to filter requests with certain arguments when caching.
 - (id)cacheFileNameFilterForRequestArgument:(id)argument;
 
-
-
 ///  HTTP request method.
 - (MRJ_RequestMethod)requestMethod;
 
@@ -318,7 +317,6 @@ typedef void(^MRJ_RequestFinishBlock)();
 
 ///  Should use CDN when sending request.
 - (BOOL)useCDN;
-
 
 ///  The validator will be used to test if `responseJSONObject` is correctly formed.
 - (nullable id)jsonValidator;

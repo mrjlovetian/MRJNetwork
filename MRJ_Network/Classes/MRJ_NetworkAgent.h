@@ -14,10 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MRJ_NetworkAgent : NSObject
 
 - (instancetype)init;
+
 + (MRJ_NetworkAgent *)sharedAgent;
+
 - (void)addRequest:(MRJ_BaseRequest *)request;
+
 - (void)cancelRequest:(MRJ_BaseRequest *)request;
+
 - (void)cancelAllRequests;
+
 - (NSString *)buildRequestUrl:(MRJ_BaseRequest *)request;
 
 @end

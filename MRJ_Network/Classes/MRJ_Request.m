@@ -77,7 +77,6 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
 @property (nonatomic, strong) NSString *cacheString;
 @property (nonatomic, strong) id cacheJSON;
 @property (nonatomic, strong) NSXMLParser *cacheXML;
-
 @property (nonatomic, strong) MRJ_CacheMetadata *cacheMetadata;
 @property (nonatomic, assign) BOOL dataFromCache;
 

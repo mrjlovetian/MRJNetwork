@@ -38,11 +38,7 @@
 
 @end
 
-
 @interface MRJ_NetworkConfig : NSObject
-
-- (instancetype)init NS_UNAVAILABLE ;
-+ (instancetype)new NS_UNAVAILABLE;
 
 ///  Return a shared config object.
 + (MRJ_NetworkConfig *)sharedConfig;

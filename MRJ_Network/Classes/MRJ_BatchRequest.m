@@ -102,7 +102,7 @@
         if ([_delegate respondsToSelector:@selector(batchRequestPercentFinished:)]) {
             [_delegate batchRequestPercentFinished:1.0];
         }
-        if(_percentCompletionBlock) {
+        if (_percentCompletionBlock) {
             float percent = floorf(1.0);
             _percentCompletionBlock(percent);
         }

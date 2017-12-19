@@ -10,13 +10,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 NS_ENUM(NSInteger) {
-    MRJ_RequestCacheErrorExpired = -1,
-    MRJ_RequestCacheErrorVersionMismatch = -2,
-    MRJ_RequestCacheErrorSensitiveDataMismatch = -3,
-    MRJ_RequestCacheErrorAppVersionMismatch = -4,
-    MRJ_RequestCacheErrorInvalidCacheTime = -5,
-    MRJ_RequestCacheErrorInvalidMetadata = -6,
-    MRJ_RequestCacheErrorInvalidCacheData = -7,
+    MRJ_RequestCacheErrorExpired                = -1,
+    MRJ_RequestCacheErrorVersionMismatch        = -2,
+    MRJ_RequestCacheErrorSensitiveDataMismatch  = -3,
+    MRJ_RequestCacheErrorAppVersionMismatch     = -4,
+    MRJ_RequestCacheErrorInvalidCacheTime       = -5,
+    MRJ_RequestCacheErrorInvalidMetadata        = -6,
+    MRJ_RequestCacheErrorInvalidCacheData       = -7,
 };
 
 @interface MRJ_Request : MRJ_BaseRequest

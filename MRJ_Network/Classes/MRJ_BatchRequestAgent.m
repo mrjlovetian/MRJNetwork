@@ -11,7 +11,7 @@
 
 @interface MRJ_BatchRequestAgent()
 
-@property (strong,nonatomic) NSMutableArray<MRJ_BatchRequest *> *requestArray;
+@property (strong, nonatomic) NSMutableArray<MRJ_BatchRequest *> *requestArray;
 
 @end
 

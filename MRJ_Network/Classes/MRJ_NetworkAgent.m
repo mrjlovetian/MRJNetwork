@@ -40,7 +40,7 @@
         _config = [MRJ_NetworkConfig sharedConfig];
         _manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:_config.sessionConfiguration];
         _requestsRecord = [NSMutableDictionary dictionary];
-        //接收返回状态码
+        /// 接收返回状态码
         _manager.securityPolicy = _config.securityPolicy;
         _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     }
@@ -62,18 +62,18 @@
 }
 
 #pragma mark -
-///构建网络请求路径
+/// 构建网络请求路径
 - (NSString *)buildRequestUrl:(MRJ_BaseRequest *)request {
     NSParameterAssert(request != nil);
     NSString *detailUrl = [request requestUrl];
     NSURL *temp = [NSURL URLWithString:detailUrl];
-    // Filter URL if needed
+    /// Filter URL if needed
     NSArray *filters = [_config urlFilters];
     for (id<MRJ_UrlFilterProtocol> f in filters) {
         detailUrl = [f filterUrl:detailUrl withRequest:request];
     }
     
-    // If detailUrl is valid URL
+    /// If detailUrl is valid URL
     if (temp && temp.host && temp.scheme) {
         return detailUrl;
     }
@@ -93,7 +93,7 @@
         }
     }
     
-    // URL slash compability
+    /// URL slash compability
     NSURL *url = [NSURL URLWithString:baseUrl];
     
     if (baseUrl.length > 0 && ![baseUrl hasSuffix:@"/"]) {
@@ -122,14 +122,14 @@
     }
     
     requestSerializer.timeoutInterval = [request requestTimeoutInterval];
-    // If api needs server username and password
+    /// If api needs server username and password
     NSArray<NSString *> *authorizationHeaderFieldArray = [request requestAuthorizationHeaderFieldArray];
     if (authorizationHeaderFieldArray != nil) {
         [requestSerializer setAuthorizationHeaderFieldWithUsername:authorizationHeaderFieldArray.firstObject
                                                           password:authorizationHeaderFieldArray.lastObject];
     }
     
-    // If api needs to add custom value to HTTPHeaderField
+    /// If api needs to add custom value to HTTPHeaderField
     NSDictionary<NSString *, NSString *> *headerFieldValueDictionary = [request requestHeaderFieldValueDictionary];
     if (headerFieldValueDictionary != nil) {
         for (NSString *httpHeaderField in headerFieldValueDictionary.allKeys) {
@@ -166,11 +166,11 @@
     }
 }
 
-///请求准备开始
+/// 请求准备开始
 - (void)addRequest:(MRJ_BaseRequest *)request {
     NSParameterAssert(request != nil);
     NSError * __autoreleasing requestSerializationError = nil;
-    ///取自定义路径
+    /// 取自定义路径
     NSURLRequest *customUrlRequest = [request buildCustomUrlRequest];
     if (customUrlRequest) {
         __block NSURLSessionDataTask *dataTask = nil;
@@ -204,7 +204,7 @@
                 break;
         }
     }
-    // Retain request
+    /// Retain request
     MRJ_Log(@"Add request: %@", NSStringFromClass([request class]));
     [self addRequestToRecord:request];
     [request.requestTask resume];
@@ -281,7 +281,7 @@
         request = [requestSerializer requestWithMethod:method URLString:URLString parameters:parameters error:error];
     }
     __block NSURLSessionDataTask *dataTask = nil;
-    ///是否有上传回调
+    /// 是否有上传回调
     if(uploadProgressBlock){
         dataTask = [_manager uploadTaskWithStreamedRequest:request progress:^(NSProgress * _Nonnull uploadProgress) {
             uploadProgressBlock(uploadProgress);
@@ -302,11 +302,6 @@
     Lock();
     MRJ_BaseRequest *request = _requestsRecord[@(task.taskIdentifier)];
     Unlock();
-    // When the request is cancelled and removed from records, the underlying
-    // AFNetworking failure callback will still kicks in, resulting in a nil `request`.
-    //
-    // Here we choose to completely ignore cancelled tasks. Neither success or failure
-    // callback will be called.
     if (!request) {
         return;
     }

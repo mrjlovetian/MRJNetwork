@@ -11,13 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MRJ_BatchRequestAgent : NSObject
 
-///  Get the shared batch request agent.
+///  单例方法.
 + (MRJ_BatchRequestAgent *)sharedAgent;
 
-///  Add a batch request.
+///  添加请求.
 - (void)addBatchRequest:(MRJ_BatchRequest *)request;
 
-///  Remove a previously added batch request.
+///  移除请求.
 - (void)removeBatchRequest:(MRJ_BatchRequest *)request;
 
 @end

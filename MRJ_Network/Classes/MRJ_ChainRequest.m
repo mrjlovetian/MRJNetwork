@@ -28,7 +28,6 @@
         _requestArray = [NSMutableArray array];
         _requestCallbackArray = [NSMutableArray array];
         _emptyCallback = ^(MRJ_ChainRequest *chainRequest, MRJ_BaseRequest *baseRequest) {
-            // do nothing
         };
     }
     return self;

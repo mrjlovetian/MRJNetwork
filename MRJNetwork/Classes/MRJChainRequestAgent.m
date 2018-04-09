@@ -1,22 +1,22 @@
 //
-//  MRJ_ChainRequestAgent.m
+//  MRJChainRequestAgent.m
 //  MRJ
 //
-//  Created by MRJ_ on 2017/3/15.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/3/15.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_ChainRequestAgent.h"
+#import "MRJChainRequestAgent.h"
 
-@interface MRJ_ChainRequestAgent()
+@interface MRJChainRequestAgent()
 
-@property(strong,nonatomic) NSMutableArray<MRJ_ChainRequest *> *requestArray;
+@property(strong,nonatomic) NSMutableArray<MRJChainRequest *> *requestArray;
 
 @end
 
-@implementation MRJ_ChainRequestAgent
+@implementation MRJChainRequestAgent
 
-+ (MRJ_ChainRequestAgent *)sharedAgent {
++ (MRJChainRequestAgent *)sharedAgent {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -33,13 +33,13 @@
     return self;
 }
 
-- (void)addChainRequest:(MRJ_ChainRequest *)request {
+- (void)addChainRequest:(MRJChainRequest *)request {
     @synchronized(self) {
         [_requestArray addObject:request];
     }
 }
 
-- (void)removeChainRequest:(MRJ_ChainRequest *)request {
+- (void)removeChainRequest:(MRJChainRequest *)request {
     @synchronized(self) {
         [_requestArray removeObject:request];
     }

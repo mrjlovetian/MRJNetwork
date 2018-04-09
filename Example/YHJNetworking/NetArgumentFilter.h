@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MRJ_Network/MRJ_NetworkConfig.h>
+#import <MRJNetwork/MRJNetworkConfig.h>
 
-@interface NetArgumentFilter : NSObject<MRJ_UrlFilterProtocol>
+@interface NetArgumentFilter : NSObject<MRJUrlFilterProtocol>
 
 + (NetArgumentFilter *)filterWithArguments:(NSDictionary *)arguments;
 
-- (NSString *)filterUrl:(NSString *)originUrl withRequest:(MRJ_BaseRequest *)request;
+- (NSString *)filterUrl:(NSString *)originUrl withRequest:(MRJBaseRequest *)request;
 
 @end
 

@@ -1,25 +1,25 @@
 //
-//  MRJ_Request.h
+//  MRJRequest.h
 //
-//  Created by MRJ_ on 2017/2/20.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/20.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_BaseRequest.h"
+#import "MRJBaseRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 NS_ENUM(NSInteger) {
-    MRJ_RequestCacheErrorExpired                = -1,
-    MRJ_RequestCacheErrorVersionMismatch        = -2,
-    MRJ_RequestCacheErrorSensitiveDataMismatch  = -3,
-    MRJ_RequestCacheErrorAppVersionMismatch     = -4,
-    MRJ_RequestCacheErrorInvalidCacheTime       = -5,
-    MRJ_RequestCacheErrorInvalidMetadata        = -6,
-    MRJ_RequestCacheErrorInvalidCacheData       = -7,
+    MRJRequestCacheErrorExpired                = -1,
+    MRJRequestCacheErrorVersionMismatch        = -2,
+    MRJRequestCacheErrorSensitiveDataMismatch  = -3,
+    MRJRequestCacheErrorAppVersionMismatch     = -4,
+    MRJRequestCacheErrorInvalidCacheTime       = -5,
+    MRJRequestCacheErrorInvalidMetadata        = -6,
+    MRJRequestCacheErrorInvalidCacheData       = -7,
 };
 
-@interface MRJ_Request : MRJ_BaseRequest
+@interface MRJRequest : MRJBaseRequest
 
 ///  Whether to use cache as response or not.
 ///  Default is NO, which means caching will take effect with specific arguments.

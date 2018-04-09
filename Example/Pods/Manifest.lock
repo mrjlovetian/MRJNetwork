@@ -1,36 +1,36 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
-  - MRJ_Network (0.1.9):
+  - MRJNetwork (0.2.1.5):
     - AFNetworking (~> 3.1)
   - TableBarViewController (0.1.2)
 
 DEPENDENCIES:
-  - MRJ_Network (from `../`)
+  - MRJNetwork (from `../`)
   - TableBarViewController (~> 0.1.2)
 
 EXTERNAL SOURCES:
-  MRJ_Network:
+  MRJNetwork:
     :path: ../
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  MRJ_Network: f97977b8159c899c3ac997a1c77e605735a1a86c
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  MRJNetwork: 22855729f769a1e085973d966357034f41c4b00c
   TableBarViewController: 34aa74ede2650b4b09feeb72aa085d9f0fb68cbc
 
-PODFILE CHECKSUM: 252cd0a3b0a5b639a170433c333e2056fbf875c4
+PODFILE CHECKSUM: b2b76beae556b7532b24c7af63277ab663e9b000
 
 COCOAPODS: 1.3.1

@@ -1,19 +1,19 @@
 //
-//  MRJ_NetworkConfig.m
+//  MRJNetworkConfig.m
 //  MRJ
 //
-//  Created by MRJ_ on 2017/2/20.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/20.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_NetworkConfig.h"
+#import "MRJNetworkConfig.h"
 
-@implementation MRJ_NetworkConfig {
-    NSMutableArray<id<MRJ_UrlFilterProtocol>> *_urlFilters;
-    NSMutableArray<id<MRJ_CacheDirPathFilterProtocol>> *_cacheDirPathFilters;
+@implementation MRJNetworkConfig {
+    NSMutableArray<id<MRJUrlFilterProtocol>> *_urlFilters;
+    NSMutableArray<id<MRJCacheDirPathFilterProtocol>> *_cacheDirPathFilters;
 }
 
-+ (MRJ_NetworkConfig *)sharedConfig {
++ (MRJNetworkConfig *)sharedConfig {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -35,7 +35,7 @@
     return self;
 }
 
-- (void)addUrlFilter:(id<MRJ_UrlFilterProtocol>)filter {
+- (void)addUrlFilter:(id<MRJUrlFilterProtocol>)filter {
     [_urlFilters addObject:filter];
 }
 
@@ -43,7 +43,7 @@
     [_urlFilters removeAllObjects];
 }
 
-- (void)addCacheDirPathFilter:(id<MRJ_CacheDirPathFilterProtocol>)filter {
+- (void)addCacheDirPathFilter:(id<MRJCacheDirPathFilterProtocol>)filter {
     [_cacheDirPathFilters addObject:filter];
 }
 
@@ -51,11 +51,11 @@
     [_cacheDirPathFilters removeAllObjects];
 }
 
-- (NSArray<id<MRJ_UrlFilterProtocol>> *)urlFilters {
+- (NSArray<id<MRJUrlFilterProtocol>> *)urlFilters {
     return [_urlFilters copy];
 }
 
-- (NSArray<id<MRJ_CacheDirPathFilterProtocol>> *)cacheDirPathFilters {
+- (NSArray<id<MRJCacheDirPathFilterProtocol>> *)cacheDirPathFilters {
     return [_cacheDirPathFilters copy];
 }
 

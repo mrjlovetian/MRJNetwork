@@ -1,16 +1,16 @@
 //
-//  MRJ_NetworkPrivate.m
+//  MRJNetworkPrivate.m
 //
-//  Created by MRJ_ on 2017/2/20.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/20.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_NetworkPrivate.h"
+#import "MRJNetworkPrivate.h"
 #import <CommonCrypto/CommonDigest.h>
 
-void MRJ_Log(NSString *format, ...) {
+void MRJLog(NSString *format, ...) {
 #ifdef DEBUG
-    if (![MRJ_NetworkConfig sharedConfig].debugLogEnabled) {
+    if (![MRJNetworkConfig sharedConfig].debugLogEnabled) {
         return;
     }
     va_list argptr;
@@ -20,7 +20,7 @@ void MRJ_Log(NSString *format, ...) {
 #endif
 }
 
-@implementation MRJ_NetworkUtils
+@implementation MRJNetworkUtils
 
 + (BOOL)validateJSON:(id)json withValidator:(id)jsonValidator {
     if ([json isKindOfClass:[NSDictionary class]] &&
@@ -74,7 +74,7 @@ void MRJ_Log(NSString *format, ...) {
     NSError *error = nil;
     [url setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:&error];
     if (error) {
-        MRJ_Log(@"error to set do not backup attribute, error = %@", error);
+        MRJLog(@"error to set do not backup attribute, error = %@", error);
     }
 }
 
@@ -94,7 +94,7 @@ void MRJ_Log(NSString *format, ...) {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
-+ (NSStringEncoding)stringEncodingWithRequest:(MRJ_BaseRequest *)request {
++ (NSStringEncoding)stringEncodingWithRequest:(MRJBaseRequest *)request {
     // From AFNetworking 2.6.3
     NSStringEncoding stringEncoding = NSUTF8StringEncoding;
     if (request.response.textEncodingName) {
@@ -127,10 +127,10 @@ void MRJ_Log(NSString *format, ...) {
 @end
 
 
-@implementation MRJ_BaseRequest (RequestAccessory)
+@implementation MRJBaseRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestWillStart:)]) {
             [accessory requestWillStart:self];
         }
@@ -138,7 +138,7 @@ void MRJ_Log(NSString *format, ...) {
 }
 
 - (void)toggleAccessoriesWillStopCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestWillStop:)]) {
             [accessory requestWillStop:self];
         }
@@ -146,7 +146,7 @@ void MRJ_Log(NSString *format, ...) {
 }
 
 - (void)toggleAccessoriesDidStopCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestDidStop:)]) {
             [accessory requestDidStop:self];
         }
@@ -156,10 +156,10 @@ void MRJ_Log(NSString *format, ...) {
 @end
 
 
-@implementation MRJ_BatchRequest (RequestAccessory)
+@implementation MRJBatchRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestWillStart:)]) {
             [accessory requestWillStart:self];
         }
@@ -167,7 +167,7 @@ void MRJ_Log(NSString *format, ...) {
 }
 
 - (void)toggleAccessoriesWillStopCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestWillStop:)]) {
             [accessory requestWillStop:self];
         }
@@ -175,7 +175,7 @@ void MRJ_Log(NSString *format, ...) {
 }
 
 - (void)toggleAccessoriesDidStopCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestDidStop:)]) {
             [accessory requestDidStop:self];
         }
@@ -184,10 +184,10 @@ void MRJ_Log(NSString *format, ...) {
 
 @end
 
-@implementation MRJ_ChainRequest (RequestAccessory)
+@implementation MRJChainRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestWillStart:)]) {
             [accessory requestWillStart:self];
         }
@@ -195,7 +195,7 @@ void MRJ_Log(NSString *format, ...) {
 }
 
 - (void)toggleAccessoriesWillStopCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestWillStop:)]) {
             [accessory requestWillStop:self];
         }
@@ -203,7 +203,7 @@ void MRJ_Log(NSString *format, ...) {
 }
 
 - (void)toggleAccessoriesDidStopCallBack {
-    for (id<MRJ_RequestAccessory> accessory in self.requestAccessories) {
+    for (id<MRJRequestAccessory> accessory in self.requestAccessories) {
         if ([accessory respondsToSelector:@selector(requestDidStop:)]) {
             [accessory requestDidStop:self];
         }

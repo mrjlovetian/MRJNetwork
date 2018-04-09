@@ -1,23 +1,23 @@
 //
-//  MRJ_BatchRequestAgent.m
+//  MRJBatchRequestAgent.m
 //  MRJ
 //
-//  Created by MRJ_ on 2017/2/27.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/27.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_BatchRequestAgent.h"
-#import "MRJ_BatchRequest.h"
+#import "MRJBatchRequestAgent.h"
+#import "MRJBatchRequest.h"
 
-@interface MRJ_BatchRequestAgent()
+@interface MRJBatchRequestAgent()
 
-@property (strong, nonatomic) NSMutableArray<MRJ_BatchRequest *> *requestArray;
+@property (strong, nonatomic) NSMutableArray<MRJBatchRequest *> *requestArray;
 
 @end
 
-@implementation MRJ_BatchRequestAgent
+@implementation MRJBatchRequestAgent
 
-+ (MRJ_BatchRequestAgent *)sharedAgent {
++ (MRJBatchRequestAgent *)sharedAgent {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -34,13 +34,13 @@
     return self;
 }
 
-- (void)addBatchRequest:(MRJ_BatchRequest *)request {
+- (void)addBatchRequest:(MRJBatchRequest *)request {
     @synchronized(self) {
         [_requestArray addObject:request];
     }
 }
 
-- (void)removeBatchRequest:(MRJ_BatchRequest *)request {
+- (void)removeBatchRequest:(MRJBatchRequest *)request {
     @synchronized(self) {
         [_requestArray removeObject:request];
     }

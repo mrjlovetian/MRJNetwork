@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'MRJ_Network'
+  s.name             = 'MRJNetwork'
 
-  s.version          = '0.2.1.5'
+  s.version          = '0.3.0'
   s.summary          = '一个全新的网络请求框架，用来网络请求的'
 
 # This description is used to generate tags and improve search results.
@@ -32,10 +32,10 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '7.0'
   s.tvos.deployment_target = '9.0'
 
-  s.source_files = 'MRJ_Network/Classes/**/*'
+  s.source_files = 'MRJNetwork/Classes/**/*'
   
   # s.resource_bundles = {
-  #   'MRJ_Network' => ['MRJ_Network/Assets/*.png']
+  #   'MRJ_Network' => ['MRJNetwork/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

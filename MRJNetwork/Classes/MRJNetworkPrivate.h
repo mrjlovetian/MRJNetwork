@@ -1,27 +1,27 @@
 //
-//  MRJ_NetworkPrivate.h
+//  MRJNetworkPrivate.h
 //  MRJ
 //
-//  Created by MRJ_ on 2017/2/20.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/20.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-#import "MRJ_Request.h"
-#import "MRJ_BaseRequest.h"
-#import "MRJ_NetworkAgent.h"
-#import "MRJ_NetworkConfig.h"
-#import "MRJ_BatchRequest.h"
-#import "MRJ_ChainRequest.h"
+#import "MRJRequest.h"
+#import "MRJBaseRequest.h"
+#import "MRJNetworkAgent.h"
+#import "MRJNetworkConfig.h"
+#import "MRJBatchRequest.h"
+#import "MRJChainRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT void MRJ_Log(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
+FOUNDATION_EXPORT void MRJLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @class AFHTTPSessionManager;
 
-@interface MRJ_NetworkUtils : NSObject
+@interface MRJNetworkUtils : NSObject
 
 + (BOOL)validateJSON:(id)json withValidator:(id)jsonValidator;
 
@@ -31,19 +31,19 @@ FOUNDATION_EXPORT void MRJ_Log(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 + (NSString *)appVersionString;
 
-+ (NSStringEncoding)stringEncodingWithRequest:(MRJ_BaseRequest *)request;
++ (NSStringEncoding)stringEncodingWithRequest:(MRJBaseRequest *)request;
 
 + (BOOL)validateResumeData:(NSData *)data;
 
 @end
 
-@interface MRJ_Request (Getter)
+@interface MRJRequest (Getter)
 
 - (NSString *)cacheBasePath;
 
 @end
 
-@interface MRJ_BaseRequest (Setter)
+@interface MRJBaseRequest (Setter)
 
 @property (nonatomic, strong, readwrite) NSURLSessionTask *requestTask;
 @property (nonatomic, strong, readwrite, nullable) NSData *responseData;
@@ -54,7 +54,7 @@ FOUNDATION_EXPORT void MRJ_Log(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @end
 
-@interface MRJ_BaseRequest (RequestAccessory)
+@interface MRJBaseRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack;
 - (void)toggleAccessoriesWillStopCallBack;
@@ -62,7 +62,7 @@ FOUNDATION_EXPORT void MRJ_Log(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @end
 
-@interface MRJ_BatchRequest (RequestAccessory)
+@interface MRJBatchRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack;
 - (void)toggleAccessoriesWillStopCallBack;
@@ -70,7 +70,7 @@ FOUNDATION_EXPORT void MRJ_Log(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @end
 
-@interface MRJ_ChainRequest (RequestAccessory)
+@interface MRJChainRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack;
 - (void)toggleAccessoriesWillStopCallBack;
@@ -78,7 +78,7 @@ FOUNDATION_EXPORT void MRJ_Log(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 @end
 
-@interface MRJ_NetworkAgent (Private)
+@interface MRJNetworkAgent (Private)
 
 - (AFHTTPSessionManager *)manager;
 - (void)resetURLSessionManager;

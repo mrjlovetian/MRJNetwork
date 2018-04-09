@@ -1,32 +1,32 @@
 //
-//  MRJ_BatchRequest.m
+//  MRJBatchRequest.m
 //  MRJ
 //
-//  Created by MRJ_ on 2017/2/27.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/27.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_BatchRequest.h"
-#import "MRJ_NetworkPrivate.h"
-#import "MRJ_BatchRequestAgent.h"
-#import "MRJ_Request.h"
+#import "MRJBatchRequest.h"
+#import "MRJNetworkPrivate.h"
+#import "MRJBatchRequestAgent.h"
+#import "MRJRequest.h"
 
-@interface MRJ_BatchRequest() <MRJ_RequestDelegate>
+@interface MRJBatchRequest() <MRJRequestDelegate>
 
 @property (nonatomic) NSInteger finishedCount;
 
 @end
 
-@implementation MRJ_BatchRequest
+@implementation MRJBatchRequest
 
-- (instancetype)initWithRequestArray:(NSArray<MRJ_Request *> *)requestArray {
+- (instancetype)initWithRequestArray:(NSArray<MRJRequest *> *)requestArray {
     self = [super init];
     if (self) {
         _requestArray = [requestArray copy];
         _finishedCount = 0;
-        for (MRJ_Request * req in _requestArray) {
-            if (![req isKindOfClass:[MRJ_Request class]]) {
-                MRJ_Log(@"Error, request item must be MRJ_Request instance.");
+        for (MRJRequest * req in _requestArray) {
+            if (![req isKindOfClass:[MRJRequest class]]) {
+                MRJLog(@"Error, request item must be MRJRequest instance.");
                 return nil;
             }
         }
@@ -36,13 +36,13 @@
 
 - (void)start {
     if (_finishedCount > 0) {
-        MRJ_Log(@"Error! Batch request has already started.");
+        MRJLog(@"Error! Batch request has already started.");
         return;
     }
     _failedRequest = nil;
-    [[MRJ_BatchRequestAgent sharedAgent] addBatchRequest:self];
+    [[MRJBatchRequestAgent sharedAgent] addBatchRequest:self];
     [self toggleAccessoriesWillStartCallBack];
-    for (MRJ_Request * req in _requestArray) {
+    for (MRJRequest * req in _requestArray) {
         req.delegate = self;
         [req clearCompletionBlock];
         [req start];
@@ -54,19 +54,19 @@
     _delegate = nil;
     [self clearRequest];
     [self toggleAccessoriesDidStopCallBack];
-    [[MRJ_BatchRequestAgent sharedAgent] removeBatchRequest:self];
+    [[MRJBatchRequestAgent sharedAgent] removeBatchRequest:self];
 }
 
-- (void)startWithCompletionBlockWithSuccess:(nullable void (^)(MRJ_BatchRequest *batchRequest))success
+- (void)startWithCompletionBlockWithSuccess:(nullable void (^)(MRJBatchRequest *batchRequest))success
                                    progress:(void(^)(float percent))progress
-                                    failure:(nullable void (^)(MRJ_BatchRequest *batchRequest))failure{
+                                    failure:(nullable void (^)(MRJBatchRequest *batchRequest))failure{
     [self setCompletionBlockWithSuccess:success progress:progress failure:failure];
     [self start];
 }
 
-- (void)setCompletionBlockWithSuccess:(void (^)(MRJ_BatchRequest *batchRequest))success
+- (void)setCompletionBlockWithSuccess:(void (^)(MRJBatchRequest *batchRequest))success
                              progress:(void(^)(float percent))progress
-                              failure:(void (^)(MRJ_BatchRequest *batchRequest))failure {
+                              failure:(void (^)(MRJBatchRequest *batchRequest))failure {
     self.successCompletionBlock = success;
     self.percentCompletionBlock = progress;
     self.failureCompletionBlock = failure;
@@ -81,7 +81,7 @@
 
 - (BOOL)isDataFromCache {
     BOOL result = YES;
-    for (MRJ_Request *request in _requestArray) {
+    for (MRJRequest *request in _requestArray) {
         if (!request.isDataFromCache) {
             result = NO;
         }
@@ -95,7 +95,7 @@
 
 #pragma mark - Network Request Delegate
 
-- (void)requestFinished:(MRJ_Request *)request {
+- (void)requestFinished:(MRJRequest *)request {
     _finishedCount ++;
     if (_finishedCount == _requestArray.count) {
         //回调完成
@@ -117,7 +117,7 @@
         }
         [self clearCompletionBlock];
         [self toggleAccessoriesDidStopCallBack];
-        [[MRJ_BatchRequestAgent sharedAgent] removeBatchRequest:self];
+        [[MRJBatchRequestAgent sharedAgent] removeBatchRequest:self];
     } else {
         float percent = [[NSString stringWithFormat:@"%.2f", floorf(_finishedCount) / floorf(_requestArray.count)] floatValue];
         //回调完成百分比
@@ -130,11 +130,11 @@
     }
 }
 
-- (void)requestFailed:(MRJ_Request *)request {
+- (void)requestFailed:(MRJRequest *)request {
     _failedRequest = request;
     [self toggleAccessoriesWillStopCallBack];
     // Stop
-    for (MRJ_Request *req in _requestArray) {
+    for (MRJRequest *req in _requestArray) {
         [req stop];
     }
     // Callback
@@ -147,11 +147,11 @@
     // Clear
     [self clearCompletionBlock];
     [self toggleAccessoriesDidStopCallBack];
-    [[MRJ_BatchRequestAgent sharedAgent] removeBatchRequest:self];
+    [[MRJBatchRequestAgent sharedAgent] removeBatchRequest:self];
 }
 
 - (void)clearRequest {
-    for (MRJ_Request * req in _requestArray) {
+    for (MRJRequest * req in _requestArray) {
         [req stop];
     }
     [self clearCompletionBlock];
@@ -159,7 +159,7 @@
 
 #pragma mark - Request Accessoies
 
-- (void)addAccessory:(id<MRJ_RequestAccessory>)accessory {
+- (void)addAccessory:(id<MRJRequestAccessory>)accessory {
     if (!self.requestAccessories) {
         self.requestAccessories = [NSMutableArray array];
     }

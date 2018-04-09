@@ -1,9 +1,9 @@
 //
-//  MRJ_BaseRequest.h
+//  MRJBaseRequest.h
 //  MRJ
 //
-//  Created by MRJ_ on 2017/2/17.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/17.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,45 +11,45 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXPORT NSString *const MRJ_RequestValidationErrorDomain ;
+FOUNDATION_EXPORT NSString *const MRJRequestValidationErrorDomain ;
 
 NS_ENUM(NSInteger) {
-    MRJ_RequestValidationErrorInvalidStatusCode = -8,
-    MRJ_RequestValidationErrorInvalidJSONFormat = -9,
+    MRJRequestValidationErrorInvalidStatusCode = -8,
+    MRJRequestValidationErrorInvalidJSONFormat = -9,
 };
     
 ///  HTTP Request method. 请求方式
-typedef NS_ENUM(NSInteger, MRJ_RequestMethod) {
-        MRJ_RequestMethodGET = 0,
-        MRJ_RequestMethodPOST,
-        MRJ_RequestMethodHEAD,
-        MRJ_RequestMethodPUT,
-        MRJ_RequestMethodDELETE,
-        MRJ_RequestMethodPATCH,
+typedef NS_ENUM(NSInteger, MRJRequestMethod) {
+        MRJRequestMethodGET = 0,
+        MRJRequestMethodPOST,
+        MRJRequestMethodHEAD,
+        MRJRequestMethodPUT,
+        MRJRequestMethodDELETE,
+        MRJRequestMethodPATCH,
 };
     
 ///  Request serializer type. 网络请求类型
-typedef NS_ENUM(NSInteger, MRJ_RequestSerializerType) {
-        MRJ_RequestSerializerTypeHTTP = 0,
-        MRJ_RequestSerializerTypeJSON,
+typedef NS_ENUM(NSInteger, MRJRequestSerializerType) {
+        MRJRequestSerializerTypeHTTP = 0,
+        MRJRequestSerializerTypeJSON,
 };
 
 ///  Response serializer type, which determines response serialization process and
 ///  the type of `responseObject`. 网络响应输出类型
-typedef NS_ENUM(NSInteger, MRJ_ResponseSerializerType) {
+typedef NS_ENUM(NSInteger, MRJResponseSerializerType) {
     /// NSData type
-    MRJ_ResponseSerializerTypeHTTP,
+    MRJResponseSerializerTypeHTTP,
     /// JSON object type
-    MRJ_ResponseSerializerTypeJSON,
+    MRJResponseSerializerTypeJSON,
     /// NSXMLParser type
-    MRJ_ResponseSerializerTypeXMLParser,
+    MRJResponseSerializerTypeXMLParser,
 };
 
 ///  Request priority 请求优先级
-typedef NS_ENUM(NSInteger, MRJ_RequestPriority) {
-    MRJ_RequestPriorityLow = -4L,
-    MRJ_RequestPriorityDefault = 0,
-    MRJ_RequestPriorityHigh = 4,
+typedef NS_ENUM(NSInteger, MRJRequestPriority) {
+    MRJRequestPriorityLow = -4L,
+    MRJRequestPriorityDefault = 0,
+    MRJRequestPriorityHigh = 4,
 };
 
 @protocol AFMultipartFormData;
@@ -57,34 +57,34 @@ typedef NS_ENUM(NSInteger, MRJ_RequestPriority) {
 typedef void (^AFConstructingBlock)(id<AFMultipartFormData> formData);
 typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *);
    
-@class MRJ_BaseRequest;
-typedef void(^MRJ_RequestCompletionBlock)(__kindof MRJ_BaseRequest *request);
-typedef void(^MRJ_RequestFinishBlock)();
+@class MRJBaseRequest;
+typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
+typedef void(^MRJRequestFinishBlock)();
     
-///  The MRJ_RequestDelegate protocol defines several optional methods you can use
+///  The MRJRequestDelegate protocol defines several optional methods you can use
 ///  to receive network-related messages. All the delegate methods will be called
 ///  on the main queue.
-@protocol MRJ_RequestDelegate <NSObject>
+@protocol MRJRequestDelegate <NSObject>
     
     @optional
     ///  Tell the delegate that the request has finished successfully.
     ///
     ///  @param request The corresponding request.
-    - (void)requestFinished:(__kindof MRJ_BaseRequest *)request;
+    - (void)requestFinished:(__kindof MRJBaseRequest *)request;
     
     ///  Tell the delegate that the request has failed.
     ///
     ///  @param request The corresponding request.
-    - (void)requestFailed:(__kindof MRJ_BaseRequest *)request;
+    - (void)requestFailed:(__kindof MRJBaseRequest *)request;
     
 @end
     
 
-///  The MRJ_RequestAccessory protocol defines several optional methods that can be
+///  The MRJRequestAccessory protocol defines several optional methods that can be
 ///  used to track the status of a request. Objects that conforms this protocol
 ///  ("accessories") can perform additional configurations accordingly. All the
 ///  accessory methods will be called on the main queue.
-@protocol MRJ_RequestAccessory <NSObject>
+@protocol MRJRequestAccessory <NSObject>
     
 @optional
     
@@ -108,7 +108,7 @@ typedef void(^MRJ_RequestFinishBlock)();
 @end
 
     
-@interface MRJ_BaseRequest : NSObject
+@interface MRJBaseRequest : NSObject
 
 #pragma mark - Request and Response Information
 ///=============================================================================
@@ -142,13 +142,13 @@ typedef void(^MRJ_RequestFinishBlock)();
 @property (nonatomic, strong, readonly, nullable) NSString *responseString;
 
 ///  This serialized response object. The actual type of this object is determined by
-///  `MRJ_ResponseSerializerType`. Note this value can be nil if request failed.
+///  `MRJResponseSerializerType`. Note this value can be nil if request failed.
 ///
 ///  @discussion If `resumableDownloadPath` and DownloadTask is using, this value will
 ///              be the path to which file is successfully saved (NSURL), or nil if request failed.
 @property (nonatomic, strong, readonly, nullable) id responseObject;
 
-///  If you use `MRJ_ResponseSerializerTypeJSON`, this is a convenience (and sematic) getter
+///  If you use `MRJResponseSerializerTypeJSON`, this is a convenience (and sematic) getter
 ///  for the response object. Otherwise this value is nil.
 @property (nonatomic, strong, readonly, nullable) id responseJSONObject;
 
@@ -186,21 +186,21 @@ typedef void(^MRJ_RequestFinishBlock)();
 
 ///  The delegate object of the request. If you choose block style callback you can ignore this.
 ///  Default is nil.
-@property (nonatomic, weak, nullable) id<MRJ_RequestDelegate> delegate;
+@property (nonatomic, weak, nullable) id<MRJRequestDelegate> delegate;
 
 ///  The success callback. Note if this value is not nil and `requestFinished` delegate method is
 ///  also implemented, both will be executed but delegate method is first called. This block
 ///  will be called on the main queue.
-@property (nonatomic, copy, nullable) MRJ_RequestCompletionBlock successCompletionBlock;
+@property (nonatomic, copy, nullable) MRJRequestCompletionBlock successCompletionBlock;
 
 ///  The failure callback. Note if this value is not nil and `requestFailed` delegate method is
 ///  also implemented, both will be executed but delegate method is first called. This block
 ///  will be called on the main queue.
-@property (nonatomic, copy, nullable) MRJ_RequestCompletionBlock failureCompletionBlock;
+@property (nonatomic, copy, nullable) MRJRequestCompletionBlock failureCompletionBlock;
 
 ///  This can be used to add several accossories object. Note if you use `addAccessory` to add acceesory
 ///  this array will be automatically created. Default is nil.
-@property (nonatomic, strong, nullable) NSMutableArray<id<MRJ_RequestAccessory>> *requestAccessories;
+@property (nonatomic, strong, nullable) NSMutableArray<id<MRJRequestAccessory>> *requestAccessories;
 
 ///  This can be use to construct HTTP body when needed in POST request. Default is nil.
 @property (nonatomic, copy, nullable) AFConstructingBlock constructingBodyBlock;
@@ -220,12 +220,12 @@ typedef void(^MRJ_RequestFinishBlock)();
 /// 文件上传进度
 @property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock uploadProgressBlock;
 
-///  The priority of the request. Effective only on iOS 8+. Default is `MRJ_RequestPriorityDefault`.
-@property (nonatomic) MRJ_RequestPriority requestPriority;
+///  The priority of the request. Effective only on iOS 8+. Default is `MRJRequestPriorityDefault`.
+@property (nonatomic) MRJRequestPriority requestPriority;
 
 ///  Set completion callbacks
-- (void)setCompletionBlockWithSuccess:(nullable MRJ_RequestCompletionBlock)success
-                              failure:(nullable MRJ_RequestCompletionBlock)failure;
+- (void)setCompletionBlockWithSuccess:(nullable MRJRequestCompletionBlock)success
+                              failure:(nullable MRJRequestCompletionBlock)failure;
 
 ///  Nil out both success and failure callback blocks.
 - (void)clearCompletionBlock;
@@ -242,8 +242,8 @@ typedef void(^MRJ_RequestFinishBlock)();
 - (void)stop;
 
 ///  Convenience method to start the request with block callbacks.
-- (void)startWithCompletionBlockWithSuccess:(nullable MRJ_RequestCompletionBlock)success
-                                    failure:(nullable MRJ_RequestCompletionBlock)failure;
+- (void)startWithCompletionBlockWithSuccess:(nullable MRJRequestCompletionBlock)success
+                                    failure:(nullable MRJRequestCompletionBlock)failure;
 
 
 #pragma mark - Subclass Override
@@ -297,13 +297,13 @@ typedef void(^MRJ_RequestFinishBlock)();
 - (id)cacheFileNameFilterForRequestArgument:(id)argument;
 
 ///  HTTP request method.
-- (MRJ_RequestMethod)requestMethod;
+- (MRJRequestMethod)requestMethod;
 
 ///  Request serializer type.
-- (MRJ_RequestSerializerType)requestSerializerType;
+- (MRJRequestSerializerType)requestSerializerType;
 
 ///  Response serializer type. See also `responseObject`.
-- (MRJ_ResponseSerializerType)responseSerializerType;
+- (MRJResponseSerializerType)responseSerializerType;
 
 ///  Username and password used for HTTP authorization. Should be formed as @[@"Username", @"Password"].
 - (nullable NSArray<NSString *> *)requestAuthorizationHeaderFieldArray;

@@ -28,13 +28,13 @@
 		C28CD3F01F596C1C0004F30A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3E31F5966270004F30A /* RootViewController.m */; };
 		C28CD3F11F596C1C0004F30A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3E51F5966270004F30A /* ViewController.m */; };
 		C28CD3F41F596EC30004F30A /* MRJSubRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C28CD3F31F596EC30004F30A /* MRJSubRequest.m */; };
+		E7A0776C207B3AD100E3C3AF /* MRJNetwork.podspec in Resources */ = {isa = PBXBuildFile; fileRef = E7A0776B207B3AD100E3C3AF /* MRJNetwork.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0AFB08C01F5ABF6E0072A8E0 /* NetArgumentFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetArgumentFilter.h; sourceTree = "<group>"; };
 		0AFB08C11F5ABF6E0072A8E0 /* NetArgumentFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetArgumentFilter.m; sourceTree = "<group>"; };
 		4C39C72048E9C45DE112C86C /* Pods_YHJNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHJNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		52696CF09BB15E7F890703AD /* MRJ_Network.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MRJ_Network.podspec; path = ../MRJ_Network.podspec; sourceTree = "<group>"; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -63,6 +63,7 @@
 		C28CD3F21F596EC30004F30A /* MRJSubRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRJSubRequest.h; sourceTree = "<group>"; };
 		C28CD3F31F596EC30004F30A /* MRJSubRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRJSubRequest.m; sourceTree = "<group>"; };
 		E71F5CF4A513C9583FE40815 /* Pods-YHJNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MRJ_Networking/Pods-YHJNetworking.debug.xcconfig"; sourceTree = "<group>"; };
+		E7A0776B207B3AD100E3C3AF /* MRJNetwork.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MRJNetwork.podspec; path = ../MRJNetwork.podspec; sourceTree = "<group>"; };
 		ED9502421245249239A6B2BF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EDF733994539749192D3C724 /* Pods-YHJNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.release.xcconfig"; path = "Pods/Target Support Files/Pods-MRJ_Networking/Pods-YHJNetworking.release.xcconfig"; sourceTree = "<group>"; };
 		F9A77FA8DD6CDE2C37DD73D0 /* Pods-YHJNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHJNetworking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,7 +160,7 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				52696CF09BB15E7F890703AD /* MRJ_Network.podspec */,
+				E7A0776B207B3AD100E3C3AF /* MRJNetwork.podspec */,
 				9DCB74507DA32A410D9DDB00 /* README.md */,
 				ED9502421245249239A6B2BF /* LICENSE */,
 			);
@@ -272,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C28CD3E81F5966270004F30A /* LaunchScreen.storyboard in Resources */,
+				E7A0776C207B3AD100E3C3AF /* MRJNetwork.podspec in Resources */,
 				C28CD3E71F5966270004F30A /* Assets.xcassets in Resources */,
 				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
 				C28CD3EA1F5966270004F30A /* Info.plist in Resources */,
@@ -297,13 +299,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-YHJNetworking/Pods-YHJNetworking-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/MRJ_Network/MRJ_Network.framework",
+				"${BUILT_PRODUCTS_DIR}/MRJNetwork/MRJNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/TableBarViewController/TableBarViewController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRJ_Network.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRJNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TableBarViewController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

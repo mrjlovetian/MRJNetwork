@@ -9,7 +9,7 @@
 #import "RootViewController.h"
 #import "ViewController.h"
 #import "MRJSubRequest.h"
-#import <MRJ_Network/MRJ_NetworkConfig.h>
+#import <MRJNetwork/MRJNetworkConfig.h>
 #import "NetArgumentFilter.h"
 
 @implementation RootViewController
@@ -53,12 +53,12 @@
 #pragma mark click
 - (void)click
 {
-    MRJ_NetworkConfig *config = [MRJ_NetworkConfig sharedConfig];
+    MRJNetworkConfig *config = [MRJNetworkConfig sharedConfig];
     NetArgumentFilter *fileter = [NetArgumentFilter filterWithArguments:nil];
     [config addUrlFilter:fileter];
     
     MRJSubRequest *request = [[MRJSubRequest alloc] init];
-    request.method = MRJ_RequestMethodPOST;
+    request.method = MRJRequestMethodPOST;
     request.defaultUrl = @"http://client.vgabc.com/clientapi";
     request.requestAccessories = [NSMutableArray arrayWithObjects:self, nil];
     request.requestArgument = @{@"action":@"gamelist",
@@ -69,12 +69,12 @@
                                 @"page":@1,
                                 @"pagesize":@10
                                 };
-    [request startWithCompletionBlockWithSuccess:^(__kindof MRJ_BaseRequest * _Nonnull request) {
+    [request startWithCompletionBlockWithSuccess:^(__kindof MRJBaseRequest * _Nonnull request) {
         
         NSLog(@"接受到的消息%@", request);
         
         
-    } failure:^(__kindof MRJ_BaseRequest * _Nonnull request) {
+    } failure:^(__kindof MRJBaseRequest * _Nonnull request) {
         
     }];
 }

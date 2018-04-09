@@ -7,7 +7,7 @@
 //
 
 #import "NetArgumentFilter.h"
-#import <MRJ_Network/MRJ_Request.h>
+#import <MRJNetwork/MRJRequest.h>
 
 @implementation NetArgumentFilter{
     NSDictionary *_arguments;
@@ -25,11 +25,11 @@
     return self;
 }
 
-- (NSString *)filterUrl:(NSString *)originUrl withRequest:(MRJ_BaseRequest *)request {
+- (NSString *)filterUrl:(NSString *)originUrl withRequest:(MRJBaseRequest *)request {
     return [self urlStringWithOriginUrlString:originUrl appendParameters:_arguments withRequest:request];
 }
 
-- (NSString *)urlStringWithOriginUrlString:(NSString *)originUrlString appendParameters:(NSDictionary *)parameters  withRequest:(MRJ_BaseRequest *)request{
+- (NSString *)urlStringWithOriginUrlString:(NSString *)originUrlString appendParameters:(NSDictionary *)parameters  withRequest:(MRJBaseRequest *)request{
     
     NSMutableDictionary * requestArguments = nil;
     if ([request.requestArgument isKindOfClass:[NSDictionary class]]) {

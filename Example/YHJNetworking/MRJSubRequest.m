@@ -14,30 +14,26 @@
     return self.defaultUrl;
 }
 
-- (MRJ_RequestMethod)requestMethod {
-    if (self.method == MRJ_RequestMethodHEAD)
+- (MRJRequestMethod)requestMethod {
+    if (self.method == MRJRequestMethodHEAD)
     {
-        return MRJ_RequestMethodHEAD;
-    }else if (self.method == MRJ_RequestMethodPATCH)
-    {
-        return MRJ_RequestMethodPATCH;
-    }else if (self.method == MRJ_RequestMethodDELETE)
-    {
-        return MRJ_RequestMethodDELETE;
-    }else if (self.method == MRJ_RequestMethodPOST)
-    {
-        return MRJ_RequestMethodPOST;
-    }else if (self.method == MRJ_RequestMethodPUT)
-    {
-        return MRJ_RequestMethodPUT;
+        return MRJRequestMethodHEAD;
+    } else if (self.method == MRJRequestMethodPATCH) {
+        return MRJRequestMethodPATCH;
+    } else if (self.method == MRJRequestMethodDELETE) {
+        return MRJRequestMethodDELETE;
+    } else if (self.method == MRJRequestMethodPOST) {
+        return MRJRequestMethodPOST;
+    } else if (self.method == MRJRequestMethodPUT) {
+        return MRJRequestMethodPUT;
     }
-    return MRJ_RequestMethodGET;
+    return MRJRequestMethodGET;
 }
 
-- (MRJ_RequestSerializerType)requestSerializerType {
+- (MRJRequestSerializerType)requestSerializerType {
     if (_isDotNet) {
-        return MRJ_RequestSerializerTypeHTTP;
+        return MRJRequestSerializerTypeHTTP;
     }
-    return MRJ_RequestSerializerTypeJSON;
+    return MRJRequestSerializerTypeJSON;
 }
 @end

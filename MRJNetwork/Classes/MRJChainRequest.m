@@ -1,25 +1,25 @@
 //
-//  MRJ_ChainRequest.m
+//  MRJChainRequest.m
 //
-//  Created by MRJ_ on 2017/3/15.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/3/15.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_ChainRequest.h"
-#import "MRJ_ChainRequestAgent.h"
-#import "MRJ_NetworkPrivate.h"
-#import "MRJ_BaseRequest.h"
+#import "MRJChainRequest.h"
+#import "MRJChainRequestAgent.h"
+#import "MRJNetworkPrivate.h"
+#import "MRJBaseRequest.h"
 
-@interface MRJ_ChainRequest()<MRJ_RequestDelegate>
+@interface MRJChainRequest()<MRJRequestDelegate>
 
-@property (strong, nonatomic) NSMutableArray<MRJ_BaseRequest *> *requestArray;
-@property (strong, nonatomic) NSMutableArray<MRJ_ChainCallback> *requestCallbackArray;
+@property (strong, nonatomic) NSMutableArray<MRJBaseRequest *> *requestArray;
+@property (strong, nonatomic) NSMutableArray<MRJChainCallback> *requestCallbackArray;
 @property (assign, nonatomic) NSUInteger nextRequestIndex;
-@property (strong, nonatomic) MRJ_ChainCallback emptyCallback;
+@property (strong, nonatomic) MRJChainCallback emptyCallback;
 
 @end
 
-@implementation MRJ_ChainRequest
+@implementation MRJChainRequest
 
 - (instancetype)init {
     self = [super init];
@@ -27,7 +27,7 @@
         _nextRequestIndex = 0;
         _requestArray = [NSMutableArray array];
         _requestCallbackArray = [NSMutableArray array];
-        _emptyCallback = ^(MRJ_ChainRequest *chainRequest, MRJ_BaseRequest *baseRequest) {
+        _emptyCallback = ^(MRJChainRequest *chainRequest, MRJBaseRequest *baseRequest) {
         };
     }
     return self;
@@ -35,26 +35,26 @@
 
 - (void)start {
     if (_nextRequestIndex > 0) {
-        MRJ_Log(@"Error! Chain request has already started.");
+        MRJLog(@"Error! Chain request has already started.");
         return;
     }
     if ([_requestArray count] > 0) {
         [self toggleAccessoriesWillStartCallBack];
         [self startNextRequest];
-        [[MRJ_ChainRequestAgent sharedAgent] addChainRequest:self];
+        [[MRJChainRequestAgent sharedAgent] addChainRequest:self];
     } else {
-        MRJ_Log(@"Error! Chain request array is empty.");
+        MRJLog(@"Error! Chain request array is empty.");
     }
 }
 
 - (void)stop {
     [self toggleAccessoriesWillStopCallBack];
     [self clearRequest];
-    [[MRJ_ChainRequestAgent sharedAgent] removeChainRequest:self];
+    [[MRJChainRequestAgent sharedAgent] removeChainRequest:self];
     [self toggleAccessoriesDidStopCallBack];
 }
 
-- (void)addRequest:(MRJ_BaseRequest *)request callback:(MRJ_ChainCallback)callback {
+- (void)addRequest:(MRJBaseRequest *)request callback:(MRJChainCallback)callback {
     [_requestArray addObject:request];
     if (callback != nil) {
         [_requestCallbackArray addObject:callback];
@@ -63,13 +63,13 @@
     }
 }
 
-- (NSArray<MRJ_BaseRequest *> *)requestArray {
+- (NSArray<MRJBaseRequest *> *)requestArray {
     return _requestArray;
 }
 
 - (BOOL)startNextRequest {
     if (_nextRequestIndex < [_requestArray count]) {
-        MRJ_BaseRequest *request = _requestArray[_nextRequestIndex];
+        MRJBaseRequest *request = _requestArray[_nextRequestIndex];
         _nextRequestIndex++;
         request.delegate = self;
         [request clearCompletionBlock];
@@ -82,25 +82,25 @@
 
 #pragma mark - Network Request Delegate
 
-- (void)requestFinished:(MRJ_BaseRequest *)request {
+- (void)requestFinished:(MRJBaseRequest *)request {
     NSUInteger currentRequestIndex = _nextRequestIndex - 1;
-    MRJ_ChainCallback callback = _requestCallbackArray[currentRequestIndex];
+    MRJChainCallback callback = _requestCallbackArray[currentRequestIndex];
     callback(self, request);
     if (![self startNextRequest]) {
         [self toggleAccessoriesWillStopCallBack];
         if ([_delegate respondsToSelector:@selector(chainRequestFinished:)]) {
             [_delegate chainRequestFinished:self];
-            [[MRJ_ChainRequestAgent sharedAgent] removeChainRequest:self];
+            [[MRJChainRequestAgent sharedAgent] removeChainRequest:self];
         }
         [self toggleAccessoriesDidStopCallBack];
     }
 }
 
-- (void)requestFailed:(MRJ_BaseRequest *)request {
+- (void)requestFailed:(MRJBaseRequest *)request {
     [self toggleAccessoriesWillStopCallBack];
     if ([_delegate respondsToSelector:@selector(chainRequestFailed:failedBaseRequest:)]) {
         [_delegate chainRequestFailed:self failedBaseRequest:request];
-        [[MRJ_ChainRequestAgent sharedAgent] removeChainRequest:self];
+        [[MRJChainRequestAgent sharedAgent] removeChainRequest:self];
     }
     [self toggleAccessoriesDidStopCallBack];
 }
@@ -108,7 +108,7 @@
 - (void)clearRequest {
     NSUInteger currentRequestIndex = _nextRequestIndex - 1;
     if (currentRequestIndex < [_requestArray count]) {
-        MRJ_BaseRequest *request = _requestArray[currentRequestIndex];
+        MRJBaseRequest *request = _requestArray[currentRequestIndex];
         [request stop];
     }
     [_requestArray removeAllObjects];
@@ -117,7 +117,7 @@
 
 #pragma mark - Request Accessoies
 
-- (void)addAccessory:(id<MRJ_RequestAccessory>)accessory {
+- (void)addAccessory:(id<MRJRequestAccessory>)accessory {
     if (!self.requestAccessories) {
         self.requestAccessories = [NSMutableArray array];
     }

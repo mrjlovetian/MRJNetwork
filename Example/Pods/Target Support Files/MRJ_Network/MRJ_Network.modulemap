@@ -1,6 +1,0 @@
-framework module MRJ_Network {
-  umbrella header "MRJ_Network-umbrella.h"
-
-  export *
-  module * { export * }
-}

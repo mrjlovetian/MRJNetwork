@@ -1,13 +1,13 @@
 //
-//  MRJ_Request.m
+//  MRJRequest.m
 //  MRJ
 //
-//  Created by MRJ_ on 2017/2/20.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/20.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_Request.h"
-#import "MRJ_NetworkPrivate.h"
+#import "MRJRequest.h"
+#import "MRJNetworkPrivate.h"
 
 #ifndef NSFoundationVersionNumber_iOS_8_0
 #define NSFoundationVersionNumber_With_QoS_Available 1140.11
@@ -15,9 +15,9 @@
 #define NSFoundationVersionNumber_With_QoS_Available NSFoundationVersionNumber_iOS_8_0
 #endif
 
-NSString *const MRJ_RequestCacheErrorDomain = @"com.mrj.request.caching";
+NSString *const MRJRequestCacheErrorDomain = @"com.mrj.request.caching";
 
-static dispatch_queue_t MRJ_Request_cache_writing_queue() {
+static dispatch_queue_t MRJRequest_cache_writing_queue() {
     static dispatch_queue_t queue;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -25,13 +25,13 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_With_QoS_Available) {
             attr = dispatch_queue_attr_make_with_qos_class(attr, QOS_CLASS_BACKGROUND, 0);
         }
-        queue = dispatch_queue_create("com.mrj.MRJ_krequest.caching", attr);
+        queue = dispatch_queue_create("com.mrj.MRJkrequest.caching", attr);
     });
     
     return queue;
 }
 
-@interface MRJ_CacheMetadata : NSObject<NSSecureCoding>
+@interface MRJCacheMetadata : NSObject<NSSecureCoding>
 
 @property (nonatomic, assign) long long version;
 @property (nonatomic, strong) NSString *sensitiveDataString;
@@ -41,7 +41,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
 
 @end
 
-@implementation MRJ_CacheMetadata
+@implementation MRJCacheMetadata
 
 + (BOOL)supportsSecureCoding {
     return YES;
@@ -71,18 +71,18 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
 @end
 
 
-@interface MRJ_Request()
+@interface MRJRequest()
 
 @property (nonatomic, strong) NSData *cacheData;
 @property (nonatomic, strong) NSString *cacheString;
 @property (nonatomic, strong) id cacheJSON;
 @property (nonatomic, strong) NSXMLParser *cacheXML;
-@property (nonatomic, strong) MRJ_CacheMetadata *cacheMetadata;
+@property (nonatomic, strong) MRJCacheMetadata *cacheMetadata;
 @property (nonatomic, assign) BOOL dataFromCache;
 
 @end
 
-@implementation MRJ_Request
+@implementation MRJRequest
 
 - (void)start {
     /// 忽略缓存
@@ -107,7 +107,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self requestCompletePreprocessor];
         [self requestCompleteFilter];
-        MRJ_Request *strongSelf = self;
+        MRJRequest *strongSelf = self;
         [strongSelf.delegate requestFinished:strongSelf];
         if (strongSelf.successCompletionBlock) {
             strongSelf.successCompletionBlock(strongSelf);
@@ -126,7 +126,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
 - (void)requestCompletePreprocessor {
     [super requestCompletePreprocessor];
     if (self.writeCacheAsynchronously) {
-        dispatch_async(MRJ_Request_cache_writing_queue(), ^{
+        dispatch_async(MRJRequest_cache_writing_queue(), ^{
             [self saveResponseDataToCacheFile:[super responseData]];
         });
     } else {
@@ -198,7 +198,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     /// 是否存在缓存时间
     if ([self cacheTimeInSeconds] < 0) {
         if (error) {
-            *error = [NSError errorWithDomain:MRJ_RequestCacheErrorDomain code:MRJ_RequestCacheErrorInvalidCacheTime userInfo:@{ NSLocalizedDescriptionKey:@"Invalid cache time"}];
+            *error = [NSError errorWithDomain:MRJRequestCacheErrorDomain code:MRJRequestCacheErrorInvalidCacheTime userInfo:@{ NSLocalizedDescriptionKey:@"Invalid cache time"}];
         }
         return NO;
     }
@@ -206,7 +206,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     /// http请求 缓存文件是否存在
     if (![self loadCacheMetadata]) {
         if (error) {
-            *error = [NSError errorWithDomain:MRJ_RequestCacheErrorDomain code:MRJ_RequestCacheErrorInvalidMetadata userInfo:@{ NSLocalizedDescriptionKey:@"Invalid metadata. Cache may not exist"}];
+            *error = [NSError errorWithDomain:MRJRequestCacheErrorDomain code:MRJRequestCacheErrorInvalidMetadata userInfo:@{ NSLocalizedDescriptionKey:@"Invalid metadata. Cache may not exist"}];
         }
         return NO;
     }
@@ -219,7 +219,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     /// Try load cache.
     if (![self loadCacheData]) {
         if (error) {
-            *error = [NSError errorWithDomain:MRJ_RequestCacheErrorDomain code:MRJ_RequestCacheErrorInvalidCacheData userInfo:@{ NSLocalizedDescriptionKey:@"Invalid cache data"}];
+            *error = [NSError errorWithDomain:MRJRequestCacheErrorDomain code:MRJRequestCacheErrorInvalidCacheData userInfo:@{ NSLocalizedDescriptionKey:@"Invalid cache data"}];
         }
         return NO;
     }
@@ -232,7 +232,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     NSTimeInterval duration = -[creationDate timeIntervalSinceNow];
     if (duration < 0 || duration > [self cacheTimeInSeconds]) {
         if (error) {
-            *error = [NSError errorWithDomain:MRJ_RequestCacheErrorDomain code:MRJ_RequestCacheErrorExpired userInfo:@{ NSLocalizedDescriptionKey:@"Cache expired"}];
+            *error = [NSError errorWithDomain:MRJRequestCacheErrorDomain code:MRJRequestCacheErrorExpired userInfo:@{ NSLocalizedDescriptionKey:@"Cache expired"}];
         }
         return NO;
     }
@@ -240,7 +240,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     long long cacheVersionFileContent = self.cacheMetadata.version;
     if (cacheVersionFileContent != [self cacheVersion]) {
         if (error) {
-            *error = [NSError errorWithDomain:MRJ_RequestCacheErrorDomain code:MRJ_RequestCacheErrorVersionMismatch userInfo:@{ NSLocalizedDescriptionKey:@"Cache version mismatch"}];
+            *error = [NSError errorWithDomain:MRJRequestCacheErrorDomain code:MRJRequestCacheErrorVersionMismatch userInfo:@{ NSLocalizedDescriptionKey:@"Cache version mismatch"}];
         }
         return NO;
     }
@@ -251,18 +251,18 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
         /// If one of the strings is nil, short-circuit evaluation will trigger
         if (sensitiveDataString.length != currentSensitiveDataString.length || ![sensitiveDataString isEqualToString:currentSensitiveDataString]) {
             if (error) {
-                *error = [NSError errorWithDomain:MRJ_RequestCacheErrorDomain code:MRJ_RequestCacheErrorSensitiveDataMismatch userInfo:@{ NSLocalizedDescriptionKey:@"Cache sensitive data mismatch"}];
+                *error = [NSError errorWithDomain:MRJRequestCacheErrorDomain code:MRJRequestCacheErrorSensitiveDataMismatch userInfo:@{ NSLocalizedDescriptionKey:@"Cache sensitive data mismatch"}];
             }
             return NO;
         }
     }
     /// App version  判断缓存版本号是否一致
     NSString *appVersionString = self.cacheMetadata.appVersionString;
-    NSString *currentAppVersionString = [MRJ_NetworkUtils appVersionString];
+    NSString *currentAppVersionString = [MRJNetworkUtils appVersionString];
     if (appVersionString || currentAppVersionString) {
         if (appVersionString.length != currentAppVersionString.length || ![appVersionString isEqualToString:currentAppVersionString]) {
             if (error) {
-                *error = [NSError errorWithDomain:MRJ_RequestCacheErrorDomain code:MRJ_RequestCacheErrorAppVersionMismatch userInfo:@{ NSLocalizedDescriptionKey:@"App version mismatch"}];
+                *error = [NSError errorWithDomain:MRJRequestCacheErrorDomain code:MRJRequestCacheErrorAppVersionMismatch userInfo:@{ NSLocalizedDescriptionKey:@"App version mismatch"}];
             }
             return NO;
         }
@@ -279,7 +279,7 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
             _cacheMetadata = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
             return YES;
         } @catch (NSException *exception) {
-            MRJ_Log(@"Load cache metadata failed, reason = %@", exception.reason);
+            MRJLog(@"Load cache metadata failed, reason = %@", exception.reason);
             return NO;
         }
     }
@@ -296,13 +296,13 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
         _cacheData = data;
         _cacheString = [[NSString alloc] initWithData:_cacheData encoding:self.cacheMetadata.stringEncoding];
         switch (self.responseSerializerType) {
-            case MRJ_ResponseSerializerTypeHTTP:
+            case MRJResponseSerializerTypeHTTP:
                 // Do nothing.
                 return YES;
-            case MRJ_ResponseSerializerTypeJSON:
+            case MRJResponseSerializerTypeJSON:
                 _cacheJSON = [NSJSONSerialization JSONObjectWithData:_cacheData options:(NSJSONReadingOptions)0 error:&error];
                 return error == nil;
-            case MRJ_ResponseSerializerTypeXMLParser:
+            case MRJResponseSerializerTypeXMLParser:
                 _cacheXML = [[NSXMLParser alloc] initWithData:_cacheData];
                 return YES;
         }
@@ -316,15 +316,15 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
             @try {
                 // New data will always overwrite old data.
                 [data writeToFile:[self cacheFilePath] atomically:YES];
-                MRJ_CacheMetadata *metadata = [[MRJ_CacheMetadata alloc] init];
+                MRJCacheMetadata *metadata = [[MRJCacheMetadata alloc] init];
                 metadata.version = [self cacheVersion];
                 metadata.sensitiveDataString = ((NSObject *)[self cacheSensitiveData]).description;
-                metadata.stringEncoding = [MRJ_NetworkUtils stringEncodingWithRequest:self];
+                metadata.stringEncoding = [MRJNetworkUtils stringEncodingWithRequest:self];
                 metadata.creationDate = [NSDate date];
-                metadata.appVersionString = [MRJ_NetworkUtils appVersionString];
+                metadata.appVersionString = [MRJNetworkUtils appVersionString];
                 [NSKeyedArchiver archiveRootObject:metadata toFile:[self cacheMetadataFilePath]];
             } @catch (NSException *exception) {
-                MRJ_Log(@"Save cache failed, reason = %@", exception.reason);
+                MRJLog(@"Save cache failed, reason = %@", exception.reason);
             }
         }
     }
@@ -362,9 +362,9 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES
                                                attributes:nil error:&error];
     if (error) {
-        MRJ_Log(@"create cache directory failed, error = %@", error);
+        MRJLog(@"create cache directory failed, error = %@", error);
     } else {
-        [MRJ_NetworkUtils addDoNotBackupAttribute:path];
+        [MRJNetworkUtils addDoNotBackupAttribute:path];
     }
 }
 
@@ -373,9 +373,9 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
     NSString *pathOfLibrary = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *path = [pathOfLibrary stringByAppendingPathComponent:@"LazyRequestCache"];
     // Filter cache base path
-    NSArray<id<MRJ_CacheDirPathFilterProtocol>> *filters = [[MRJ_NetworkConfig sharedConfig] cacheDirPathFilters];
+    NSArray<id<MRJCacheDirPathFilterProtocol>> *filters = [[MRJNetworkConfig sharedConfig] cacheDirPathFilters];
     if (filters.count > 0) {
-        for (id<MRJ_CacheDirPathFilterProtocol> f in filters) {
+        for (id<MRJCacheDirPathFilterProtocol> f in filters) {
             path = [f filterCacheDirPath:path withRequest:self];
         }
     }
@@ -386,11 +386,11 @@ static dispatch_queue_t MRJ_Request_cache_writing_queue() {
 /// http 缓存文件名称
 - (NSString *)cacheFileName {
     NSString *requestUrl = [self requestUrl];
-    NSString *baseUrl = [MRJ_NetworkConfig sharedConfig].baseUrl;
+    NSString *baseUrl = [MRJNetworkConfig sharedConfig].baseUrl;
     id argument = [self cacheFileNameFilterForRequestArgument:[self requestArgument]];
     NSString *requestInfo = [NSString stringWithFormat:@"Method:%ld Host:%@ Url:%@ Argument:%@",
                              (long)[self requestMethod], baseUrl, requestUrl, argument];
-    NSString *cacheFileName = [MRJ_NetworkUtils md5StringFromString:requestInfo];
+    NSString *cacheFileName = [MRJNetworkUtils md5StringFromString:requestInfo];
     return cacheFileName;
 }
 

@@ -1,31 +1,31 @@
 //
-//  MRJ_NetworkAgent.m
+//  MRJNetworkAgent.m
 //
-//  Created by MRJ_ on 2017/2/17.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/17.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_NetworkAgent.h"
+#import "MRJNetworkAgent.h"
 #import <AFNetworking/AFNetworking.h>
-#import "MRJ_NetworkConfig.h"
+#import "MRJNetworkConfig.h"
 #import <pthread/pthread.h>
-#import "MRJ_NetworkPrivate.h"
+#import "MRJNetworkPrivate.h"
 
 #define Lock() pthread_mutex_lock(&_lock)
 #define Unlock() pthread_mutex_unlock(&_lock)
 
-#define MRJ_KNetworkIncompleteDownloadFolderName @"Incomplete"
+#define MRJKNetworkIncompleteDownloadFolderName @"Incomplete"
 
-@implementation MRJ_NetworkAgent{
+@implementation MRJNetworkAgent{
     AFHTTPSessionManager *_manager;
-    MRJ_NetworkConfig *_config;
+    MRJNetworkConfig *_config;
     AFJSONResponseSerializer *_jsonResponseSerializer;
     AFXMLParserResponseSerializer *_xmlParserResponseSerialzier;
-    NSMutableDictionary<NSNumber *,MRJ_BaseRequest *> *_requestsRecord;
+    NSMutableDictionary<NSNumber *,MRJBaseRequest *> *_requestsRecord;
     pthread_mutex_t _lock;
 }
 
-+ (MRJ_NetworkAgent *)sharedAgent {
++ (MRJNetworkAgent *)sharedAgent {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -37,7 +37,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _config = [MRJ_NetworkConfig sharedConfig];
+        _config = [MRJNetworkConfig sharedConfig];
         _manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:_config.sessionConfiguration];
         _requestsRecord = [NSMutableDictionary dictionary];
         /// 接收返回状态码
@@ -63,13 +63,13 @@
 
 #pragma mark -
 /// 构建网络请求路径
-- (NSString *)buildRequestUrl:(MRJ_BaseRequest *)request {
+- (NSString *)buildRequestUrl:(MRJBaseRequest *)request {
     NSParameterAssert(request != nil);
     NSString *detailUrl = [request requestUrl];
     NSURL *temp = [NSURL URLWithString:detailUrl];
     /// Filter URL if needed
     NSArray *filters = [_config urlFilters];
-    for (id<MRJ_UrlFilterProtocol> f in filters) {
+    for (id<MRJUrlFilterProtocol> f in filters) {
         detailUrl = [f filterUrl:detailUrl withRequest:request];
     }
     
@@ -113,11 +113,11 @@
     return [NSURL URLWithString:finalDetailUrl relativeToURL:url].absoluteString;
 }
 
-- (AFHTTPRequestSerializer *)requestSerializerForRequest:(MRJ_BaseRequest *)request {
+- (AFHTTPRequestSerializer *)requestSerializerForRequest:(MRJBaseRequest *)request {
     AFHTTPRequestSerializer *requestSerializer = nil;
-    if (request.requestSerializerType == MRJ_RequestSerializerTypeHTTP) {
+    if (request.requestSerializerType == MRJRequestSerializerTypeHTTP) {
         requestSerializer = [AFHTTPRequestSerializer serializer];
-    } else if (request.requestSerializerType == MRJ_RequestSerializerTypeJSON) {
+    } else if (request.requestSerializerType == MRJRequestSerializerTypeJSON) {
         requestSerializer = [AFJSONRequestSerializer serializer];
     }
     
@@ -140,34 +140,34 @@
     return requestSerializer;
 }
 
-- (NSURLSessionTask *)sessionTaskForRequest:(MRJ_BaseRequest *)request error:(NSError **)error {
-    MRJ_RequestMethod method = [request requestMethod];
+- (NSURLSessionTask *)sessionTaskForRequest:(MRJBaseRequest *)request error:(NSError **)error {
+    MRJRequestMethod method = [request requestMethod];
     NSString *url = [self buildRequestUrl:request];
     id param = request.requestArgument;
     AFConstructingBlock constructingBlock = [request constructingBodyBlock];
     AFHTTPRequestSerializer *requestSerializer = [self requestSerializerForRequest:request];
     switch (method) {
-        case MRJ_RequestMethodGET:
+        case MRJRequestMethodGET:
             if (request.resumableDownloadPath) {
                 return [self downloadTaskWithDownloadPath:request.resumableDownloadPath requestSerializer:requestSerializer URLString:url parameters:param progress:request.resumableDownloadProgressBlock error:error];
             } else {
                 return [self dataTaskWithHTTPMethod:@"GET" requestSerializer:requestSerializer URLString:url parameters:param error:error];
             }
-        case MRJ_RequestMethodPOST:
+        case MRJRequestMethodPOST:
             return [self dataTaskWithHTTPMethod:@"POST" requestSerializer:requestSerializer URLString:url parameters:param progress:request.uploadProgressBlock  constructingBodyWithBlock:constructingBlock error:error];
-        case MRJ_RequestMethodHEAD:
+        case MRJRequestMethodHEAD:
             return [self dataTaskWithHTTPMethod:@"HEAD" requestSerializer:requestSerializer URLString:url parameters:param error:error];
-        case MRJ_RequestMethodPUT:
+        case MRJRequestMethodPUT:
             return [self dataTaskWithHTTPMethod:@"PUT" requestSerializer:requestSerializer URLString:url parameters:param error:error];
-        case MRJ_RequestMethodDELETE:
+        case MRJRequestMethodDELETE:
             return [self dataTaskWithHTTPMethod:@"DELETE" requestSerializer:requestSerializer URLString:url parameters:param error:error];
-        case MRJ_RequestMethodPATCH:
+        case MRJRequestMethodPATCH:
             return [self dataTaskWithHTTPMethod:@"PATCH" requestSerializer:requestSerializer URLString:url parameters:param error:error];
     }
 }
 
 /// 请求准备开始
-- (void)addRequest:(MRJ_BaseRequest *)request {
+- (void)addRequest:(MRJBaseRequest *)request {
     NSParameterAssert(request != nil);
     NSError * __autoreleasing requestSerializationError = nil;
     /// 取自定义路径
@@ -190,13 +190,13 @@
     // !!Available on iOS 8 +
     if ([request.requestTask respondsToSelector:@selector(priority)]) {
         switch (request.requestPriority) {
-            case MRJ_RequestPriorityHigh:
+            case MRJRequestPriorityHigh:
                 request.requestTask.priority = 1.0;
                 break;
-            case MRJ_RequestPriorityLow:
+            case MRJRequestPriorityLow:
                 request.requestTask.priority = 0;
                 break;
-            case MRJ_RequestPriorityDefault:
+            case MRJRequestPriorityDefault:
                 /*!!fall through*/
             default:
                 //NSURLSession​Task​Priority​Default等于0.5，但NSURLSession​Task​Priority​Default在iOS8上会crash，报exc_bad_access
@@ -205,12 +205,12 @@
         }
     }
     /// Retain request
-    MRJ_Log(@"Add request: %@", NSStringFromClass([request class]));
+    MRJLog(@"Add request: %@", NSStringFromClass([request class]));
     [self addRequestToRecord:request];
     [request.requestTask resume];
 }
 
-- (void)cancelRequest:(MRJ_BaseRequest *)request {
+- (void)cancelRequest:(MRJBaseRequest *)request {
     NSParameterAssert(request != nil);
     [request.requestTask cancel];
     [self removeRequestFromRecord:request];
@@ -225,7 +225,7 @@
         NSArray *copiedKeys = [allKeys copy];
         for (NSNumber *key in copiedKeys) {
             Lock();
-            MRJ_BaseRequest *request = _requestsRecord[key];
+            MRJBaseRequest *request = _requestsRecord[key];
             Unlock();
             // We are using non-recursive lock.
             // Do not lock `stop`, otherwise deadlock may occur.
@@ -234,21 +234,21 @@
     }
 }
 
-- (BOOL)validateResult:(MRJ_BaseRequest *)request error:(NSError * _Nullable __autoreleasing *)error {
+- (BOOL)validateResult:(MRJBaseRequest *)request error:(NSError * _Nullable __autoreleasing *)error {
     BOOL result = [request statusCodeValidator];
     if (!result) {
         if (error) {
-            *error = [NSError errorWithDomain:MRJ_RequestValidationErrorDomain code:MRJ_RequestValidationErrorInvalidStatusCode userInfo:@{NSLocalizedDescriptionKey:@"Invalid status code"}];
+            *error = [NSError errorWithDomain:MRJRequestValidationErrorDomain code:MRJRequestValidationErrorInvalidStatusCode userInfo:@{NSLocalizedDescriptionKey:@"Invalid status code"}];
         }
         return result;
     }
     id json = [request responseJSONObject];
     id validator = [request jsonValidator];
     if (json && validator) {
-        result = [MRJ_NetworkUtils validateJSON:json withValidator:validator];
+        result = [MRJNetworkUtils validateJSON:json withValidator:validator];
         if (!result) {
             if (error) {
-                *error = [NSError errorWithDomain:MRJ_RequestValidationErrorDomain code:MRJ_RequestValidationErrorInvalidJSONFormat userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON format"}];
+                *error = [NSError errorWithDomain:MRJRequestValidationErrorDomain code:MRJRequestValidationErrorInvalidJSONFormat userInfo:@{NSLocalizedDescriptionKey:@"Invalid JSON format"}];
             }
             return result;
         }
@@ -300,12 +300,12 @@
 
 - (void)handleRequestResult:(NSURLSessionTask *)task responseObject:(id)responseObject error:(NSError *)error {
     Lock();
-    MRJ_BaseRequest *request = _requestsRecord[@(task.taskIdentifier)];
+    MRJBaseRequest *request = _requestsRecord[@(task.taskIdentifier)];
     Unlock();
     if (!request) {
         return;
     }
-    MRJ_Log(@"Finished Request: %@", NSStringFromClass([request class]));
+    MRJLog(@"Finished Request: %@", NSStringFromClass([request class]));
     NSError * __autoreleasing serializationError = nil;
     NSError * __autoreleasing validationError = nil;
     NSError *requestError = nil;
@@ -313,17 +313,17 @@
     request.responseObject = responseObject;
     if ([request.responseObject isKindOfClass:[NSData class]]) {
         request.responseData = responseObject;
-        request.responseString = [[NSString alloc] initWithData:responseObject encoding:[MRJ_NetworkUtils stringEncodingWithRequest:request]];
+        request.responseString = [[NSString alloc] initWithData:responseObject encoding:[MRJNetworkUtils stringEncodingWithRequest:request]];
         
         switch (request.responseSerializerType) {
-            case MRJ_ResponseSerializerTypeHTTP:
+            case MRJResponseSerializerTypeHTTP:
                 // Default serializer. Do nothing.
                 break;
-            case MRJ_ResponseSerializerTypeJSON:
+            case MRJResponseSerializerTypeJSON:
                 request.responseObject = [self.jsonResponseSerializer responseObjectForResponse:task.response data:request.responseData error:&serializationError];
                 request.responseJSONObject = request.responseObject;
                 break;
-            case MRJ_ResponseSerializerTypeXMLParser:
+            case MRJResponseSerializerTypeXMLParser:
                 request.responseObject = [self.xmlParserResponseSerialzier responseObjectForResponse:task.response data:request.responseData error:&serializationError];
                 break;
         }
@@ -351,7 +351,7 @@
     });
 }
 
-- (void)requestDidSucceedWithRequest:(MRJ_BaseRequest *)request {
+- (void)requestDidSucceedWithRequest:(MRJBaseRequest *)request {
     @autoreleasepool {
         [request requestCompletePreprocessor];
     }
@@ -368,9 +368,9 @@
     });
 }
 
-- (void)requestDidFailWithRequest:(MRJ_BaseRequest *)request error:(NSError *)error {
+- (void)requestDidFailWithRequest:(MRJBaseRequest *)request error:(NSError *)error {
     request.error = error;
-    MRJ_Log(@"Request %@ failed, status code = %ld, error = %@",
+    MRJLog(@"Request %@ failed, status code = %ld, error = %@",
            NSStringFromClass([request class]), (long)request.responseStatusCode, error.localizedDescription);
     
     // Save incomplete download data.
@@ -383,7 +383,7 @@
         NSURL *url = request.responseObject;
         if (url.isFileURL && [[NSFileManager defaultManager] fileExistsAtPath:url.path]) {
             request.responseData = [NSData dataWithContentsOfURL:url];
-            request.responseString = [[NSString alloc] initWithData:request.responseData encoding:[MRJ_NetworkUtils stringEncodingWithRequest:request]];
+            request.responseString = [[NSString alloc] initWithData:request.responseData encoding:[MRJNetworkUtils stringEncodingWithRequest:request]];
             
             [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
         }
@@ -406,16 +406,16 @@
     });
 }
 
-- (void)addRequestToRecord:(MRJ_BaseRequest *)request {
+- (void)addRequestToRecord:(MRJBaseRequest *)request {
     Lock();
     _requestsRecord[@(request.requestTask.taskIdentifier)] = request;
     Unlock();
 }
 
-- (void)removeRequestFromRecord:(MRJ_BaseRequest *)request {
+- (void)removeRequestFromRecord:(MRJBaseRequest *)request {
     Lock();
     [_requestsRecord removeObjectForKey:@(request.requestTask.taskIdentifier)];
-    MRJ_Log(@"Request queue size = %zd", [_requestsRecord count]);
+    MRJLog(@"Request queue size = %zd", [_requestsRecord count]);
     Unlock();
 }
 
@@ -452,7 +452,7 @@
     }
     BOOL resumeDataFileExists = [[NSFileManager defaultManager] fileExistsAtPath:[self incompleteDownloadTempPathForDownloadPath:downloadPath].path];
     NSData *data = [NSData dataWithContentsOfURL:[self incompleteDownloadTempPathForDownloadPath:downloadPath]];
-    BOOL resumeDataIsValid = [MRJ_NetworkUtils validateResumeData:data];
+    BOOL resumeDataIsValid = [MRJNetworkUtils validateResumeData:data];
     BOOL canBeResumed = resumeDataFileExists && resumeDataIsValid;
     BOOL resumeSucceeded = NO;
     __block NSURLSessionDownloadTask *downloadTask = nil;
@@ -468,7 +468,7 @@
                             }];
             resumeSucceeded = YES;
         } @catch (NSException *exception) {
-            MRJ_Log(@"Resume download failed, reason = %@", exception.reason);
+            MRJLog(@"Resume download failed, reason = %@", exception.reason);
             resumeSucceeded = NO;
         }
     }
@@ -490,11 +490,11 @@
     static NSString *cacheFolder;
     if (!cacheFolder) {
         NSString *cacheDir = NSTemporaryDirectory();
-        cacheFolder = [cacheDir stringByAppendingPathComponent:MRJ_KNetworkIncompleteDownloadFolderName];
+        cacheFolder = [cacheDir stringByAppendingPathComponent:MRJKNetworkIncompleteDownloadFolderName];
     }
     NSError *error = nil;
     if(![fileManager createDirectoryAtPath:cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
-        MRJ_Log(@"Failed to create cache directory at %@", cacheFolder);
+        MRJLog(@"Failed to create cache directory at %@", cacheFolder);
         cacheFolder = nil;
     }
     return cacheFolder;
@@ -502,7 +502,7 @@
 
 - (NSURL *)incompleteDownloadTempPathForDownloadPath:(NSString *)downloadPath {
     NSString *tempPath = nil;
-    NSString *md5URLString = [MRJ_NetworkUtils md5StringFromString:downloadPath];
+    NSString *md5URLString = [MRJNetworkUtils md5StringFromString:downloadPath];
     tempPath = [[self incompleteDownloadTempCacheFolder] stringByAppendingPathComponent:md5URLString];
     return [NSURL fileURLWithPath:tempPath];
 }

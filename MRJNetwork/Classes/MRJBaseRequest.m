@@ -1,17 +1,17 @@
 //
-//  MRJ_BaseRequest.m
+//  MRJBaseRequest.m
 //
-//  Created by MRJ_ on 2017/2/17.
-//  Copyright © 2017年 MRJ_. All rights reserved.
+//  Created by MRJ on 2017/2/17.
+//  Copyright © 2017年 MRJ. All rights reserved.
 //
 
-#import "MRJ_BaseRequest.h"
-#import "MRJ_NetworkAgent.h"
-#import "MRJ_NetworkPrivate.h"
+#import "MRJBaseRequest.h"
+#import "MRJNetworkAgent.h"
+#import "MRJNetworkPrivate.h"
 
-NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation";
+NSString *const MRJRequestValidationErrorDomain = @"com.mrj.request.validation";
 
-@interface MRJ_BaseRequest ()
+@interface MRJBaseRequest ()
 
 @property (nonatomic, strong, readwrite) NSURLSessionTask *requestTask;
 @property (nonatomic, strong, readwrite) NSData *responseData;
@@ -22,7 +22,7 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
 
 @end
 
-@implementation MRJ_BaseRequest
+@implementation MRJBaseRequest
 
 #pragma mark - Request and Response Information
 
@@ -62,8 +62,8 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
 
 #pragma mark - Request Configuration
 
-- (void)setCompletionBlockWithSuccess:(MRJ_RequestCompletionBlock)success
-                              failure:(MRJ_RequestCompletionBlock)failure {
+- (void)setCompletionBlockWithSuccess:(MRJRequestCompletionBlock)success
+                              failure:(MRJRequestCompletionBlock)failure {
     self.successCompletionBlock = success;
     self.failureCompletionBlock = failure;
 }
@@ -74,7 +74,7 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
     self.failureCompletionBlock = nil;
 }
 
-- (void)addAccessory:(id<MRJ_RequestAccessory>)accessory {
+- (void)addAccessory:(id<MRJRequestAccessory>)accessory {
     if (!self.requestAccessories) {
         self.requestAccessories = [NSMutableArray array];
     }
@@ -87,18 +87,18 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
     /// 网络请求前回调
     [self toggleAccessoriesWillStartCallBack];
     /// 网络请求开启
-    [[MRJ_NetworkAgent sharedAgent] addRequest:self];
+    [[MRJNetworkAgent sharedAgent] addRequest:self];
 }
 
 - (void)stop {
     [self toggleAccessoriesWillStopCallBack];
     self.delegate = nil;
-    [[MRJ_NetworkAgent sharedAgent] cancelRequest:self];
+    [[MRJNetworkAgent sharedAgent] cancelRequest:self];
     [self toggleAccessoriesDidStopCallBack];
 }
 
-- (void)startWithCompletionBlockWithSuccess:(MRJ_RequestCompletionBlock)success
-                                    failure:(MRJ_RequestCompletionBlock)failure {
+- (void)startWithCompletionBlockWithSuccess:(MRJRequestCompletionBlock)success
+                                    failure:(MRJRequestCompletionBlock)failure {
     [self setCompletionBlockWithSuccess:success failure:failure];
     [self start];
 }
@@ -142,16 +142,16 @@ NSString *const MRJ_RequestValidationErrorDomain = @"com.mrj.request.validation"
     return argument;
 }
 
-- (MRJ_RequestMethod)requestMethod {
-    return MRJ_RequestMethodGET;
+- (MRJRequestMethod)requestMethod {
+    return MRJRequestMethodGET;
 }
 
-- (MRJ_RequestSerializerType)requestSerializerType {
-    return MRJ_RequestSerializerTypeHTTP;
+- (MRJRequestSerializerType)requestSerializerType {
+    return MRJRequestSerializerTypeHTTP;
 }
 
-- (MRJ_ResponseSerializerType)responseSerializerType {
-    return MRJ_ResponseSerializerTypeJSON;
+- (MRJResponseSerializerType)responseSerializerType {
+    return MRJResponseSerializerTypeJSON;
 }
 
 - (NSArray *)requestAuthorizationHeaderFieldArray {

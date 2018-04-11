@@ -1,6 +1,6 @@
 //
-//  MRJ_NetworkTests.m
-//  MRJ_NetworkTests
+//  MRJNetworkTests.m
+//  MRJNetworkTests
 //
 //  Created by mrjlovetian@gmail.com on 08/21/2017.
 //  Copyright (c) 2017 mrjlovetian@gmail.com. All rights reserved.

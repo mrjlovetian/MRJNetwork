@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint MRJ_Network.podspec' to ensure this is a
+# Be sure to run `pod lib lint MRJNetwork.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MRJNetwork'
 
-  s.version          = '0.3.0'
+  s.version          = '0.3.0.1'
   s.summary          = '一个全新的网络请求框架，用来网络请求的'
 
 # This description is used to generate tags and improve search results.
@@ -35,7 +35,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'MRJNetwork/Classes/**/*'
   
   # s.resource_bundles = {
-  #   'MRJ_Network' => ['MRJNetwork/Assets/*.png']
+  #   'MRJNetwork' => ['MRJNetwork/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

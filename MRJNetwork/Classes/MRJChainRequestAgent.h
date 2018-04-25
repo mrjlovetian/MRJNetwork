@@ -14,13 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MRJChainRequestAgent : NSObject
 
-///  Get the shared chain request agent.
+/// Get the shared chain request agent.
 + (MRJChainRequestAgent *)sharedAgent;
 
-///  Add a chain request.
+/// Add a chain request.
 - (void)addChainRequest:(MRJChainRequest *)request;
 
-///  Remove a previously added chain request.
+/// Remove a previously added chain request.
 - (void)removeChainRequest:(MRJChainRequest *)request;
 
 @end

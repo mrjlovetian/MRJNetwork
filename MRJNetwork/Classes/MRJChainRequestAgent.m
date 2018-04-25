@@ -10,7 +10,7 @@
 
 @interface MRJChainRequestAgent()
 
-@property(strong,nonatomic) NSMutableArray<MRJChainRequest *> *requestArray;
+@property(strong, nonatomic) NSMutableArray<MRJChainRequest *> *requestArray;
 
 @end
 

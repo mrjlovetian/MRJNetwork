@@ -11,13 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MRJBatchRequestAgent : NSObject
 
-///  单例方法.
+/// 单例方法.
 + (MRJBatchRequestAgent *)sharedAgent;
 
-///  添加请求.
+/// 添加请求.
 - (void)addBatchRequest:(MRJBatchRequest *)request;
 
-///  移除请求.
+/// 移除请求.
 - (void)removeBatchRequest:(MRJBatchRequest *)request;
 
 @end

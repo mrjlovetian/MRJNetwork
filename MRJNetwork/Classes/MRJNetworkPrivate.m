@@ -155,7 +155,6 @@ void MRJLog(NSString *format, ...) {
 
 @end
 
-
 @implementation MRJBatchRequest (RequestAccessory)
 
 - (void)toggleAccessoriesWillStartCallBack {

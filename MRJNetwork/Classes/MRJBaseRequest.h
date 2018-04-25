@@ -59,7 +59,7 @@ typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *);
    
 @class MRJBaseRequest;
 typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
-typedef void(^MRJRequestFinishBlock)();
+    typedef void(^MRJRequestFinishBlock)(void);
     
 ///  The MRJRequestDelegate protocol defines several optional methods you can use
 ///  to receive network-related messages. All the delegate methods will be called

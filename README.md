@@ -1,4 +1,4 @@
-# MRJ_Network
+# MRJNetwork
 
 [![CI Status](http://img.shields.io/travis/mrjlovetian@gmail.com/MRJNetwork.svg?style=flat)](https://travis-ci.org/mrjlovetian@gmail.com/MRJNetwork)
 [![Version](https://img.shields.io/cocoapods/v/MRJNetwork.svg?style=flat)](http://cocoapods.org/pods/MRJNetwork)
@@ -22,9 +22,9 @@ pod "MRJNetwork"
 
 ## Author
 
-mrjlovetian@gmail.com, mrjyuhongjiang@gmail.com
+mrjlovetian@gmail.com
 
 ## License
 
-MRJ_Network is available under the MIT license. See the LICENSE file for more info.
+MRJNetwork is available under the MIT license. See the LICENSE file for more info.
 # MRJNetwork

@@ -38,24 +38,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MRJBatchRequest : NSObject
 
-///  All the requests are stored in this array.
+/// All the requests are stored in this array.
 @property (nonatomic, strong, readonly) NSArray<MRJRequest *> *requestArray;
 
-///  The delegate object of the batch request. Default is nil.
+/// The delegate object of the batch request. Default is nil.
 @property (nonatomic, weak, nullable) id<MRJBatchRequestDelegate> delegate;
 
-///  The success callback. Note this will be called only if all the requests are finished.
-///  This block will be called on the main queue.
+/// The success callback. Note this will be called only if all the requests are finished.
+/// This block will be called on the main queue.
 @property (nonatomic, copy, nullable) void (^successCompletionBlock)(MRJBatchRequest *);
 
-///  当一个请求完成后 向客户端反馈请求完成百分比
+/// 当一个请求完成后 向客户端反馈请求完成百分比
 @property (nonatomic, copy, nullable) void (^percentCompletionBlock)(float);
 
-///  The failure callback. Note this will be called if one of the requests fails.
-///  This block will be called on the main queue.
+/// The failure callback. Note this will be called if one of the requests fails.
+/// This block will be called on the main queue.
 @property (nonatomic, copy, nullable) void (^failureCompletionBlock)(MRJBatchRequest *);
 
-///  Tag can be used to identify batch request. Default value is 0.
+/// Tag can be used to identify batch request. Default value is 0.
 @property (nonatomic) NSInteger tag;
 
 ///  This can be used to add several accossories object. Note if you use `addAccessory` to add acceesory

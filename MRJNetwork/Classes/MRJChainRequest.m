@@ -10,7 +10,7 @@
 #import "MRJNetworkPrivate.h"
 #import "MRJBaseRequest.h"
 
-@interface MRJChainRequest()<MRJRequestDelegate>
+@interface MRJChainRequest() <MRJRequestDelegate>
 
 @property (strong, nonatomic) NSMutableArray<MRJBaseRequest *> *requestArray;
 @property (strong, nonatomic) NSMutableArray<MRJChainCallback> *requestCallbackArray;

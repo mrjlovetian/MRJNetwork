@@ -18,7 +18,7 @@ NS_ENUM(NSInteger) {
     MRJRequestValidationErrorInvalidJSONFormat = -9,
 };
     
-///  HTTP Request method. 请求方式
+/// HTTP Request method. 请求方式
 typedef NS_ENUM(NSInteger, MRJRequestMethod) {
         MRJRequestMethodGET = 0,
         MRJRequestMethodPOST,
@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, MRJRequestMethod) {
         MRJRequestMethodPATCH,
 };
     
-///  Request serializer type. 网络请求类型
+/// Request serializer type. 网络请求类型
 typedef NS_ENUM(NSInteger, MRJRequestSerializerType) {
         MRJRequestSerializerTypeHTTP = 0,
         MRJRequestSerializerTypeJSON,
@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, MRJResponseSerializerType) {
     MRJResponseSerializerTypeXMLParser,
 };
 
-///  Request priority 请求优先级
+/// Request priority 请求优先级
 typedef NS_ENUM(NSInteger, MRJRequestPriority) {
     MRJRequestPriorityLow = -4L,
     MRJRequestPriorityDefault = 0,
@@ -115,30 +115,30 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 /// @name Request and Response Information
 ///=============================================================================
 
-///  The underlying NSURLSessionTask.
+/// The underlying NSURLSessionTask.
 ///
-///  @warning This value is actually nil and should not be accessed before the request starts.
+/// @warning This value is actually nil and should not be accessed before the request starts.
 @property (nonatomic, strong, readonly) NSURLSessionTask *requestTask;
 
-///  Shortcut for `requestTask.currentRequest`.
+/// Shortcut for `requestTask.currentRequest`.
 @property (nonatomic, strong, readonly) NSURLRequest *currentRequest;
 
-///  Shortcut for `requestTask.originalRequest`.
+/// Shortcut for `requestTask.originalRequest`.
 @property (nonatomic, strong, readonly) NSURLRequest *originalRequest;
 
-///  Shortcut for `requestTask.response`.
+/// Shortcut for `requestTask.response`.
 @property (nonatomic, strong, readonly) NSHTTPURLResponse *response;
 
-///  The response status code.
+/// The response status code.
 @property (nonatomic, readonly) NSInteger responseStatusCode;
 
-///  The response header fields.
+/// The response header fields.
 @property (nonatomic, strong, readonly, nullable) NSDictionary *responseHeaders;
 
-///  The raw data representation of response. Note this value can be nil if request failed.
+/// The raw data representation of response. Note this value can be nil if request failed.
 @property (nonatomic, strong, readonly, nullable) NSData *responseData;
 
-///  The string representation of response. Note this value can be nil if request failed.
+/// The string representation of response. Note this value can be nil if request failed.
 @property (nonatomic, strong, readonly, nullable) NSString *responseString;
 
 ///  This serialized response object. The actual type of this object is determined by
@@ -148,18 +148,18 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 ///              be the path to which file is successfully saved (NSURL), or nil if request failed.
 @property (nonatomic, strong, readonly, nullable) id responseObject;
 
-///  If you use `MRJResponseSerializerTypeJSON`, this is a convenience (and sematic) getter
-///  for the response object. Otherwise this value is nil.
+/// If you use `MRJResponseSerializerTypeJSON`, this is a convenience (and sematic) getter
+/// for the response object. Otherwise this value is nil.
 @property (nonatomic, strong, readonly, nullable) id responseJSONObject;
 
-///  This error can be either serialization error or network error. If nothing wrong happens
-///  this value will be nil.
+/// This error can be either serialization error or network error. If nothing wrong happens
+/// this value will be nil.
 @property (nonatomic, strong, readonly, nullable) NSError *error;
 
-///  Return cancelled state of request task.
+/// Return cancelled state of request task.
 @property (nonatomic, readonly, getter=isCancelled) BOOL cancelled;
 
-///  Executing state of request task.
+/// Executing state of request task.
 @property (nonatomic, readonly, getter=isExecuting) BOOL executing;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -170,7 +170,7 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 /// 用于封装restful地址的参数集合
 @property(nonatomic,copy) NSArray<NSString *> *resetfulArguments;
 
-///  Additional HTTP request header field.
+/// Additional HTTP request header field.
 @property(nonatomic,strong)  NSDictionary<NSString *, NSString *> *requestHeaderFieldValueDictionary;
 
 #pragma mark - Request Configuration
@@ -178,31 +178,31 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 /// @name Request Configuration
 ///=============================================================================
 
-///  Tag can be used to identify request. Default value is 0.
+/// Tag can be used to identify request. Default value is 0.
 @property (nonatomic) NSInteger tag;
 
-///  The userInfo can be used to store additional info about the request. Default is nil.
+/// The userInfo can be used to store additional info about the request. Default is nil.
 @property (nonatomic, strong, nullable) NSDictionary *userInfo;
 
-///  The delegate object of the request. If you choose block style callback you can ignore this.
-///  Default is nil.
+/// The delegate object of the request. If you choose block style callback you can ignore this.
+/// Default is nil.
 @property (nonatomic, weak, nullable) id<MRJRequestDelegate> delegate;
 
-///  The success callback. Note if this value is not nil and `requestFinished` delegate method is
-///  also implemented, both will be executed but delegate method is first called. This block
-///  will be called on the main queue.
+/// The success callback. Note if this value is not nil and `requestFinished` delegate method is
+/// also implemented, both will be executed but delegate method is first called. This block
+/// will be called on the main queue.
 @property (nonatomic, copy, nullable) MRJRequestCompletionBlock successCompletionBlock;
 
-///  The failure callback. Note if this value is not nil and `requestFailed` delegate method is
-///  also implemented, both will be executed but delegate method is first called. This block
-///  will be called on the main queue.
+/// The failure callback. Note if this value is not nil and `requestFailed` delegate method is
+/// also implemented, both will be executed but delegate method is first called. This block
+/// will be called on the main queue.
 @property (nonatomic, copy, nullable) MRJRequestCompletionBlock failureCompletionBlock;
 
-///  This can be used to add several accossories object. Note if you use `addAccessory` to add acceesory
-///  this array will be automatically created. Default is nil.
+/// This can be used to add several accossories object. Note if you use `addAccessory` to add acceesory
+/// this array will be automatically created. Default is nil.
 @property (nonatomic, strong, nullable) NSMutableArray<id<MRJRequestAccessory>> *requestAccessories;
 
-///  This can be use to construct HTTP body when needed in POST request. Default is nil.
+/// This can be use to construct HTTP body when needed in POST request. Default is nil.
 @property (nonatomic, copy, nullable) AFConstructingBlock constructingBodyBlock;
 
 ///  This value is used to perform resumable download request. Default is nil.
@@ -214,20 +214,20 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 ///              proper `Last-Modified` and/or `Etag`. See `NSURLSessionDownloadTask` for more detail.
 @property (nonatomic, strong, nullable) NSString *resumableDownloadPath;
 
-///  You can use this block to track the download progress. See also `resumableDownloadPath`.
+/// You can use this block to track the download progress. See also `resumableDownloadPath`.
 @property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock resumableDownloadProgressBlock;
 
 /// 文件上传进度
 @property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock uploadProgressBlock;
 
-///  The priority of the request. Effective only on iOS 8+. Default is `MRJRequestPriorityDefault`.
+/// The priority of the request. Effective only on iOS 8+. Default is `MRJRequestPriorityDefault`.
 @property (nonatomic) MRJRequestPriority requestPriority;
 
-///  Set completion callbacks
+/// Set completion callbacks
 - (void)setCompletionBlockWithSuccess:(nullable MRJRequestCompletionBlock)success
                               failure:(nullable MRJRequestCompletionBlock)failure;
 
-///  Nil out both success and failure callback blocks.
+/// Nil out both success and failure callback blocks.
 - (void)clearCompletionBlock;
 
 #pragma mark - Request Action
@@ -235,13 +235,13 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 /// @name Request Action
 ///=============================================================================
 
-///  Append self to request queue and start the request.
+/// Append self to request queue and start the request.
 - (void)start;
 
-///  Remove self from request queue and cancel the request.
+/// Remove self from request queue and cancel the request.
 - (void)stop;
 
-///  Convenience method to start the request with block callbacks.
+/// Convenience method to start the request with block callbacks.
 - (void)startWithCompletionBlockWithSuccess:(nullable MRJRequestCompletionBlock)success
                                     failure:(nullable MRJRequestCompletionBlock)failure;
 
@@ -251,22 +251,22 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 /// @name Subclass Override
 ///=============================================================================
 
-///  Called on background thread after request succeded but before switching to main thread. Note if
-///  cache is loaded, this method WILL be called on the main thread, just like `requestCompleteFilter`.
+/// Called on background thread after request succeded but before switching to main thread. Note if
+/// cache is loaded, this method WILL be called on the main thread, just like `requestCompleteFilter`.
 - (void)requestCompletePreprocessor;
 
-///  Called on the main thread after request succeeded.
+/// Called on the main thread after request succeeded.
 - (void)requestCompleteFilter;
 
-///  Called on background thread after request succeded but before switching to main thread. See also
-///  `requestCompletePreprocessor`.
+/// Called on background thread after request succeded but before switching to main thread. See also
+/// `requestCompletePreprocessor`.
 - (void)requestFailedPreprocessor;
 
-///  Called on the main thread when request failed.
+/// Called on the main thread when request failed.
 - (void)requestFailedFilter;
 
-///  The baseURL of request. This should only contain the host part of URL, e.g., http://www.example.com.
-///  See also `requestUrl`
+/// The baseURL of request. This should only contain the host part of URL, e.g., http://www.example.com.
+/// See also `requestUrl`
 - (NSString *)baseUrl;
 
 ///  The URL path of request. This should only contain the path part of URL, e.g., /v1/user. See alse `baseUrl`.
@@ -280,7 +280,7 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 ///              `baseUrl` will be ignored.
 - (NSString *)requestUrl;
 
-///  Optional CDN URL for request.
+/// Optional CDN URL for request.
 - (NSString *)cdnUrl;
 
 ///  Requset timeout interval. Default is 60s.
@@ -290,38 +290,38 @@ typedef void(^MRJRequestCompletionBlock)(__kindof MRJBaseRequest *request);
 ///              `timeoutIntervalForResource` of `NSURLSessionConfiguration`.
 - (NSTimeInterval)requestTimeoutInterval;
 
-/////  Additional request argument.
+/// Additional request argument.
 //- (nullable id)requestArgument;
 
 ///  Override this method to filter requests with certain arguments when caching.
 - (id)cacheFileNameFilterForRequestArgument:(id)argument;
 
-///  HTTP request method.
+/// HTTP request method.
 - (MRJRequestMethod)requestMethod;
 
-///  Request serializer type.
+/// Request serializer type.
 - (MRJRequestSerializerType)requestSerializerType;
 
-///  Response serializer type. See also `responseObject`.
+/// Response serializer type. See also `responseObject`.
 - (MRJResponseSerializerType)responseSerializerType;
 
 ///  Username and password used for HTTP authorization. Should be formed as @[@"Username", @"Password"].
 - (nullable NSArray<NSString *> *)requestAuthorizationHeaderFieldArray;
 
-/////  Additional HTTP request header field.
+///  Additional HTTP request header field.
 //- (nullable NSDictionary<NSString *, NSString *> *)requestHeaderFieldValueDictionary;
 
-///  Use this to build custom request. If this method return non-nil value, `requestUrl`, `requestTimeoutInterval`,
-///  `requestArgument`, `allowsCellularAccess`, `requestMethod` and `requestSerializerType` will all be ignored.
+/// Use this to build custom request. If this method return non-nil value, `requestUrl`, `requestTimeoutInterval`,
+/// `requestArgument`, `allowsCellularAccess`, `requestMethod` and `requestSerializerType` will all be ignored.
 - (nullable NSURLRequest *)buildCustomUrlRequest;
 
-///  Should use CDN when sending request.
+/// Should use CDN when sending request.
 - (BOOL)useCDN;
 
-///  The validator will be used to test if `responseJSONObject` is correctly formed.
+/// The validator will be used to test if `responseJSONObject` is correctly formed.
 - (nullable id)jsonValidator;
 
-///  This validator will be used to test if `responseStatusCode` is valid.
+/// This validator will be used to test if `responseStatusCode` is valid.
 - (BOOL)statusCodeValidator;
 
 @end

@@ -134,7 +134,6 @@ NSString *const MRJRequestValidationErrorDomain = @"com.mrj.request.validation";
 }
 
 - (id)requestArgument {
-    
     return nil;
 }
 

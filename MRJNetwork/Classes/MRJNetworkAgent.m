@@ -21,7 +21,7 @@
     MRJNetworkConfig *_config;
     AFJSONResponseSerializer *_jsonResponseSerializer;
     AFXMLParserResponseSerializer *_xmlParserResponseSerialzier;
-    NSMutableDictionary<NSNumber *,MRJBaseRequest *> *_requestsRecord;
+    NSMutableDictionary<NSNumber *, MRJBaseRequest *> *_requestsRecord;
     pthread_mutex_t _lock;
 }
 
@@ -199,7 +199,7 @@
             case MRJRequestPriorityDefault:
                 /*!!fall through*/
             default:
-                //NSURLSession​Task​Priority​Default等于0.5，但NSURLSession​Task​Priority​Default在iOS8上会crash，报exc_bad_access
+                // NSURLSession​Task​Priority​Default等于0.5，但NSURLSession​Task​Priority​Default在iOS8上会crash，报exc_bad_access
                 request.requestTask.priority=0.5;
                 break;
         }
@@ -371,7 +371,7 @@
 - (void)requestDidFailWithRequest:(MRJBaseRequest *)request error:(NSError *)error {
     request.error = error;
     MRJLog(@"Request %@ failed, status code = %ld, error = %@",
-           NSStringFromClass([request class]), (long)request.responseStatusCode, error.localizedDescription);
+    NSStringFromClass([request class]), (long)request.responseStatusCode, error.localizedDescription);
     
     // Save incomplete download data.
     NSData *incompleteDownloadData = error.userInfo[NSURLSessionDownloadTaskResumeData];
